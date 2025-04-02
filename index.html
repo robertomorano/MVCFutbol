@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     
@@ -15,15 +16,28 @@
 
     <article>
 
-        <div>
-            <h3>Introduce un nuevo jugador</h3>
+        <div class="formulario">
+            <h3>Introduce un Nuevo Jugador</h3>
             <form>
-                <label for="imp_nombre">Nombre del Jugador</label>
-                <input type="text" name="impNombre" id="imp_nombre">
-                <label for="imp_posicion">Posición del Jugador</label>
-                <input type="text" name="impPosicion" id="imp_posicion">
+                <label for="imp_nombre_jugador">Nombre del Jugador</label>
+                <input type="text" name="impNombre" id="imp_nombre_jugador">
+                <label for="imp_posicion_jugador">Posición del Jugador</label>
+                <input type="text" name="impPosicion" id="imp_posicion_jugador">
                 <label for="imp_fecha_nacimiento">Fecha Nacimiento</label>
                 <input type="date" name="impPosicion" id="imp_fecha_nacimiento">
+                <button type="button">Crear</button>
+            </form>
+        </div>
+
+        <div class="formulario">
+            <h3>Introduce un Nuevo Equipo</h3>
+            <form>
+                <label for="imp_nombre_equipo">Nombre del Jugador</label>
+                <input type="text" name="impNombreEquipo" id="imp_nombre_equipo">
+                <label for="imp_ciudad_equipo">Ciudad del Equipo</label>
+                <input type="text" name="impCiudadEquipo" id="imp_ciudad_equipo">
+                <label for="imp_nombre_estadio">Nombre del Estadio</label>
+                <input type="text" name="impNombreEstadio" id="imp_nombre_estadio">
                 <button type="button">Crear</button>
             </form>
         </div>
