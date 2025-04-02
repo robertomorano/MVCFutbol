@@ -4,12 +4,7 @@ class Jugador {
         this.nombre = nombre;
         this.posicion = posicion;
         
-        for(let i = fechaNacimiento.length; i >0 ; i--) {
-            if (fechaNacimiento[i] != "/") {
-                
-            }
-        }
-        this.fechaNacimiento = new Date(fechaNacimiento);
+        this.fechaNacimiento = this.textoAFecha(fechaNacimiento);
         
         this.idEquipo = idEquipo;
     }
@@ -30,10 +25,25 @@ class Jugador {
     }
     getEdad() {
         const fechaActual = new Date();
-        
-        
-        
-        
+        let year = fechaActual-this.fechaNacimiento;
+        return year;
+    }
+    textoAFecha(fechaNacimiento){
+        let year;
+        let month;
+        let day;
+        for(let i = fechaNacimiento.length; i >0 ; i--) {
+            if (i>=fechaNacimiento.length-4) {
+                year += fechaNacimiento[i];
+            }
+            if(i>=fechaNacimiento.length-7&&i<fechaNacimiento.length-4 && fechaNacimiento[i] !== "/"){
+                month += Number(fechaNacimiento[i]);
+            }
+            if(i<fechaNacimiento.length-7){
+                day += fechaNacimiento[i];
+            }
+        }
+        return new Date(year, month-1, day);
     }
 
 
