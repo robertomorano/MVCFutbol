@@ -1,59 +1,116 @@
-body{
+body {
     background-color: #f0f0f0;
     font-family: system-ui, sans-serif;
     margin: 0;
     padding: 20px;
 }
 
-header{
+header {
     background-color: #4CAF50;
     color: white;
     padding: 10px 0;
     text-align: center;
 }
 
-.formulario{
+.formulario {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px auto;
-    max-width: 500px;
-}   
+    max-width: 1000px;
+}
 
-article{
+article {
     margin: 20px 0;
     justify-content: space-around;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
 }
 
-label{
+label {
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-input{
+input {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-footer{
+footer {
     text-align: center;
     margin-top: 20px;
     font-size: 0.9em;
     color: #777;
 }
-button{
+
+button {
     background-color: #4CAF50;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.alinea_h3 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center; /* Centra .sec_principal */
+    justify-content: center; /* Centra el contenido verticalmente si es necesario */
+}
+
+.menu_principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* Alinea los botones al inicio */
+}
+
+.btn_menu_principal {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border: 1px solid black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.sec_principal {
+    background-color: white;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+}
+
+.articulo_principal {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
 }
