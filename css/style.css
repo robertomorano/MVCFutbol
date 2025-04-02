@@ -42,3 +42,18 @@ input{
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+footer{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #777;
+}
+button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
