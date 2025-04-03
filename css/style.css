@@ -68,14 +68,14 @@ button {
     display: flex;
     flex-direction: column;
     width: 100%;
-    align-items: center; /* Centra .sec_principal */
-    justify-content: center; /* Centra el contenido verticalmente si es necesario */
+    align-items: center; 
+    justify-content: center; 
 }
 
 .menu_principal {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start; /* Alinea los botones al inicio */
+    justify-content: flex-start;
 }
 
 .btn_menu_principal {
