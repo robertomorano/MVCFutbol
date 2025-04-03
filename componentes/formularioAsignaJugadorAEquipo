@@ -1,0 +1,12 @@
+<div class="formulario">
+    <div class="alinea_h3">
+        <h3>Asigna un Jugador a un Equipo</h3>
+    </div>
+    <form>
+        <label for="imp_nombre_jugador_equipo">Nombre del Jugador</label>
+        <input type="text" name="impNombreJugadorEquipo" id="imp_nombre_jugador_equipo">
+        <label for="imp_nombre_equipo">Nombre del Equipo</label>
+        <input type="text" name="impNombreEquipo" id="imp_nombre_equipo">
+        <button type="button">Asignar</button>
+    </form>
+</div>

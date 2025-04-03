@@ -18,71 +18,38 @@
 
         <div class="menu">
 
-            <nav class="menu_principal">
-                <button type="button" class="btn_menu_principal">Jugadores</button>
-                <button type="button" class="btn_menu_principal">Equipos</button>
+            <nav class="nav_principal">
+                <button type="button" class="btn_nav_principal">Jugadores</button>
+                <button type="button" class="btn_nav_principal">Equipos</button>
             </nav>
 
             <section class="sec_principal">
 
-                <nav class="menu_secundario">
-                    <ul class="opciones_menu_secundario">
-                        <li><a href="jugadores.html">Añadir Jugador</a></li>
-                        <li><a href="equipos.html">Filtrar Jugadores</a></li>
+                <nav class="nav_secundario">
+                    <ul class="opciones_nav_secundario">
+                        <li>
+                            <a href="jugadores.html">
+                                <img src="recursos/plus-pequeno.png" alt="Nuevo Jugador" style="width: 20px; height: auto;">
+                                <span>Nuevo Jugador</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="equipos.html">
+                                <img src="recursos/filtrar.png" alt="Filtrar Jugadores" style="width: 20px; height: auto;">
+                                <span>Filtrar</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
 
                 <article class="articulo_visualiza">
-                    <p >Lista de jugadores de futbol.</p>
-                    <ul class="lista_jugadores">
-                    </ul>
+                    <p >Lista de Jugadores de Futbol</p>
+                    <div class="lista_jugadores">
+                    </div>
                 </article>
 
             </section>
 
-        </div>
-
-        <div class="formulario">
-            <div class="alinea_h3">
-                <h3>Introduce un Nuevo Jugador</h3>
-            </div>
-            <form>
-                <label for="imp_nombre_jugador">Nombre del Jugador</label>
-                <input type="text" name="impNombre" id="imp_nombre_jugador" placeholder="Nombre">
-                <label for="imp_posicion_jugador">Posición del Jugador</label>
-                <input type="text" name="impPosicion" id="imp_posicion_jugador" placeholder="Posición">
-                <label for="imp_fecha_nacimiento">Fecha Nacimiento</label>
-                <input type="date" name="impPosicion" id="imp_fecha_nacimiento">
-                <button type="button">Crear</button>
-            </form>
-        </div>
-
-        <div class="formulario">
-            <div class="alinea_h3">
-                <h3>Introduce un Nuevo Equipo</h3>
-            </div>
-            <form>
-                <label for="imp_nombre_equipo">Nombre del Jugador</label>
-                <input type="text" name="impNombreEquipo" id="imp_nombre_equipo">
-                <label for="imp_ciudad_equipo">Ciudad del Equipo</label>
-                <input type="text" name="impCiudadEquipo" id="imp_ciudad_equipo">
-                <label for="imp_nombre_estadio">Nombre del Estadio</label>
-                <input type="text" name="impNombreEstadio" id="imp_nombre_estadio">
-                <button type="button">Crear</button>
-            </form>
-        </div>
-
-        <div class="formulario">
-            <div class="alinea_h3">
-                <h3>Introduce un Nuevo Jugador en un Equipo</h3>
-            </div>
-            <form>
-                <label for="imp_nombre_jugador_equipo">Nombre del Jugador</label>
-                <input type="text" name="impNombreJugadorEquipo" id="imp_nombre_jugador_equipo">
-                <label for="imp_nombre_equipo">Nombre del Equipo</label>
-                <input type="text" name="impNombreEquipo" id="imp_nombre_equipo">
-                <button type="button">Crear</button>
-            </form>
         </div>
 
     </article>
