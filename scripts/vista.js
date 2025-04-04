@@ -26,6 +26,7 @@ class Vista {
                     visualizaEquipos.style.display = 'flex';
                     this.pagina = 'equipo';
                 }
+                this.renderizarVista();
             });
         });
 
@@ -68,12 +69,12 @@ class Vista {
             formularioJugador.classList.add("formulario", "modal-formulario");
             formularioJugador.innerHTML = `
                 <form>
-                    <label for="imp_nombre_jugador_modal">Nombre del Jugador</label>
-                    <input type="text" name="impNombre" id="imp_nombre_jugador_modal" placeholder="Nombre">
-                    <label for="imp_posicion_jugador_modal">Posición del Jugador</label>
-                    <input type="text" name="impPosicion" id="imp_posicion_jugador_modal" placeholder="Posición">
-                    <label for="imp_fecha_nacimiento_modal">Fecha Nacimiento</label>
-                    <input type="date" name="impFechaNacimiento" id="imp_fecha_nacimiento_modal">
+                    <label for="imp_nombre_jugador">Nombre del Jugador</label>
+                    <input type="text" name="impNombre" id="imp_nombre_jugador" placeholder="Nombre">
+                    <label for="imp_posicion_jugador">Posición del Jugador</label>
+                    <input type="text" name="impPosicion" id="imp_posicion_jugador" placeholder="Posición">
+                    <label for="imp_fecha_nacimiento">Fecha Nacimiento</label>
+                    <input type="date" name="impFechaNacimiento" id="imp_fecha_nacimiento">
                     <button type="button" id="btn_crea_jugador">Crear Jugador</button>
                 </form>
             `;
@@ -88,12 +89,12 @@ class Vista {
             formularioEquipo.classList.add("formulario", "modal-formulario");
             formularioEquipo.innerHTML = `
                 <form>
-                    <label for="imp_nombre_equipo_modal">Nombre del Equipo</label>
-                    <input type="text" name="impNombreEquipo" id="imp_nombre_equipo_modal">
-                    <label for="imp_ciudad_equipo_modal">Ciudad del Equipo</label>
-                    <input type="text" name="impCiudadEquipo" id="imp_ciudad_equipo_modal">
-                    <label for="imp_nombre_estadio_modal">Nombre del Estadio</label>
-                    <input type="text" name="impNombreEstadio" id="imp_nombre_estadio_modal">
+                    <label for="imp_nombre_equipo">Nombre del Equipo</label>
+                    <input type="text" name="impNombreEquipo" id="imp_nombre_equipo">
+                    <label for="imp_ciudad_equipo">Ciudad del Equipo</label>
+                    <input type="text" name="impCiudadEquipo" id="imp_ciudad_equipo">
+                    <label for="imp_nombre_estadio">Nombre del Estadio</label>
+                    <input type="text" name="impNombreEstadio" id="imp_nombre_estadio">
                     <button type="button" id="btn_crea_equipo">Crear Equipo</button>
                 </form>
             `;
@@ -117,4 +118,79 @@ class Vista {
         }
     }
 
+    renderizarVista() {
+        // Contenedor según la página activa
+        const contenedor = this.pagina === 'jugador'
+            ? document.getElementById("lista_de_jugadores")
+            : document.getElementById("lista_de_equipos");
+    
+        // Limpiar contenido previo
+        contenedor.innerHTML = '';
+    
+        // Obtener lista desde el controlador
+        const lista = this.pagina === 'jugador'
+            ? this.controlador.obtenerJugadores()  // Método del controlador que devuelve array de jugadores
+            : this.controlador.obtenerEquipos();   // Método del controlador que devuelve array de equipos
+    
+        // Mostrar mensaje si no hay elementos
+        if (lista.length === 0) {
+            const mensaje = document.createElement("p");
+            mensaje.classList.add("mensaje-vacio");
+            mensaje.textContent = this.pagina === 'jugador'
+                ? "No hay jugadores registrados."
+                : "No hay equipos registrados.";
+            contenedor.appendChild(mensaje);
+        } else {
+            lista.forEach(objeto => {
+                const tarjeta = document.createElement("div");
+                tarjeta.classList.add("tarjeta");
+        
+                const img = document.createElement("img");
+                img.src = "https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384";
+                img.alt = "";
+                tarjeta.appendChild(img);
+        
+                if (this.pagina === 'jugador') {
+                    const liNombre = document.createElement("li");
+                    liNombre.classList.add("jugador");
+                    liNombre.textContent = objeto.getNombre();
+        
+                    const liPosicion = document.createElement("li");
+                    liPosicion.classList.add("posicion");
+                    liPosicion.textContent = objeto.getPosicion();
+        
+                    const liNacimiento = document.createElement("li");
+                    liNacimiento.classList.add("fecha_nacimiento");
+                    liNacimiento.textContent = objeto.getFechaNacimiento();
+        
+                    const liEquipo = document.createElement("li");
+                    liEquipo.classList.add("equipo");
+                    liEquipo.textContent = objeto.getEquipo();
+        
+                    tarjeta.appendChild(liNombre);
+                    tarjeta.appendChild(liPosicion);
+                    tarjeta.appendChild(liNacimiento);
+                    tarjeta.appendChild(liEquipo);
+                } else {
+                    const liEquipo = document.createElement("li");
+                    liEquipo.classList.add("equipo");
+                    liEquipo.textContent = objeto.getNombre();
+        
+                    const liCiudad = document.createElement("li");
+                    liCiudad.classList.add("ciudad");
+                    liCiudad.textContent = objeto.getCiudad();
+        
+                    const liEstadio = document.createElement("li");
+                    liEstadio.classList.add("estadio");
+                    liEstadio.textContent = objeto.getEstadio();
+        
+                    tarjeta.appendChild(liEquipo);
+                    tarjeta.appendChild(liCiudad);
+                    tarjeta.appendChild(liEstadio);
+                }
+        
+                contenedor.appendChild(tarjeta);
+            });
+        }
+    }
 }

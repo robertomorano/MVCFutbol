@@ -178,7 +178,7 @@ button {
     padding: 5px 0;
 }
 
-.tarjeta_jugador {
+.tarjeta {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -191,19 +191,19 @@ button {
     cursor: pointer;
 }
 
-.tarjeta_jugador:hover {
+.tarjeta:hover {
     background-color: #f0f0f0;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     scale: 1.05;
 }
 
-.tarjeta_jugador img {
+.tarjeta img {
     width: 125px;
     height: auto;
     border-radius: 5px;
 }
 
-.tarjeta_jugador li {
+.tarjeta li {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -211,7 +211,7 @@ button {
     padding: 5px 0;
 }
 
-.tarjeta_jugador li:nth-child(odd) {
+.tarjeta li:nth-child(odd) {
     background-color: #f9f9f9;
 }
 
@@ -266,4 +266,11 @@ ul {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.mensaje-vacio {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    margin-top: 20px;
 }
