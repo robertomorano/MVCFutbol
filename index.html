@@ -7,12 +7,17 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <!-- El Modal -->
+    <div id="myModal" class="modal"></div>
     
     <header>
         <h1>
             GESTIÓN DE JUGADORES Y EQUIPOS DE FUTBOL
         </h1>
     </header>
+
+    
 
     <article class="articulo_principal">
 
@@ -28,7 +33,7 @@
                 <nav class="nav_secundario">
                     <ul class="opciones_nav_secundario">
                         <li>
-                            <a href="jugadores.html">
+                            <a id="openModalBtn">
                                 <img src="recursos/plus-pequeno.png" alt="Nuevo Jugador" style="width: 20px; height: auto;">
                                 <span>Nuevo Jugador</span>
                             </a>
@@ -45,6 +50,91 @@
                 <article class="articulo_visualiza">
                     <p >Lista de Jugadores de Futbol</p>
                     <div class="lista_jugadores">
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+                        <div class="tarjeta_jugador">
+                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
+                            <li class="jugador">Kilian Mbappe</li>
+                            <li class="posicion">Delantero</li>
+                            <li class="fecha_nacimiento">29/07/1995</li>
+                            <li class="equipo">Real Madrid</li>
+                        </div>
+
                     </div>
                 </article>
 
@@ -60,5 +150,8 @@
         <p>&copy; 2025</p>
     </footer>
 
+    <script>
+        const vista = new Vista();
+    </script>
 </body>
 </html>
