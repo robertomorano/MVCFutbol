@@ -28,6 +28,12 @@ class Jugador {
         let year = fechaActual-this.fechaNacimiento;
         return year;
     }
+    setPosicion(posicion) {
+        this.posicion = posicion;
+    }
+    setIdEquipo(idEquipo) {
+       this.idEquipo = idEquipo;
+    }
     textoAFecha(fechaNacimiento){
         let year;
         let month;
@@ -45,6 +51,12 @@ class Jugador {
         }
         return new Date(year, month-1, day);
     }
-
+    fechaATexto(fecha){
+        let year = fecha.getFullYear();
+        let month = fecha.getMonth()+1;
+        let day = fecha.getDate();
+        return `${day}/${month}/${year}`;
+    }
+    
 
 }

@@ -17,7 +17,9 @@ class Equipo{
     getEstadio() {
         return this.estadio;
     }
-    setEstadio(estadio){
-        
+    setEstadio(estadio) {
+        this.estadio = estadio;
     }
+   
+    
 }
