@@ -4,6 +4,8 @@ class Vista {
         this.modal = document.getElementById("myModal");
         this.btn = document.getElementById("openModalBtn");
         this.pagina = 'jugador';
+        this.btnAgregarJugador = document.getElementById("btn_crea_jugador");
+        this.btnAgregarEquipo = document.getElementById("btn_crea_equipo");
 
         const botonesNavPrincipal = document.querySelectorAll('.btn_nav_principal');
         const visualizaJugadores = document.getElementById('visualiza-jugadores');
@@ -43,19 +45,19 @@ class Vista {
 
     abreModalCrador() {
         this.modal.innerHTML = '';
-
+    
         this.modalContent = document.createElement("div");
         this.modalContent.classList.add("modal-content");
-
+    
         this.span = document.createElement("span");
         this.span.classList.add("close");
         this.span.innerHTML = "&times;";
         this.span.addEventListener("click", () => {
             this.modal.style.display = "none";
         });
-
+    
         const formulariosContainer = document.createElement("div");
-
+    
         if (this.pagina === 'jugador') {
             const titulo = document.createElement("h3");
             titulo.textContent = "Introduce un Nuevo Jugador";
@@ -72,7 +74,7 @@ class Vista {
                     <input type="text" name="impPosicion" id="imp_posicion_jugador_modal" placeholder="Posición">
                     <label for="imp_fecha_nacimiento_modal">Fecha Nacimiento</label>
                     <input type="date" name="impFechaNacimiento" id="imp_fecha_nacimiento_modal">
-                    <button type="button">Crear Jugador</button>
+                    <button type="button" id="btn_crea_jugador">Crear Jugador</button>
                 </form>
             `;
             formulariosContainer.appendChild(formularioJugador);
@@ -81,7 +83,7 @@ class Vista {
             titulo.textContent = "Introduce un Nuevo Equipo";
             titulo.classList.add("modal_titulo");
             formulariosContainer.appendChild(titulo);
-
+    
             const formularioEquipo = document.createElement("div");
             formularioEquipo.classList.add("formulario", "modal-formulario");
             formularioEquipo.innerHTML = `
@@ -92,18 +94,27 @@ class Vista {
                     <input type="text" name="impCiudadEquipo" id="imp_ciudad_equipo_modal">
                     <label for="imp_nombre_estadio_modal">Nombre del Estadio</label>
                     <input type="text" name="impNombreEstadio" id="imp_nombre_estadio_modal">
-                    <button type="button">Crear Equipo</button>
+                    <button type="button" id="btn_crea_equipo">Crear Equipo</button>
                 </form>
             `;
             formulariosContainer.appendChild(formularioEquipo);
         }
-
+    
         this.modalContent.appendChild(this.span);
         this.modalContent.appendChild(formulariosContainer);
         this.modal.appendChild(this.modalContent);
+    
+        if (this.pagina === 'jugador') {
+            document.getElementById("btn_crea_jugador").addEventListener("click", () => {
+                this.modal.style.display = "none";  
+                console.log("Jugador creado");
+            });
+        } else {
+            document.getElementById("btn_crea_equipo").addEventListener("click", () => {
+                this.modal.style.display = "none";
+                console.log("Equipo creado");
+            });
+        }
     }
 
-    getJugadores() {
-        
-    }
 }
