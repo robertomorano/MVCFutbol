@@ -3,150 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion de Jugadores y Equipos de Futbol</title>
+    <title>Gestión de Jugadores y Equipos de Fútbol</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="scripts/vista.js"></script>
 </head>
 <body>
 
-    <!-- El Modal -->
     <div id="myModal" class="modal"></div>
-    
+
     <header>
-        <h1>
-            GESTIÓN DE JUGADORES Y EQUIPOS DE FUTBOL
-        </h1>
+        <h1>GESTIÓN DE JUGADORES Y EQUIPOS DE FÚTBOL</h1>
     </header>
 
-    
-
     <article class="articulo_principal">
-
         <div class="menu">
-
             <nav class="nav_principal">
-                <button type="button" class="btn_nav_principal">Jugadores</button>
-                <button type="button" class="btn_nav_principal">Equipos</button>
+                <button type="button" class="btn_nav_principal active" data-target="jugadores">Jugadores</button>
+                <button type="button" class="btn_nav_principal" data-target="equipos">Equipos</button>
             </nav>
 
             <section class="sec_principal">
-
                 <nav class="nav_secundario">
                     <ul class="opciones_nav_secundario">
                         <li>
-                            <a id="openModalBtn">
-                                <img src="recursos/plus-pequeno.png" alt="Nuevo Jugador" style="width: 20px; height: auto;">
-                                <span>Nuevo Jugador</span>
+                            <a id="openModalBtn" href="#">
+                                <img src="recursos/plus-pequeno.png" alt="Nuevo" style="width: 20px; height: auto;">
+                                <span>Nuevo</span>
                             </a>
                         </li>
                         <li>
-                            <a href="equipos.html">
-                                <img src="recursos/filtrar.png" alt="Filtrar Jugadores" style="width: 20px; height: auto;">
+                            <a href="#">
+                                <img src="recursos/filtrar.png" alt="Filtrar" style="width: 20px; height: auto;">
                                 <span>Filtrar</span>
                             </a>
                         </li>
                     </ul>
                 </nav>
 
-                <article class="articulo_visualiza">
-                    <p >Lista de Jugadores de Futbol</p>
-                    <div class="lista_jugadores">
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-                        <div class="tarjeta_jugador">
-                            <img src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="">
-                            <li class="jugador">Kilian Mbappe</li>
-                            <li class="posicion">Delantero</li>
-                            <li class="fecha_nacimiento">29/07/1995</li>
-                            <li class="equipo">Real Madrid</li>
-                        </div>
-
-                    </div>
+                <article class="articulo_visualiza" id="visualiza-jugadores">
+                    <p>Lista de Jugadores de Fútbol</p>
+                    <div class="lista_jugadores"></div>
                 </article>
 
+                <article class="articulo_visualiza" id="visualiza-equipos" style="display: none;">
+                    <p>Lista de Equipos de Fútbol</p>
+                    <div class="lista_equipos"></div>
+                </article>
             </section>
-
         </div>
-
     </article>
 
     <footer>
-        <p>Gestión de Jugadores y Equipos de Futbol</p>
+        <p>Gestión de Jugadores y Equipos de Fútbol</p>
         <p>Desarrollado por Jose Manuel, Roberto, Guillermo</p>
         <p>&copy; 2025</p>
     </footer>

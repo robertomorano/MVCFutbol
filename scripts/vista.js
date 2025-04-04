@@ -1,22 +1,38 @@
 class Vista {
     constructor() {
-        // Obtener el modal
         this.modal = document.getElementById("myModal");
-
-        // Obtener el botón que abre el modal
         this.btn = document.getElementById("openModalBtn");
+        this.pagina = 'jugador';
 
-        // Agregar el evento al botón para abrir el modal
-        this.btn.addEventListener("click", () => {
-            this.abreModal();
-            this.modal.style.display = "block";  // Mostrar el modal
+        const botonesNavPrincipal = document.querySelectorAll('.btn_nav_principal');
+        const visualizaJugadores = document.getElementById('visualiza-jugadores');
+        const visualizaEquipos = document.getElementById('visualiza-equipos');
+
+        // Evento para cambiar entre jugadores y equipos
+        botonesNavPrincipal.forEach(boton => {
+            boton.addEventListener('click', () => {
+                botonesNavPrincipal.forEach(btn => btn.classList.remove('active'));
+                boton.classList.add('active');
+                const target = boton.dataset.target;
+                if (target === 'jugadores') {
+                    visualizaJugadores.style.display = 'flex';
+                    visualizaEquipos.style.display = 'none';
+                    this.pagina = 'jugador';
+                } else {
+                    visualizaJugadores.style.display = 'none';
+                    visualizaEquipos.style.display = 'flex';
+                    this.pagina = 'equipo';
+                }
+            });
         });
 
-        // Cuando el usuario haga clic en <span> (x), se cierra el modal
-        this.span = null;  // Inicialmente null, ya que lo asignamos dinámicamente
-        this.modalContent = null;  // Referencia al contenido del modal
+        // Evento para abrir modal
+        this.btn.addEventListener("click", () => {
+            this.abreModalCrador();
+            this.modal.style.display = "block";
+        });
 
-        // Cuando el usuario haga clic fuera del modal, también se cierra
+        // Cerrar al hacer clic fuera
         window.addEventListener("click", (event) => {
             if (event.target == this.modal) {
                 this.modal.style.display = "none";
@@ -24,51 +40,65 @@ class Vista {
         });
     }
 
-    abreModal() {
-        // Limpiar el contenido anterior del modal
-        this.modal.innerHTML = ''; // Limpiamos cualquier contenido previo
+    abreModalCrador() {
+        this.modal.innerHTML = '';
 
-        // Crear el contenedor del contenido del modal
         this.modalContent = document.createElement("div");
         this.modalContent.classList.add("modal-content");
 
-        // Crear el botón de cierre
         this.span = document.createElement("span");
         this.span.classList.add("close");
-        this.span.innerHTML = "&times;";  // Símbolo para cerrar el modal
-
-        // Agregar el evento al botón de cierre
+        this.span.innerHTML = "&times;";
         this.span.addEventListener("click", () => {
             this.modal.style.display = "none";
         });
 
-        // Crear el título del modal
-        const title = document.createElement("div");
-        title.classList.add("alinea_h3");
-        title.innerHTML = "<h3>Introduce un Nuevo Jugador</h3>";
+        const formulariosContainer = document.createElement("div");
 
-        // Crear el formulario dentro del modal
-        const form = document.createElement("div");
-        form.classList.add("formulario");
+        if (this.pagina === 'jugador') {
+            const titulo = document.createElement("h3");
+            titulo.textContent = "Introduce un Nuevo Jugador";
+            titulo.classList.add("modal_titulo");
+            formulariosContainer.appendChild(titulo);
+        
+            const formularioJugador = document.createElement("div");
+            formularioJugador.classList.add("formulario", "modal-formulario");
+            formularioJugador.innerHTML = `
+                <form>
+                    <label for="imp_nombre_jugador_modal">Nombre del Jugador</label>
+                    <input type="text" name="impNombre" id="imp_nombre_jugador_modal" placeholder="Nombre">
+                    <label for="imp_posicion_jugador_modal">Posición del Jugador</label>
+                    <input type="text" name="impPosicion" id="imp_posicion_jugador_modal" placeholder="Posición">
+                    <label for="imp_fecha_nacimiento_modal">Fecha Nacimiento</label>
+                    <input type="date" name="impFechaNacimiento" id="imp_fecha_nacimiento_modal">
+                    <button type="button">Crear Jugador</button>
+                </form>
+            `;
+            formulariosContainer.appendChild(formularioJugador);
+        } else {
+            const titulo = document.createElement("h3");
+            titulo.textContent = "Introduce un Nuevo Equipo";
+            titulo.classList.add("modal_titulo");
+            formulariosContainer.appendChild(titulo);
 
-        form.innerHTML = `
-            <form>
-                <label for="imp_nombre_jugador">Nombre del Jugador</label>
-                <input type="text" name="impNombre" id="imp_nombre_jugador" placeholder="Nombre">
-                <label for="imp_posicion_jugador">Posición del Jugador</label>
-                <input type="text" name="impPosicion" id="imp_posicion_jugador" placeholder="Posición">
-                <label for="imp_fecha_nacimiento">Fecha Nacimiento</label>
-                <input type="date" name="impFechaNacimiento" id="imp_fecha_nacimiento">
-                <button type="button">Crear</button>
-            </form>
-        `;
+            const formularioEquipo = document.createElement("div");
+            formularioEquipo.classList.add("formulario", "modal-formulario");
+            formularioEquipo.innerHTML = `
+                <form>
+                    <label for="imp_nombre_equipo_modal">Nombre del Equipo</label>
+                    <input type="text" name="impNombreEquipo" id="imp_nombre_equipo_modal">
+                    <label for="imp_ciudad_equipo_modal">Ciudad del Equipo</label>
+                    <input type="text" name="impCiudadEquipo" id="imp_ciudad_equipo_modal">
+                    <label for="imp_nombre_estadio_modal">Nombre del Estadio</label>
+                    <input type="text" name="impNombreEstadio" id="imp_nombre_estadio_modal">
+                    <button type="button">Crear Equipo</button>
+                </form>
+            `;
+            formulariosContainer.appendChild(formularioEquipo);
+        }
 
-        // Agregar todo el contenido al modalContent
         this.modalContent.appendChild(this.span);
-        this.modalContent.appendChild(title);
-        this.modalContent.appendChild(form);
-
-        // Agregar el modalContent al modal
+        this.modalContent.appendChild(formulariosContainer);
         this.modal.appendChild(this.modalContent);
     }
 }
