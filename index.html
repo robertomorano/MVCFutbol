@@ -6,6 +6,11 @@
     <title>Gestión de Jugadores y Equipos de Fútbol</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="scripts/vista.js"></script>
+    <!-- <script src="scripts/controlador.js"></script> -->
+    <script src="scripts/modeloEquipo.js"></script>
+    <script src="scripts/modeloJugador.js"></script>
+    <script src="scripts/equipo.js"></script>
+    <script src="scripts/jugador.js"></script>
 </head>
 <body>
 
@@ -60,7 +65,30 @@
     </footer>
 
     <script>
-        const vista = new Vista();
+
+        /*Le paso al controlador ambos modelos, las clases creadoras de jugadores y equipos y la vista*/
+        /*Le paso al modeloEquipo y Jugador el controlador*/
+        /*Le paso a equipo y jugador el controlador*/
+        /*Le paso a la vista el controlador para que se pueda comunicar con este*/
+
+        /*Los comento porque hay errores en dichas clases y no me deja ejecutar lo mio -maya*/
+
+        // const controlador = new Controlador();
+    
+        // const equipoModelo = new EquipoModel(controlador);
+        // const jugadorModelo = new JugadorModel(controlador);
+    
+        // controlador.setModeloEquipo(modeloEquipo);
+        // controlador.setModeloJugador(modeloJugador);
+    
+        // const equipo = new Equipo();
+        // const jugador = new Jugador();
+    
+        // controlador.setEquipo(equipo);
+        // controlador.setJugador(jugador);
+    
+        const vista = new Vista(/*controlador*/);
+        // controlador.setVista(vista);
     </script>
 </body>
 </html>

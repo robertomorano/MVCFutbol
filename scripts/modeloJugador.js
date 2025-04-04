@@ -1,4 +1,4 @@
-class jugadorModel{
+class JugadorModel{
     constructor(){
         if (localStorage.getItem("jugadores") === null) {
             localStorage.setItem("jugadores", JSON.stringify([]));

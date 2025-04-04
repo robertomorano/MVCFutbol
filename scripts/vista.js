@@ -1,5 +1,6 @@
 class Vista {
-    constructor() {
+    constructor(controlador) {
+        this.controlador = controlador;
         this.modal = document.getElementById("myModal");
         this.btn = document.getElementById("openModalBtn");
         this.pagina = 'jugador';
@@ -100,5 +101,9 @@ class Vista {
         this.modalContent.appendChild(this.span);
         this.modalContent.appendChild(formulariosContainer);
         this.modal.appendChild(this.modalContent);
+    }
+
+    getJugadores() {
+        
     }
 }
