@@ -15,12 +15,12 @@ class JugadorModel{
     addPlayer(nombre,posicion,fechaNacimiento){
         player = new Jugador(this.jugadores.length,nombre,posicion,fechaNacimiento);
         this.jugadores.push(player);
-        this.addPlayerLocalStorage(player);
+        this.actualizarPlayerLocalStorage();
     }
     
     
-    addPlayerLocalStorage(jugador){
-        this.jugadores.push(jugador);
+    actualizarPlayerLocalStorage(){
+        
         localStorage.setItem("jugadores", JSON.stringify(this.jugadores));
     }
     
@@ -40,16 +40,11 @@ class JugadorModel{
         let e = this.getPlayerByID(id);
         if(e !== null){
             this.jugadores.splice(this.jugadores.indexOf(e),1);
-            this.removePlayerLocalStorage(id);
+            this.actualizarPlayerLocalStorage();
         }
 
     }
     
-    
-    removePlayerLocalStorage(id){
-        this.removePlayer(id);
-        localStorage.setItem("jugadores", JSON.stringify(this.jugadores));
-    }
     
     
     getPlayerByName(nombre){

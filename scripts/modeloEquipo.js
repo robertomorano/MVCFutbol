@@ -8,10 +8,18 @@ class EquipoModel {
   }
 
   agregarEquipo(nombre, ciudad, estadio) {
-    let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio);
-    this.equipos.push(equipo);
+    if (this.getEquipoPorNombre(nombre) === null) {
+      let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio);
+      this.equipos.push(equipo);
+      this.actualizarEquipoLocalStorage();
+      return true;
+    }
+    return false;
   }
+  actualizarEquipoLocalStorage() { 
 
+    localStorage.setItem("equipos", JSON.stringify(this.equipos));
+  }
   obtenerEquipos() {
     return this.equipos;
   }
