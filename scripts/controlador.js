@@ -17,15 +17,6 @@ class Controlador {
         this.vista = vista;
     }
 
-    iniciar() {
-        this.vista.btnAgregarEquipo.addEventListener("click", () => {
-            this.agregarEquipoDesdeVista();
-        });
-        this.vista.btnAgregarJugador.addEventListener("click", () => {
-            this.agregarJugadorDesdeVista();
-        });
-    }
-
     // Método para obtener los jugadores desde el modelo
     obtenerJugadores() {
         return this.modeloJugadores.getPlayers();
