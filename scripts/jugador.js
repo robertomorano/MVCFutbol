@@ -1,5 +1,6 @@
 class Jugador {
-    constructor(id,nombre, posicion, fechaNacimiento, idEquipo) {
+    constructor(id,nombre, posicion, fechaNacimiento, idEquipo, imagen) {
+        this.imagen = imagen;
         this.id = id;
         this.nombre = nombre;
         this.posicion = posicion;
@@ -35,20 +36,16 @@ class Jugador {
        this.idEquipo = idEquipo;
     }
     textoAFecha(fechaNacimiento){
-        let year;
-        let month;
-        let day;
-        for(let i = fechaNacimiento.length; i >0 ; i--) {
-            if (i>=fechaNacimiento.length-4) {
-                year += fechaNacimiento[i];
-            }
-            if(i>=fechaNacimiento.length-7&&i<fechaNacimiento.length-4 && fechaNacimiento[i] !== "/"){
-                month += Number(fechaNacimiento[i]);
-            }
-            if(i<fechaNacimiento.length-7){
-                day += fechaNacimiento[i];
-            }
-        }
+        let year = "";
+        let month = "";
+        let day = "";
+        fechaNacimiento += "";
+        //console.log(fechaNacimiento);//2023-10-10
+            if(fechaNacimiento[4] === "-"){
+                year = fechaNacimiento.slice(0,4);
+                month = fechaNacimiento.slice(5,7);
+                day = fechaNacimiento.slice(8,10);
+            }  
         return new Date(year, month-1, day);
     }
     fechaATexto(fecha){

@@ -12,8 +12,8 @@ class JugadorModel{
     }
     
     
-    addPlayer(nombre,posicion,fechaNacimiento){
-        player = new Jugador(this.jugadores.length,nombre,posicion,fechaNacimiento);
+    addPlayer(nombre,posicion,fechaNacimiento, imagen){
+        let player = new Jugador(this.jugadores.length,nombre,posicion,fechaNacimiento, null ,imagen);
         this.jugadores.push(player);
         this.actualizarPlayerLocalStorage();
     }

@@ -1,9 +1,10 @@
 class Equipo{
-    constructor(id,nombre,ciudad, estadio) {
+    constructor(id,nombre,ciudad, estadio, imagen) {
         this.nombre = nombre;
         this.id = id;
         this.ciudad = ciudad;  
         this.estadio = estadio;
+        this.imagen = imagen;
     }
     getId() {
         return this.id;
@@ -16,6 +17,9 @@ class Equipo{
     }
     getEstadio() {
         return this.estadio;
+    }
+    getImagen() {
+        return this.imagen;
     }
     setEstadio(estadio) {
         this.estadio = estadio;
