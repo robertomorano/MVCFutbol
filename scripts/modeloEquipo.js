@@ -7,7 +7,8 @@ class EquipoModel {
     }
   }
 
-  agregarEquipo(equipo) {
+  agregarEquipo(nombre, ciudad, estadio) {
+    let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio);
     this.equipos.push(equipo);
   }
 
