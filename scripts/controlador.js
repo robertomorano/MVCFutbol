@@ -48,23 +48,14 @@ class Controlador {
    // Método para agregar un jugador al modelo
     agregarJugador(nombre, posicion, fechaNacimiento, imagen = "") {
         if (!nombre || !posicion || !fechaNacimiento) {
-            alert("Por favor, completa todos los campos del jugador.");
+            console.log("Por favor, completa todos los campos del jugador.");
             return;
         }
 
-        // Crear un nuevo jugador
-        const nuevoJugador = new Jugador(
-            this.modeloJugadores.getPlayers().length, // ID basado en la longitud actual
-            nombre,
-            posicion,
-            fechaNacimiento,
-            imagen
-        );
-
         // Llamar al método del modelo para agregar el jugador
-        this.modeloJugadores.addPlayer(nuevoJugador);
+        this.modeloJugadores.addPlayer(nombre, posicion, fechaNacimiento, imagen);
 
-        alert("Jugador agregado con éxito");
+        console.log("Jugador agregado con éxito");
     }
 
 
@@ -87,17 +78,14 @@ class Controlador {
     }
 
     // Método para agregar un equipo al modelo
-    agregarEquipo(nombre, ciudad, estadio, imagen = "") {
+    agregarEquipo(nombre, ciudad, estadio) {
         if (!nombre || !ciudad || !estadio) {
             alert("Por favor, completa todos los campos del equipo.");
             return;
         }
 
-        const nuevoId = this.modeloEquipos.obtenerEquipos().length;
-        const nuevoEquipo = new Equipo(nuevoId, nombre, ciudad, estadio, imagen);
-
         // Llamar al método del modelo para agregar el equipo
-        this.modeloEquipos.agregarEquipo(nuevoEquipo);
+        this.modeloEquipos.agregarEquipo(nombre, ciudad, estadio);
 
         alert("Equipo agregado con éxito");
     }
