@@ -1,8 +1,20 @@
 class Controlador {
     constructor() {
-        this.modeloJugadores = new JugadorModel();
-        this.modeloEquipos = new EquipoModel();
-        this.vista = new Vista(this); // Le pasamos el controlador a la vista
+        this.modeloJugadores = null;
+        this.modeloEquipos = null;
+        this.vista = null;
+    }
+
+    setModeloEquipo(modeloEquipos) {
+        this.modeloEquipos = modeloEquipos;
+    }
+
+    setModeloJugador(modeloJugadores) {
+        this.modeloJugadores = modeloJugadores;
+    }
+
+    setVista(vista) {
+        this.vista = vista;
     }
 
     iniciar() {

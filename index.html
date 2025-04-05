@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Jugadores y Equipos de Fútbol</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="scripts/vista.js"></script>
-    <script src="scripts/controlador.js"></script>
     <script src="scripts/modeloEquipo.js"></script>
     <script src="scripts/modeloJugador.js"></script>
     <script src="scripts/equipo.js"></script>
     <script src="scripts/jugador.js"></script>
+    <script src="scripts/vista.js"></script>
+    <script src="scripts/controlador.js"></script>  
 </head>
 <body>
 
@@ -77,17 +77,17 @@
 
         const controlador = new Controlador();
     
-        const equipoModelo = new EquipoModel(controlador);
-        const jugadorModelo = new JugadorModel(controlador);
+        const equipoModelo = new EquipoModel();
+        const jugadorModelo = new JugadorModel();
     
-        /*controlador.setModeloEquipo(modeloEquipo);*/
-        /*controlador.setModeloJugador(modeloJugador);*/
+        controlador.setModeloEquipo(equipoModelo);
+        controlador.setModeloJugador(jugadorModelo);
     
         const equipo = new Equipo();
         const jugador = new Jugador();
     
-        /*controlador.setEquipo(equipo);*/
-        /*controlador.setJugador(jugador);*/
+        controlador.setEquipo(equipo);
+        controlador.setJugador(jugador);
     
         const vista = new Vista(controlador);
         controlador.setVista(vista);
