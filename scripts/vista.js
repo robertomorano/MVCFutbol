@@ -3,9 +3,7 @@ class Vista {
         this.controlador = controlador;
         this.modal = document.getElementById("myModal");
         this.btn = document.getElementById("openModalBtn");
-        this.pagina = 'jugador';
-        this.btnAgregarJugador = document.getElementById("btn_crea_jugador");
-        this.btnAgregarEquipo = document.getElementById("btn_crea_equipo");
+        this.pagina = 'jugador';  
 
         const botonesNavPrincipal = document.querySelectorAll('.btn_nav_principal');
         const visualizaJugadores = document.getElementById('visualiza-jugadores');
@@ -34,6 +32,18 @@ class Vista {
         this.btn.addEventListener("click", () => {
             this.abreModalCrador();
             this.modal.style.display = "block";
+            
+            if(this.pagina === 'equipo') {
+                this.btnAgregarEquipo = document.getElementById("btn_crea_equipo");
+                this.btnAgregarEquipo.addEventListener("click", () => {
+                    this.controlador.agregarEquipoDesdeVista();
+                });
+            } else {
+                this.btnAgregarJugador = document.getElementById("btn_crea_jugador");
+                this.btnAgregarJugador.addEventListener("click", () => {
+                    this.controlador.agregarJugadorDesdeVista();
+                });
+            }
         });
 
         /* Cerrar al hacer clic fuera */
