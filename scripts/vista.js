@@ -163,7 +163,6 @@ class Vista {
         
                 const img = document.createElement("img");
                 img.src = objeto.getImagen();
-                img.alt = this.pagina === 'jugador' ? objeto.getNombre() : objeto.getNombre();
                 tarjeta.appendChild(img);
 
         
