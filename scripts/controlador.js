@@ -17,10 +17,12 @@ class Controlador {
         });
     }
 
+    // Método para obtener los jugadores desde el modelo
     obtenerJugadores() {
         return this.modeloJugadores.getPlayers();
     }
     
+    // Método para obtener los equipos desde el modelo
     obtenerEquipos() {
         return this.modeloEquipos.obtenerEquipos();
     }    
@@ -36,26 +38,35 @@ class Controlador {
         // Convertir la imagen a URL temporal o base64
         let imagen = "";
         if (archivo) {
-            imagen = URL.createObjectURL(archivo); // Guardar como URL temporal
+            imagen = URL.createObjectURL(archivo);
         }
 
         // Llamar al método para agregar el jugador
         this.agregarJugador(nombre, posicion, fechaNacimiento, imagen);
     }
 
-    // Método para agregar un jugador al modelo
+   // Método para agregar un jugador al modelo
     agregarJugador(nombre, posicion, fechaNacimiento, imagen = "") {
         if (!nombre || !posicion || !fechaNacimiento) {
             alert("Por favor, completa todos los campos del jugador.");
             return;
         }
 
-        const nuevoId = this.modeloJugadores.getPlayers().length;
-        const nuevoJugador = new Jugador(nuevoId, nombre, posicion, fechaNacimiento, imagen);
-        this.modeloJugadores.jugadores.push(nuevoJugador);
-        localStorage.setItem("jugadores", JSON.stringify(this.modeloJugadores.jugadores));
+        // Crear un nuevo jugador
+        const nuevoJugador = new Jugador(
+            this.modeloJugadores.getPlayers().length, // ID basado en la longitud actual
+            nombre,
+            posicion,
+            fechaNacimiento,
+            imagen
+        );
+
+        // Llamar al método del modelo para agregar el jugador
+        this.modeloJugadores.addPlayer(nuevoJugador);
+
         alert("Jugador agregado con éxito");
     }
+
 
     // Método para agregar un equipo desde la vista
     agregarEquipoDesdeVista() {
@@ -68,7 +79,7 @@ class Controlador {
         // Convertir la imagen a URL temporal o base64
         let imagen = "";
         if (archivo) {
-            imagen = URL.createObjectURL(archivo); // Guardar como URL temporal
+            imagen = URL.createObjectURL(archivo);
         }
 
         // Llamar al método para agregar el equipo
@@ -84,8 +95,10 @@ class Controlador {
 
         const nuevoId = this.modeloEquipos.obtenerEquipos().length;
         const nuevoEquipo = new Equipo(nuevoId, nombre, ciudad, estadio, imagen);
-        this.modeloEquipos.equipos.push(nuevoEquipo);
-        localStorage.setItem("equipos", JSON.stringify(this.modeloEquipos.equipos));
+
+        // Llamar al método del modelo para agregar el equipo
+        this.modeloEquipos.agregarEquipo(nuevoEquipo);
+
         alert("Equipo agregado con éxito");
     }
 

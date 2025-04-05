@@ -42,7 +42,7 @@ class EquipoModel {
     return equipo;
   }
   eliminarEquipo(id) {
-    let equipo = this.obtenerEquipoPorID(id);
+    let equipo = this.getEquipoPorID(id);
     if (equipo !== null) {
       this.equipos.splice(this.equipos.indexOf(equipo), 1);
     }
