@@ -42,6 +42,8 @@ class Vista {
                 this.modal.style.display = "none";
             }
         });
+
+        this.renderizarVista();
     }
 
     abreModalCrador() {
