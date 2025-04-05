@@ -81,7 +81,7 @@ button {
 }
 
 .btn_nav_principal {
-    background-color: white;
+    background-color: #f0f0f0;
     color: black;
     padding: 10px;
     border: 1px solid black;
@@ -91,10 +91,16 @@ button {
     border-bottom-left-radius: 0px;
     border-bottom: none;
     cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 .btn_nav_principal:hover {
     background-color: #f7f7f7;
+}
+
+.btn_nav_principal.active {
+    transform: scale(1.032);
+    background-color: white;
 }
 
 .sec_principal {
