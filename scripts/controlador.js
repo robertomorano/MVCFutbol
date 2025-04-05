@@ -1,46 +1,116 @@
 class Controlador {
     constructor() {
-        this.modelo = new modelo();
-        this.vista = new vista();
+        this.modeloJugadores = new JugadorModel();
+        this.modeloEquipos = new EquipoModel();
+        this.vista = new Vista(this); // Le pasamos el controlador a la vista
     }
 
     iniciar() {
-        this.vista.iniciar();
-        this.vista.btnAgregar.addEventListener("click", () => this.agregarProducto());
-        this.vista.btnEliminar.addEventListener("click", () => this.eliminarProducto());
-        this.vista.btnModificar.addEventListener("click", () => this.modificarProducto());
-        this.vista.btnBuscar.addEventListener("click", () => this.buscarProducto());
+        // Escuchar evento de clic para agregar jugador
+        document.getElementById("btn_crea_jugador").addEventListener("click", () => {
+            this.agregarJugadorDesdeVista();
+        });
+
+        // Escuchar evento de clic para agregar equipo
+        document.getElementById("btn_crea_equipo").addEventListener("click", () => {
+            this.agregarEquipoDesdeVista();
+        });
     }
 
-     //agregar un jugador con sus atributos correspondientes a un equipo
-     agregarJugador() {
-        if () {
-            return;
+    obtenerJugadores() {
+        return this.modeloJugadores.getPlayers();
+    }
+    
+    obtenerEquipos() {
+        return this.modeloEquipos.obtenerEquipos();
+    }    
+
+    // Método para agregar un jugador desde la vista
+    agregarJugadorDesdeVista() {
+        // Capturar los datos del formulario del jugador
+        const nombre = document.getElementById("imp_nombre_jugador").value;
+        const posicion = document.getElementById("imp_posicion_jugador").value;
+        const fechaNacimiento = document.getElementById("imp_fecha_nacimiento").value;
+        const archivo = document.getElementById("imp_imagen_jugador").files[0];
+
+        // Convertir la imagen a URL temporal o base64
+        let imagen = "";
+        if (archivo) {
+            imagen = URL.createObjectURL(archivo); // Guardar como URL temporal
         }
-        this.modelo.agregarJugador(nombre, posicion, nacimiento);
+
+        // Llamar al método para agregar el jugador
+        this.agregarJugador(nombre, posicion, fechaNacimiento, imagen);
     }
 
-    //agregar un equipo con sus atributos correspondientes
-    agregarEquipo() {
-        if () {
+    // Método para agregar un jugador al modelo
+    agregarJugador(nombre, posicion, fechaNacimiento, imagen = "") {
+        if (!nombre || !posicion || !fechaNacimiento) {
+            alert("Por favor, completa todos los campos del jugador.");
             return;
         }
-        this.modelo.agregarEquipo(nombre, ciudad, estadio);
+
+        const nuevoId = this.modeloJugadores.getPlayers().length;
+        const nuevoJugador = new Jugador(nuevoId, nombre, posicion, fechaNacimiento, imagen);
+        this.modeloJugadores.jugadores.push(nuevoJugador);
+        localStorage.setItem("jugadores", JSON.stringify(this.modeloJugadores.jugadores));
+        alert("Jugador agregado con éxito");
     }
 
-    //asignar un jugador a un equipo
-    asignarJugadorAEquipo() {
-        if () {
-            return;
+    // Método para agregar un equipo desde la vista
+    agregarEquipoDesdeVista() {
+        // Capturar los datos del formulario del equipo
+        const nombre = document.getElementById("imp_nombre_equipo").value;
+        const ciudad = document.getElementById("imp_ciudad_equipo").value;
+        const estadio = document.getElementById("imp_nombre_estadio").value;
+        const archivo = document.getElementById("imp_imagen_equipo").files[0];
+
+        // Convertir la imagen a URL temporal o base64
+        let imagen = "";
+        if (archivo) {
+            imagen = URL.createObjectURL(archivo); // Guardar como URL temporal
         }
-        this.modelo.asignarJugadorAEquipo(idJugador, idEquipo);
+
+        // Llamar al método para agregar el equipo
+        this.agregarEquipo(nombre, ciudad, estadio, imagen);
     }
 
-    //Mostrar estadisticas de los jugadores de un equipo
-    mostrarEstadisticas() {
-        if () {
+    // Método para agregar un equipo al modelo
+    agregarEquipo(nombre, ciudad, estadio, imagen = "") {
+        if (!nombre || !ciudad || !estadio) {
+            alert("Por favor, completa todos los campos del equipo.");
             return;
         }
-        this.modelo.mostrarEstadisticas(idEquipo);
+
+        const nuevoId = this.modeloEquipos.obtenerEquipos().length;
+        const nuevoEquipo = new Equipo(nuevoId, nombre, ciudad, estadio, imagen);
+        this.modeloEquipos.equipos.push(nuevoEquipo);
+        localStorage.setItem("equipos", JSON.stringify(this.modeloEquipos.equipos));
+        alert("Equipo agregado con éxito");
+    }
+
+    // Método para asignar un jugador a un equipo
+    asignarJugadorAEquipo(idJugador, idEquipo) {
+        if (idJugador === undefined || idEquipo === undefined) {
+            alert("Debes proporcionar el ID del jugador y del equipo.");
+            return;
+        }
+
+        this.modeloJugadores.añadirEquipo(idJugador, idEquipo);
+        localStorage.setItem("jugadores", JSON.stringify(this.modeloJugadores.jugadores));
+    }
+
+    // Método para mostrar las estadísticas de los jugadores de un equipo
+    mostrarEstadisticas(idEquipo) {
+        const jugadores = this.modeloJugadores.getPlayersOfTeam(idEquipo);
+        if (!jugadores || jugadores.length === 0) {
+            console.log("Este equipo no tiene jugadores asignados.");
+            return;
+        }
+
+        console.log(`Estadísticas del equipo con ID ${idEquipo}:`);
+        jugadores.forEach(j => {
+            console.log(`${j.getNombre()} - ${j.getPosicion()} - ${j.getFechaNacimiento()}`);
+        });
     }
 }
