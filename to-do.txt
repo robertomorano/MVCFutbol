@@ -8,16 +8,27 @@ los respectivos campos del form para crear el jugador o el equipo en cada caso..
 
 Confirmar: 
 
-Os dejo los ids de cada campo de los formularios:
+Os dejo los ids de cada campo de los formularios para que captureis los datos:
 
 (ids) Creador de Jugador:
 
+ - imp_imagen_jugador
  - imp_nombre_jugador
  - imp_posicion_jugador
  - imp_fecha_nacimiento
 
 (ids) Creador de Equipo:
 
+ - imp_imagen_equipo
  - imp_nombre_equipo
  - imp_ciudad_equipo
  - imp_nombre_estadio
+
+Observación para el controlador:
+
+La imágen se recoje así (o debería de poder recojerse así):
+const archivo = document.getElementById("imp_imagen_jugador").files[0];
+
+ya luego te la guardas como tu decidas ya sea como una URL temporal o en base64.
+
+

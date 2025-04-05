@@ -11,7 +11,7 @@ class Vista {
         const visualizaJugadores = document.getElementById('visualiza-jugadores');
         const visualizaEquipos = document.getElementById('visualiza-equipos');
 
-        // Evento para cambiar entre jugadores y equipos
+        /* Evento para cambiar entre jugadores y equipos */
         botonesNavPrincipal.forEach(boton => {
             boton.addEventListener('click', () => {
                 botonesNavPrincipal.forEach(btn => btn.classList.remove('active'));
@@ -30,13 +30,13 @@ class Vista {
             });
         });
 
-        // Evento para abrir modal
+        /* Evento para abrir modal */
         this.btn.addEventListener("click", () => {
             this.abreModalCrador();
             this.modal.style.display = "block";
         });
 
-        // Cerrar al hacer clic fuera
+        /* Cerrar al hacer clic fuera */
         window.addEventListener("click", (event) => {
             if (event.target == this.modal) {
                 this.modal.style.display = "none";
@@ -69,6 +69,8 @@ class Vista {
             formularioJugador.classList.add("formulario", "modal-formulario");
             formularioJugador.innerHTML = `
                 <form>
+                    <label for="imp_imagen_jugador">Inserta la Imágen del Jugador</label>
+                    <input type="file" accept="image/*" name="impImagen" id="imp_imagen_jugador">
                     <label for="imp_nombre_jugador">Nombre del Jugador</label>
                     <input type="text" name="impNombre" id="imp_nombre_jugador" placeholder="Nombre">
                     <label for="imp_posicion_jugador">Posición del Jugador</label>
@@ -89,6 +91,8 @@ class Vista {
             formularioEquipo.classList.add("formulario", "modal-formulario");
             formularioEquipo.innerHTML = `
                 <form>
+                    <label for="imp_imagen_equipo">Inserta la Imágen del Equipo</label>
+                    <input type="file" accept="image/*" name="impImagen" id="imp_imagen_equipo">
                     <label for="imp_nombre_equipo">Nombre del Equipo</label>
                     <input type="text" name="impNombreEquipo" id="imp_nombre_equipo">
                     <label for="imp_ciudad_equipo">Ciudad del Equipo</label>
@@ -119,20 +123,20 @@ class Vista {
     }
 
     renderizarVista() {
-        // Contenedor según la página activa
+
+        /* Contenedor según la página activa */
         const contenedor = this.pagina === 'jugador'
             ? document.getElementById("lista_de_jugadores")
             : document.getElementById("lista_de_equipos");
     
-        // Limpiar contenido previo
         contenedor.innerHTML = '';
     
-        // Obtener lista desde el controlador
+        /* Obtener lista desde el controlador */
         const lista = this.pagina === 'jugador'
-            ? this.controlador.obtenerJugadores()  // Método del controlador que devuelve array de jugadores
-            : this.controlador.obtenerEquipos();   // Método del controlador que devuelve array de equipos
+            ? this.controlador.obtenerJugadores()
+            : this.controlador.obtenerEquipos();
     
-        // Mostrar mensaje si no hay elementos
+        /* Mostrar mensaje si no hay elementos */
         if (lista.length === 0) {
             const mensaje = document.createElement("p");
             mensaje.classList.add("mensaje-vacio");
@@ -146,9 +150,10 @@ class Vista {
                 tarjeta.classList.add("tarjeta");
         
                 const img = document.createElement("img");
-                img.src = "https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384";
-                img.alt = "";
+                img.src = objeto.getImagen();
+                img.alt = this.pagina === 'jugador' ? objeto.getNombre() : objeto.getNombre();
                 tarjeta.appendChild(img);
+
         
                 if (this.pagina === 'jugador') {
                     const liNombre = document.createElement("li");
