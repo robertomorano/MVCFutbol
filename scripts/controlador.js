@@ -6,14 +6,11 @@ class Controlador {
     }
 
     iniciar() {
-        // Escuchar evento de clic para agregar jugador
-        document.getElementById("btn_crea_jugador").addEventListener("click", () => {
-            this.agregarJugadorDesdeVista();
-        });
-
-        // Escuchar evento de clic para agregar equipo
-        document.getElementById("btn_crea_equipo").addEventListener("click", () => {
+        this.vista.btnAgregarEquipo.addEventListener("click", () => {
             this.agregarEquipoDesdeVista();
+        });
+        this.vista.btnAgregarJugador.addEventListener("click", () => {
+            this.agregarJugadorDesdeVista();
         });
     }
 
