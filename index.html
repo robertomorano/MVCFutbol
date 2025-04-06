@@ -18,46 +18,41 @@
 
     <div id="myModal" class="modal"></div>
 
-    <!--Realizando Pruebas con el Modal del Jugador-->
-    <div id="modalJugador" class="modal-jugador">
+    <!-- Realizando Pruebas con el Modal de información de Jugador o Equipo -->
+    <div id="modalInformacion" class="modal-jugador">
         <div class="modal-content-jugador">
+            <span class="close">&times;</span>
             <div class="tarjeta-jugador">
-                
-                
                 <div class="imagen-jugador">
-                    <img id="imagenJugador" src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="Imagen del jugador" />
+                    <img id="imagenObjetoModal" src="" alt="Imagen Jugador" />
                 </div>
-        
-                
                 <div class="info-jugador">
                     <ul>
-                        <li><strong>Nombre:</strong> <span id="nombreJugador">Kilian Mbappe</span></li>
-                        <li><strong>Posición:</strong> <span id="posicionJugador">Delantero</span></li>
-                        <li><strong>Fecha de nacimiento:</strong> <span id="fechaJugador">15/09/1991</span></li>
-                        <li><strong>Equipo:</strong> <span id="equipoJugador">Real Madrid</span></li>
+                        <li><strong>Nombre:</strong> <span id="nombreObjetoModal"></span></li>
+                        <li><strong>Posición:</strong> <span id="posicionObjetoModal"></span></li>
+                        <li><strong>Fecha de nacimiento:</strong> <span id="fechaNacimientoObjetoModal"></span></li>
+                        <li><strong>Equipo:</strong> <span id="equipoObjetoModal"></span></li>
                     </ul>
                 </div>
-
                 <div class="imagen-equipo-jugador">
-                    <img id="imagenEquipo" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png" alt="Imagen del equipo" />
+                    <img id="imagenSecundariaObjetoModal" src="" alt="Imagen Equipo" />
                 </div>
-
                 <div class="info-equipo-jugador">
                     <ul>
-                        <li><strong>Ciudad:</strong> <span id="ciudadEquipo">Madrid</span></li>
-                        <li><strong>Estadio:</strong> <span id="posicionJugador">Santiago Bernabéu</span></li>
+                        <li><strong>Ciudad:</strong> <span id="ciudadObjetoModal"></span></li>
+                        <li><strong>Estadio:</strong> <span id="estadioObjetoModal"></span></li>
                     </ul>
                 </div>
-        
                 <div class="botones-jugador">
                     <button id="btnEliminarJugador">Eliminar</button>
                     <button id="btnAsignarEquipo">Asignar equipo</button>
                 </div>
-        
+                <div id="contenedor-elementos-relacionados" class="lista-de-elementos-relacionados">
+                    </div>
             </div>
         </div>
     </div>
-    <!--Realizando Pruebas con el Modal del Jugador-->
+    <!-- Realizando Pruebas con el Modal de información de Jugador o Equipo -->
 
     <header>
         <h1>GESTIÓN DE JUGADORES Y EQUIPOS DE FÚTBOL</h1>

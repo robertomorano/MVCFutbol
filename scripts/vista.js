@@ -53,9 +53,11 @@ class Vista {
             }
         });
 
+        this.cerrarModalObjeto();
         this.renderizarVista();
     }
 
+    /*Abre el modal que permite crear un equipo o un jugaodr através de un formulario*/
     abreModalCrador() {
         this.modal.innerHTML = '';
     
@@ -135,7 +137,6 @@ class Vista {
     }
 
     renderizarVista() {
-
         /* Contenedor según la página activa */
         const contenedor = this.pagina === 'jugador'
             ? document.getElementById("lista_de_jugadores")
@@ -147,7 +148,7 @@ class Vista {
         const lista = this.pagina === 'jugador'
             ? this.controlador.obtenerJugadores()
             : this.controlador.obtenerEquipos();
-        
+    
         console.log(lista);
     
         /* Mostrar mensaje si no hay elementos */
@@ -162,53 +163,182 @@ class Vista {
             lista.forEach(objeto => {
                 const tarjeta = document.createElement("div");
                 tarjeta.classList.add("tarjeta");
-        
+                
+                /* Asigno a cada tarjeta el id del objeto para usarlo para mostrar el modal del objeto */
+                tarjeta.dataset.id = objeto.getId();
+    
                 const img = document.createElement("img");
                 img.src = objeto.getImagen();
                 tarjeta.appendChild(img);
-
-        
+    
                 if (this.pagina === 'jugador') {
                     const liNombre = document.createElement("li");
                     liNombre.classList.add("jugador");
                     liNombre.textContent = objeto.getNombre();
-        
+    
                     const liPosicion = document.createElement("li");
                     liPosicion.classList.add("posicion");
                     liPosicion.textContent = objeto.getPosicion();
-        
+    
                     const liNacimiento = document.createElement("li");
                     liNacimiento.classList.add("fecha_nacimiento");
                     liNacimiento.textContent = objeto.getFechaNacimiento();
-        
+    
                     const liEquipo = document.createElement("li");
                     liEquipo.classList.add("equipo");
+                    if(objeto.getEquipo() === '') {
+                        liEquipo.textContent = "Sin Equipo Asignado";
+                    } else {
                     liEquipo.textContent = objeto.getEquipo();
-        
+                    }
+    
                     tarjeta.appendChild(liNombre);
                     tarjeta.appendChild(liPosicion);
                     tarjeta.appendChild(liNacimiento);
                     tarjeta.appendChild(liEquipo);
+    
+                    tarjeta.addEventListener('click', () => this.mostrarModalJugador(objeto.getId()));
+    
                 } else {
-                    const liEquipo = document.createElement("li");
-                    liEquipo.classList.add("equipo");
-                    liEquipo.textContent = objeto.getNombre();
-        
+                    const liEquipoNombre = document.createElement("li");
+                    liEquipoNombre.classList.add("equipo");
+                    liEquipoNombre.textContent = objeto.getNombre();
+    
                     const liCiudad = document.createElement("li");
                     liCiudad.classList.add("ciudad");
                     liCiudad.textContent = objeto.getCiudad();
-        
+    
                     const liEstadio = document.createElement("li");
                     liEstadio.classList.add("estadio");
                     liEstadio.textContent = objeto.getEstadio();
-        
-                    tarjeta.appendChild(liEquipo);
+    
+                    tarjeta.appendChild(liEquipoNombre);
                     tarjeta.appendChild(liCiudad);
                     tarjeta.appendChild(liEstadio);
+    
+                    // Agrega el evento de clic para mostrar el modal del equipo
+                    tarjeta.addEventListener('click', () => this.mostrarModalEquipo(objeto.getId()));
                 }
-        
+    
                 contenedor.appendChild(tarjeta);
             });
         }
+    }
+
+    /* Muestra el modal del jugador seleccionado */
+    mostrarModalJugador(idJugador) {
+        const jugadorSeleccionado = this.controlador.obtenerJugadorPorId(idJugador);
+        if (jugadorSeleccionado) {
+            const modalJugador = document.getElementById("modalInformacion");
+            const imagenJugadorModal = document.getElementById("imagenObjetoModal");
+            const nombreJugadorModal = document.getElementById("nombreObjetoModal");
+            const posicionJugadorModal = document.getElementById("posicionObjetoModal");
+            const fechaNacimientoJugadorModal = document.getElementById("fechaNacimientoObjetoModal");
+            const equipoJugadorModal = document.getElementById("equipoObjetoModal");
+            const logoEquipoJugadorModal = document.getElementById("imagenSecundariaObjetoModal");
+            const ciudadEquipoJugadorModal = document.getElementById("ciudadObjetoModal");
+            const estadioEquipoJugadorModal = document.getElementById("estadioObjetoModal");
+            const contenedorElementosRelacionados = document.getElementById("contenedor-elementos-relacionados");
+    
+            imagenJugadorModal.src = jugadorSeleccionado.getImagen();
+            nombreJugadorModal.textContent = jugadorSeleccionado.getNombre();
+            posicionJugadorModal.textContent = jugadorSeleccionado.getPosicion();
+            fechaNacimientoJugadorModal.textContent = jugadorSeleccionado.getFechaNacimiento();
+            
+    
+            const equipoDelJugador = this.controlador.obtenerEquipoPorNombre(jugadorSeleccionado.getEquipo());
+            if (equipoDelJugador) {
+                equipoJugadorModal.textContent = jugadorSeleccionado.getEquipo();
+                logoEquipoJugadorModal.src = equipoDelJugador.getImagen();
+                ciudadEquipoJugadorModal.textContent = equipoDelJugador.getCiudad();
+                estadioEquipoJugadorModal.textContent = equipoDelJugador.getEstadio();
+            } else {
+                equipoJugadorModal.textContent = "Sin Equipo Asignado";
+                logoEquipoJugadorModal.src = "";
+                ciudadEquipoJugadorModal.textContent = "";
+                estadioEquipoJugadorModal.textContent = "";
+            }
+    
+            contenedorElementosRelacionados.innerHTML = '';
+    
+            modalJugador.style.display = "block";
+        } else {
+            console.log(`No se encontró el jugador con ID: ${idJugador}`);
+        }
+    }
+
+    /* Muestra el modal del equipo seleccionado */
+    mostrarModalEquipo(idEquipo) {
+        const equipoSeleccionado = this.controlador.obtenerEquipoPorId(idEquipo);
+        if (equipoSeleccionado) {
+            const modalEquipo = document.getElementById("modalInformacion");
+            const imagenEquipoModal = document.getElementById("imagenObjetoModal");
+            const nombreEquipoModal = document.getElementById("nombreObjetoModal");
+            const ciudadEquipoModal = document.getElementById("ciudadObjetoModal");
+            const estadioEquipoModal = document.getElementById("estadioObjetoModal");
+            const contenedorJugadoresEquipoModal = document.getElementById("contenedor-elementos-relacionados");
+    
+            imagenEquipoModal.src = equipoSeleccionado.getImagen();
+            nombreEquipoModal.textContent = equipoSeleccionado.getNombre();
+            ciudadEquipoModal.textContent = equipoSeleccionado.getCiudad();
+            estadioEquipoModal.textContent = equipoSeleccionado.getEstadio();
+    
+            document.getElementById("posicionObjetoModal").textContent = "";
+            document.getElementById("fechaNacimientoObjetoModal").textContent = "";
+            document.getElementById("equipoObjetoModal").textContent = "";
+    
+            const jugadoresDelEquipo = this.controlador.obtenerJugadoresPorEquipo(equipoSeleccionado.getNombre());
+            contenedorJugadoresEquipoModal.innerHTML = '';
+    
+            if (jugadoresDelEquipo && jugadoresDelEquipo.length > 0) {
+                jugadoresDelEquipo.forEach(jugador => {
+                    const tarjetaJugador = document.createElement("div");
+                    tarjetaJugador.classList.add("tarjeta");
+    
+                    const imgJugador = document.createElement("img");
+                    imgJugador.src = jugador.getImagen();
+                    imgJugador.alt = jugador.getNombre();
+                    tarjetaJugador.appendChild(imgJugador);
+    
+                    const nombreJugador = document.createElement("li");
+                    nombreJugador.textContent = jugador.getNombre();
+                    tarjetaJugador.appendChild(nombreJugador);
+    
+                    const posicionJugador = document.createElement("li");
+                    posicionJugador.textContent = jugador.getPosicion();
+                    tarjetaJugador.appendChild(posicionJugador);
+    
+                    contenedorJugadoresEquipoModal.appendChild(tarjetaJugador);
+                });
+            } else {
+                const mensajeNoJugadores = document.createElement("p");
+                mensajeNoJugadores.textContent = "No hay jugadores asignados a este equipo.";
+                mensajeNoJugadores.classList.add("mensaje-vacio");
+                contenedorJugadoresEquipoModal.appendChild(mensajeNoJugadores);
+            }
+    
+            modalEquipo.style.display = "block";
+        } else {
+            console.log(`No se encontró el equipo con ID: ${idEquipo}`);
+        }
+    }
+
+    /* Cierra el modal abierto del equipo o del jugador */
+    cerrarModalObjeto() {
+
+        const modalInformacion = document.getElementById("modalInformacion");
+        const spanModalInformacion = document.querySelector("#modalInformacion .close");
+    
+        if (spanModalInformacion) {
+            spanModalInformacion.addEventListener('click', () => {
+                modalInformacion.style.display = "none";
+            });
+        }
+    
+        window.addEventListener('click', (event) => {
+            if (event.target === modalInformacion) {
+                modalInformacion.style.display = "none";
+            }
+        });
     }
 }
