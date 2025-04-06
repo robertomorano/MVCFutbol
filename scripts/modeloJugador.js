@@ -1,10 +1,11 @@
 class JugadorModel{
     constructor(){
+        this.jugadores = [];
         if (localStorage.getItem("jugadores") === null) {
             localStorage.setItem("jugadores", JSON.stringify([]));
         }else{
             JSON.parse(localStorage.getItem("jugadores")).forEach(element => {
-                this.addPlayer(element.nombre, element.posicion, element.fechaNacimiento, element.idEquipo, element.imagen)
+                this.addPlayerLocalStorage(element.nombre, element.posicion, element.fechaNacimiento, element.idEquipo, element.imagen)
               }); 
         }
         
@@ -14,12 +15,13 @@ class JugadorModel{
     }
     
     addPlayer(nombre,posicion,fechaNacimiento, imagen){
-        let player = new Jugador(this.jugadores.length,nombre,posicion,fechaNacimiento, null ,imagen);
+        let index = this.jugadores.length;
+        let player = new Jugador(index,nombre,posicion,fechaNacimiento, null ,imagen);
         this.jugadores.push(player);
         this.actualizarPlayerLocalStorage();
     }
     addPlayerLocalStorage(nombre, posicion, fechaNacimiento, idEquipo, imagen){
-        let player = new Jugador(this.jugadores.length,nombre,posicion,fechaNacimiento, idEquipo ,url);
+        let player = new Jugador(this.jugadores.length,nombre,posicion,fechaNacimiento, idEquipo ,imagen);
         this.jugadores.push(player);
 
     }
