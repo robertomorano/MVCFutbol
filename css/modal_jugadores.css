@@ -2,7 +2,7 @@
 /*Durante las pruebas uso manualmente display: flex para mostrar y none para ocultar */
 
 .modal-jugador {
-    display: flex;
+    display: none;
     position: fixed;
     z-index: 999;
     left: 0;
