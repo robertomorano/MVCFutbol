@@ -1,0 +1,102 @@
+
+/*Durante las pruebas uso manualmente display: flex para mostrar y none para ocultar */
+
+.modal-jugador {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-jugador {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 800px;
+    max-width: 95%;
+}
+
+.tarjeta-jugador {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.imagen-jugador img {
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.info-jugador ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-jugador li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.info-equipo-jugador ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-equipo-jugador li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.imagen-equipo-jugador img {
+    width: 80px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.botones-jugador {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: auto;
+}
+
+#btnEliminarJugador {
+    background-color: #d25419;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btnAsignarEquipo {
+    background-color: #4CAF50;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btnAsignarEquipo:hover {
+    background-color: #235225;
+}
+
+#btnEliminarJugador:hover {
+    background-color: #4e1f0a;
+}

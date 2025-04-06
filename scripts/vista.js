@@ -147,6 +147,8 @@ class Vista {
         const lista = this.pagina === 'jugador'
             ? this.controlador.obtenerJugadores()
             : this.controlador.obtenerEquipos();
+        
+        console.log(lista);
     
         /* Mostrar mensaje si no hay elementos */
         if (lista.length === 0) {

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Jugadores y Equipos de Fútbol</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal_formularios.css">
+    <link rel="stylesheet" href="css/modal_jugadores.css">
     <script src="scripts/modeloEquipo.js"></script>
     <script src="scripts/modeloJugador.js"></script>
     <script src="scripts/equipo.js"></script>
@@ -15,6 +17,47 @@
 <body>
 
     <div id="myModal" class="modal"></div>
+
+    <!--Realizando Pruebas con el Modal del Jugador-->
+    <div id="modalJugador" class="modal-jugador">
+        <div class="modal-content-jugador">
+            <div class="tarjeta-jugador">
+                
+                
+                <div class="imagen-jugador">
+                    <img id="imagenJugador" src="https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--55f53bed-0f8d-4d2f-9ced-587a20a8ca5e/_80x501____20.app.webp?preferwebp=true&width=288&height=384" alt="Imagen del jugador" />
+                </div>
+        
+                
+                <div class="info-jugador">
+                    <ul>
+                        <li><strong>Nombre:</strong> <span id="nombreJugador">Kilian Mbappe</span></li>
+                        <li><strong>Posición:</strong> <span id="posicionJugador">Delantero</span></li>
+                        <li><strong>Fecha de nacimiento:</strong> <span id="fechaJugador">15/09/1991</span></li>
+                        <li><strong>Equipo:</strong> <span id="equipoJugador">Real Madrid</span></li>
+                    </ul>
+                </div>
+
+                <div class="imagen-equipo-jugador">
+                    <img id="imagenEquipo" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png" alt="Imagen del equipo" />
+                </div>
+
+                <div class="info-equipo-jugador">
+                    <ul>
+                        <li><strong>Ciudad:</strong> <span id="ciudadEquipo">Madrid</span></li>
+                        <li><strong>Estadio:</strong> <span id="posicionJugador">Santiago Bernabéu</span></li>
+                    </ul>
+                </div>
+        
+                <div class="botones-jugador">
+                    <button id="btnEliminarJugador">Eliminar</button>
+                    <button id="btnAsignarEquipo">Asignar equipo</button>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    <!--Realizando Pruebas con el Modal del Jugador-->
 
     <header>
         <h1>GESTIÓN DE JUGADORES Y EQUIPOS DE FÚTBOL</h1>
@@ -67,12 +110,6 @@
     </footer>
 
     <script>
-
-        /*Le paso al controlador ambos modelos y la vista*/
-        /*Le paso al modeloEquipo y Jugador el controlador*/
-
-        /*Le paso a la vista el controlador para que se pueda comunicar con este*/
-
         const controlador = new Controlador();
     
         const equipoModelo = new EquipoModel();
