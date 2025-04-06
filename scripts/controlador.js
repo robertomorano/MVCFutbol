@@ -17,15 +17,65 @@ class Controlador {
         this.vista = vista;
     }
 
-    // Método para obtener los jugadores desde el modelo
+    // Metodo para obtener los jugadores desde el modelo
     obtenerJugadores() {
         return this.modeloJugadores.getPlayers();
     }
     
-    // Método para obtener los equipos desde el modelo
+    // Metodo para obtener los equipos desde el modelo
     obtenerEquipos() {
         return this.modeloEquipos.obtenerEquipos();
     }    
+
+    // Metodo para obtener un jugador por su ID
+    obtenerJugadorPorId(id) {
+        return this.modeloJugadores.getPlayerById(id);
+    }
+
+    // Metodo para obtener un equipo por su ID
+    obtenerEquipoPorId(id) {
+        return this.modeloEquipos.obtenerEquipoPorId(id);
+    }
+
+    // Metodo para obtener equipo por nombre
+    obtenerEquipoPorNombre(nombre) {
+        return this.modeloEquipos.obtenerEquipoPorNombre(nombre);
+    }
+
+    // Metodo para obtener jugadores por equipo
+    obtenerJugadoresPorEquipo(nombreEquipo) {
+        const equipo = this.modeloEquipos.obtenerEquipoPorNombre(nombreEquipo);
+        if (!equipo) {
+            console.log("Equipo no encontrado.");
+            return;
+        }
+        return this.modeloJugadores.getPlayersOfTeam(equipo.id);
+    }
+
+    // Metodo para asignar equipo a un jugador
+    asignarEquipoAJugador(idJugador, nombreEquipo) {
+        const equipo = this.modeloEquipos.obtenerEquipoPorNombre(nombreEquipo);
+        if (!equipo) {
+            console.log("Equipo no encontrado.");
+            return;
+        }
+        this.modeloJugadores.añadirEquipo(idJugador, equipo.id);
+    }
+
+    // Metodo para eliminar un jugador por su ID
+    eliminarJugadorPorId(id) {
+        this.modeloJugadores.removePlayer(id);
+    }
+
+    // Metodo para obtener los equipos
+    obtenerEquipos() {
+        return this.modeloEquipos.obtenerEquipos();
+    }
+
+    // Metodo para obtener los jugadores
+    obtenerJugadores() {
+        return this.modeloJugadores.getPlayers();
+    }
 
     // Método para agregar un jugador desde la vista
     agregarJugadorDesdeVista() {
@@ -45,21 +95,21 @@ class Controlador {
         this.agregarJugador(nombre, posicion, fechaNacimiento, imagen);
     }
 
-   // Método para agregar un jugador al modelo
+   // Metodo para agregar un jugador al modelo
     agregarJugador(nombre, posicion, fechaNacimiento, imagen = "") {
         if (!nombre || !posicion || !fechaNacimiento) {
             console.log("Por favor, completa todos los campos del jugador.");
             return;
         }
 
-        // Llamar al método del modelo para agregar el jugador
+        // Llamar al metodo del modelo para agregar el jugador
         this.modeloJugadores.addPlayer(nombre, posicion, fechaNacimiento, imagen);
 
         console.log("Jugador agregado con éxito");
     }
 
 
-    // Método para agregar un equipo desde la vista
+    // Metodo para agregar un equipo desde la vista
     agregarEquipoDesdeVista() {
         // Capturar los datos del formulario del equipo
         const nombre = document.getElementById("imp_nombre_equipo").value;
@@ -73,45 +123,20 @@ class Controlador {
             imagen = URL.createObjectURL(archivo);
         }
 
-        // Llamar al método para agregar el equipo
+        // Llamar al metodo para agregar el equipo
         this.agregarEquipo(nombre, ciudad, estadio, imagen);
     }
 
-    // Método para agregar un equipo al modelo
+    // Metodo para agregar un equipo al modelo
     agregarEquipo(nombre, ciudad, estadio) {
         if (!nombre || !ciudad || !estadio) {
             alert("Por favor, completa todos los campos del equipo.");
             return;
         }
 
-        // Llamar al método del modelo para agregar el equipo
+        // Llamar al metodo del modelo para agregar el equipo
         this.modeloEquipos.agregarEquipo(nombre, ciudad, estadio);
 
         alert("Equipo agregado con éxito");
-    }
-
-    // Método para asignar un jugador a un equipo
-    asignarJugadorAEquipo(idJugador, idEquipo) {
-        if (idJugador === undefined || idEquipo === undefined) {
-            alert("Debes proporcionar el ID del jugador y del equipo.");
-            return;
-        }
-
-        this.modeloJugadores.añadirEquipo(idJugador, idEquipo);
-        localStorage.setItem("jugadores", JSON.stringify(this.modeloJugadores.jugadores));
-    }
-
-    // Método para mostrar las estadísticas de los jugadores de un equipo
-    mostrarEstadisticas(idEquipo) {
-        const jugadores = this.modeloJugadores.getPlayersOfTeam(idEquipo);
-        if (!jugadores || jugadores.length === 0) {
-            console.log("Este equipo no tiene jugadores asignados.");
-            return;
-        }
-
-        console.log(`Estadísticas del equipo con ID ${idEquipo}:`);
-        jugadores.forEach(j => {
-            console.log(`${j.getNombre()} - ${j.getPosicion()} - ${j.getFechaNacimiento()}`);
-        });
     }
 }

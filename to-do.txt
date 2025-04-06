@@ -37,44 +37,44 @@ ya luego te la guardas como tu decidas ya sea como una URL temporal o en base64.
 
 ACONTINUACIÓN FUNCIONES DEL CONTROLADOR QUE INTENTO ACCEDER DESDE LA VISTA:
 
-this.controlador.agregarEquipoDesdeVista():
+this.controlador.agregarEquipoDesdeVista():  -> Hecho
 
     Esta función se llama dentro del evento de clic del botón "Crear Equipo" que se genera cuando el usuario está en la sección de "equipos" y abre el modal de creación.
 
-this.controlador.agregarJugadorDesdeVista():
+this.controlador.agregarJugadorDesdeVista(): -> Hecho
 
     Esta función se llama dentro del evento de clic del botón "Crear Jugador" que se genera cuando el usuario está en la sección de "jugadores" y abre el modal de creación.
 
-this.controlador.obtenerJugadores():
+this.controlador.obtenerJugadores(): -> Hecho
 
     Esta función se llama dentro de renderizarVista() cuando this.pagina es igual a 'jugador'. Se utiliza para obtener la lista de jugadores que se mostrarán en la interfaz.
 
-this.controlador.obtenerEquipos():
+this.controlador.obtenerEquipos(): -> Hecho
 
     Esta función se llama dentro de renderizarVista() cuando this.pagina es igual a 'equipo'. Se utiliza para obtener la lista de equipos que se mostrarán en la interfaz.
     También se llama dentro de mostrarModalJugador() para obtener la lista de todos los equipos disponibles al intentar asignar un equipo a un jugador.
 
-this.controlador.obtenerJugadorPorId(id):
+this.controlador.obtenerJugadorPorId(id): -> Hecho
 
     Esta función se llama dentro de mostrarModalJugador(id) para obtener la información específica de un jugador cuando se hace clic en su tarjeta.
 
-this.controlador.obtenerEquipoPorNombre(nombreEquipo):
+this.controlador.obtenerEquipoPorNombre(nombreEquipo): -> Hecho
 
     Esta función se llama dentro de mostrarModalJugador(id) para obtener la información del equipo al que pertenece un jugador, si tiene alguno asignado.
 
-this.controlador.eliminarJugador(id):
+this.controlador.eliminarJugador(id):  -> Hecho
 
     Esta función se llama dentro del evento de clic del botón "Eliminar" que se genera dentro del modal de información de un jugador.
 
-this.controlador.asignarEquipoAJugador(id, nombreSeleccionado):
+this.controlador.asignarEquipoAJugador(id, nombreSeleccionado): -> Hecho
 
     Esta función se llama dentro del evento de clic del botón "Asignar equipo" que se genera dentro del modal de información de un jugador, después de que el usuario introduce el nombre del equipo al que se asignará.
 
-this.controlador.obtenerEquipoPorId(id):
+this.controlador.obtenerEquipoPorId(id): -> Hecho
 
     Esta función se llama dentro de mostrarModalEquipo(id) para obtener la información específica de un equipo cuando se hace clic en su tarjeta.
 
-this.controlador.obtenerJugadoresPorEquipo(equipo.getNombre()):
+this.controlador.obtenerJugadoresPorEquipo(equipo.getNombre()): -> Hecho
 
     Esta función se llama dentro de mostrarModalEquipo(id) para obtener la lista de jugadores que están asignados a un equipo específico y mostrarlos en el modal de información del equipo.
 
