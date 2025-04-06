@@ -3,13 +3,19 @@ class EquipoModel {
     if (localStorage.getItem("equipos") === null) {
       localStorage.setItem("equipos", JSON.stringify([]));
     } else {
-      this.equipos = JSON.parse(localStorage.getItem("equipos"));
+      JSON.parse(localStorage.getItem("equipos")).forEach(element => {
+        this.agregarEquipo(element.nombre, element.ciudad, element.estadio);
+      }); 
     }
   }
 
-  agregarEquipo(nombre, ciudad, estadio) {
+  agregarEquipo(nombre, ciudad, estadio, imagen) {
+    let url = "";
+        
+    url = URL.createObjectURL(imagen);
+        
     if (this.getEquipoPorNombre(nombre) === null) {
-      let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio);
+      let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio, imagen);
       this.equipos.push(equipo);
       this.actualizarEquipoLocalStorage();
       return true;
