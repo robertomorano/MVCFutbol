@@ -198,11 +198,13 @@ class Vista {
 
                     const liEquipo = document.createElement("li");
                     liEquipo.classList.add("equipo");
-                    if (objeto.getEquipo() === '') {
+
+                    if (this.controlador.obtenerEquipoPorId(objeto.getIdEquipo()) === '') {
                         liEquipo.textContent = "Sin Equipo Asignado";
                     } else {
-                        liEquipo.textContent = objeto.getEquipo();
+                        liEquipo.textContent = this.controlador.obtenerEquipoPorId(objeto.getIdEquipo());
                     }
+                    
                     tarjeta.appendChild(liNombre);
                     tarjeta.appendChild(liPosicion);
                     tarjeta.appendChild(liNacimiento);
