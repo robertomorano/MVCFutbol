@@ -29,7 +29,7 @@ class Controlador {
     
     // Metodo para obtener la lista de equipos desde el modelo
     obtenerEquipos() {
-        return this.modeloEquipos.obtenerEquipos();
+        return this.modeloEquipos.getEquipos();
     }    
 
     // Metodo para obtener un jugador especifico por su ID
