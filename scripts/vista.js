@@ -428,7 +428,6 @@ class Vista {
             });
         }
 
-        // Cerrar el modal si se hace clic fuera de él
         window.addEventListener('click', (event) => {
             if (event.target === modalObjeto) {
                 modalObjeto.style.display = "none";
@@ -449,10 +448,8 @@ class Vista {
         const card = document.getElementById('errorCard');
         const msg = document.getElementById('errorMessage');
 
-        // Limpia clases previas
         card.classList.remove('error', 'success');
 
-        // Aplica clase según tipo
         card.classList.add(tipo);
 
         msg.textContent = (tipo === 'error' ? '⚠️ ' : '✅ ') + mensaje;
@@ -460,7 +457,7 @@ class Vista {
 
         // Reinicia animación
         card.style.animation = 'none';
-        void card.offsetWidth; // hack para reiniciar animación
+        void card.offsetWidth; // Forzar reflow
         card.style.animation = 'fadeIn 0.4s ease-out forwards';
 
         clearTimeout(this.errorTimeout);
