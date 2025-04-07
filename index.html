@@ -13,26 +13,21 @@
     <script src="scripts/equipo.js"></script>
     <script src="scripts/jugador.js"></script>
     <script src="scripts/vista.js"></script>
-    <script src="scripts/controlador.js"></script>  
+    <script src="scripts/controlador.js"></script>
 </head>
 <body>
 
     <div id="myModal" class="modal"></div>
 
-    <!-- Realizando Pruebas con el Modal de información de Jugador o Equipo -->
     <div id="modalInformacion" class="modal-jugador">
         <div class="modal-content-jugador">
             <span class="close">&times;</span>
-            <div class="tarjeta-jugador"></div> <!-- Aquí se inyecta todo dinámicamente -->
-        </div>
+            <div class="tarjeta-jugador"></div> </div>
     </div>
-    <!-- Realizando Pruebas con el Modal de información de Jugador o Equipo -->
-
-    <!--Tarjeta de Error-->
-    <div id="errorCard" class="error-card" style="display: block;">
+    <div id="errorCard" class="error-card" style="display: none;">
         <p id="errorMessage"></p>
-        <button onclick="vista.ocultarError()">Cerrar</button>
-    </div>      
+        <button onclick="vista.ocultarError()" aria-label="Cerrar notificación">Cerrar</button>
+    </div>
 
     <header>
         <h1>GESTIÓN DE JUGADORES Y EQUIPOS DE FÚTBOL</h1>
@@ -86,13 +81,13 @@
 
     <script>
         const controlador = new Controlador();
-    
+
         const equipoModelo = new EquipoModel();
         const jugadorModelo = new JugadorModel();
-    
+
         controlador.setModeloEquipo(equipoModelo);
         controlador.setModeloJugador(jugadorModelo);
-    
+
         const vista = new Vista(controlador);
         controlador.setVista(vista);
     </script>

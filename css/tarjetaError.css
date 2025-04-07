@@ -13,7 +13,7 @@
     box-sizing: border-box;
     z-index: 9999;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    display: none;
+    display: none; /* Cambiado a none para que esté oculta por defecto */
     opacity: 0;
     animation: fadeIn 0.4s ease-out forwards;
 }
@@ -53,4 +53,3 @@
         opacity: 1;
     }
 }
-  
