@@ -78,4 +78,13 @@ this.controlador.obtenerJugadoresPorEquipo(equipo.getNombre()): -> Hecho
 
     Esta función se llama dentro de mostrarModalEquipo(id) para obtener la lista de jugadores que están asignados a un equipo específico y mostrarlos en el modal de información del equipo.
 
+===================================================================================================
 
+-Las Cosa
+Habria que hacer un seleccionador(un desplegable) de posiciones en la vista despues el modelo comprueba 
+que esten dentro de esos valores.
+
+Tener una imagen por defecto si el usuario no ha puesto ningunas.
+
+Estoy añadiendo Booleanos a añadir/eliminar y eso para que el controlador le pase a la vista un mensaje de exito o error
+estaria bien una funcion en la vista de mostrarMensaje o algo para esto.
