@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/modal_formularios.css">
     <link rel="stylesheet" href="css/modal_jugadores.css">
+    <link rel="stylesheet" href="css/tarjetaError.css">
     <script src="scripts/modeloEquipo.js"></script>
     <script src="scripts/modeloJugador.js"></script>
     <script src="scripts/equipo.js"></script>
@@ -26,6 +27,12 @@
         </div>
     </div>
     <!-- Realizando Pruebas con el Modal de información de Jugador o Equipo -->
+
+    <!--Tarjeta de Error-->
+    <div id="errorCard" class="error-card" style="display: block;">
+        <p id="errorMessage"></p>
+        <button onclick="vista.ocultarError()">Cerrar</button>
+    </div>      
 
     <header>
         <h1>GESTIÓN DE JUGADORES Y EQUIPOS DE FÚTBOL</h1>

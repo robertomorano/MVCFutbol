@@ -88,3 +88,12 @@ Tener una imagen por defecto si el usuario no ha puesto ningunas.
 
 Estoy añadiendo Booleanos a añadir/eliminar y eso para que el controlador le pase a la vista un mensaje de exito o error
 estaria bien una funcion en la vista de mostrarMensaje o algo para esto.
+
+
+- MAYA -> Acabo de añadir en la vista dos funciones a las que puedes llamar desde el controlador para informar acerca de si ha ocurrido un error o si se ha realizado algo correctamente.
+
+    FUNCIONES DE LA VISTA A LA QUE PUEDES LLAMAR:
+
+     - mostrarError(mensaje); --> Le pasas el mensaje del error a mostrar.
+
+     - mostrarSuccess(mensaje); --> Le pasas el mensaje de success a mostrar.

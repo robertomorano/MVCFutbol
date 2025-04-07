@@ -423,4 +423,43 @@ class Vista {
             }
         });
     }
+
+
+    mostrarError(mensaje) {
+        this.mostrarMensaje('error', mensaje);
+    }
+      
+    mostrarSuccess(mensaje) {
+        this.mostrarMensaje('success', mensaje);
+    }
+      
+    mostrarMensaje(tipo, mensaje) {
+        const card = document.getElementById('errorCard');
+        const msg = document.getElementById('errorMessage');
+      
+        // Limpia clases previas
+        card.classList.remove('error', 'success');
+      
+        // Aplica clase según tipo
+        card.classList.add(tipo);
+      
+        msg.textContent = (tipo === 'error' ? '⚠️ ' : '✅ ') + mensaje;
+        card.style.display = 'block';
+      
+        // Reinicia animación
+        card.style.animation = 'none';
+        void card.offsetWidth; // hack para reiniciar animación
+        card.style.animation = 'fadeIn 0.4s ease-out forwards';
+      
+        clearTimeout(this.errorTimeout);
+        this.errorTimeout = setTimeout(() => {
+          this.ocultarError();
+        }, 5000);
+      }
+      
+      ocultarError() {
+        const card = document.getElementById('errorCard');
+        card.style.display = 'none';
+    }
+      
 }

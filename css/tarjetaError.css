@@ -1,0 +1,56 @@
+.error-card {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    min-width: 320px;
+    max-width: 500px;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    display: none;
+    opacity: 0;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Estilos por tipo */
+.error-card.error {
+    background-color: #ffe0e0;
+    border: 1px solid #ff5c5c;
+    color: #900;
+}
+
+.error-card.success {
+    background-color: #e0ffe0;
+    border: 1px solid #5cff5c;
+    color: #0a730a;
+}
+
+.error-card button {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 18px;
+}
+
+/* Animación fadeIn */
+@keyframes fadeIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+  
