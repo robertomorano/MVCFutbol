@@ -39,7 +39,7 @@ class Controlador {
 
     // Metodo para obtener un equipo especifico por su ID
     obtenerEquipoPorId(id) {
-        return this.modeloEquipos.obtenerEquipoPorId(id);
+        return this.modeloEquipos.getEquipoPorId(id);
     }
 
     // Metodo para buscar un equipo por su nombre
