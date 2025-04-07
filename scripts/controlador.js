@@ -82,14 +82,8 @@ class Controlador {
         const fechaNacimiento = document.getElementById("imp_fecha_nacimiento").value;
         const archivo = document.getElementById("imp_imagen_jugador").files[0];
 
-        // Convertimos la imagen a una URL temporal si existe
-        let imagen = "";
-        if (archivo) {
-            imagen = URL.createObjectURL(archivo);
-        }
-
         // Llamamos al metodo para agregar el jugador al modelo
-        this.agregarJugador(nombre, posicion, fechaNacimiento, imagen);
+        this.agregarJugador(nombre, posicion, fechaNacimiento, archivo);
     }
 
     // Metodo para agregar un jugador al modelo
@@ -114,14 +108,8 @@ class Controlador {
         const estadio = document.getElementById("imp_nombre_estadio").value;
         const archivo = document.getElementById("imp_imagen_equipo").files[0];
 
-        // Convertimos la imagen a una URL temporal si existe
-        let imagen = "";
-        if (archivo) {
-            imagen = URL.createObjectURL(archivo);
-        }
-
         // Llamamos al metodo para agregar el equipo al modelo
-        this.agregarEquipo(nombre, ciudad, estadio, imagen);
+        this.agregarEquipo(nombre, ciudad, estadio, archivo);
     }
 
     // Metodo para agregar un equipo al modelo
