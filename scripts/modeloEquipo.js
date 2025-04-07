@@ -18,11 +18,15 @@ class EquipoModel {
   }
   agregarEquipo(nombre, ciudad, estadio, imagen) {
     let url = "";
-        
-    url = URL.createObjectURL(imagen);
+    console.log(imagen);
+    if (imagen !== undefined) {
+      url = URL.createObjectURL(imagen);
+    }
+    
         
     if (this.getEquipoPorNombre(nombre) === null) {
-      let equipo = new Equipo(this.equipos.length(), nombre, ciudad, estadio, imagen);
+      
+      let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio, imagen);
       this.equipos.push(equipo);
       this.actualizarEquipoLocalStorage();
       return true;

@@ -18,10 +18,12 @@ class JugadorModel{
     addPlayer(nombre,posicion,fechaNacimiento, imagen){
         let url = "";
         
-        url = URL.createObjectURL(imagen);
+        if (imagen !== "") {
+            url = URL.createObjectURL(imagen);
+          }
         let index = this.jugadores.length;
         // Iniciar el equipo a null despues con otra funcion se le asignara el id del equipo
-        let player = new Jugador(index,nombre,posicion,fechaNacimiento, null ,imagen);
+        let player = new Jugador(index,nombre,posicion,fechaNacimiento, null ,url);
         this.jugadores.push(player);
         this.actualizarPlayerLocalStorage();
         return true;
