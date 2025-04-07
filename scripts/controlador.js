@@ -51,9 +51,10 @@ class Controlador {
     obtenerJugadoresPorEquipo(nombreEquipo) {
         const equipo = this.modeloEquipos.obtenerEquipoPorNombre(nombreEquipo);
         if (!equipo) {
-            console.log("Equipo no encontrado.");
+            mostrarError("Equipo no encontrado.");
             return;
         }
+        mostrarSuccess("Se obtuvieron los jugadores.");
         return this.modeloJugadores.getPlayersOfTeam(equipo.id);
     }
 
@@ -61,9 +62,10 @@ class Controlador {
     asignarEquipoAJugador(idJugador, nombreEquipo) {
         const equipo = this.modeloEquipos.obtenerEquipoPorNombre(nombreEquipo);
         if (!equipo) {
-            console.log("Equipo no encontrado.");
+            mostrarError("Equipo o Jugador no encontrado.");
             return;
         }
+        mostrarSuccess("Se asigno el equipo al jugador con exito.");
         this.modeloJugadores.añadirEquipo(idJugador, equipo.id);
     }
 
@@ -94,14 +96,14 @@ class Controlador {
     agregarJugador(nombre, posicion, fechaNacimiento, imagen = "") {
         // Validamos que todos los campos esten completos
         if (!nombre || !posicion || !fechaNacimiento) {
-            console.log("Por favor, completa todos los campos del jugador.");
+            mostrarError("Por favor, completa todos los campos del jugador.");
             return;
         }
 
         // Llamamos al metodo del modelo para agregar el jugador
         this.modeloJugadores.addPlayer(nombre, posicion, fechaNacimiento, imagen);
 
-        console.log("Jugador agregado con exito");
+        mostrarSuccess("Jugador agregado con exito.");
     }
 
     // Metodo para agregar un equipo desde los datos capturados en la vista
@@ -126,13 +128,13 @@ class Controlador {
     agregarEquipo(nombre, ciudad, estadio) {
         // Validamos que todos los campos esten completos
         if (!nombre || !ciudad || !estadio) {
-            alert("Por favor, completa todos los campos del equipo.");
+            mostrarError("Por favor, completa todos los campos del equipo.");
             return;
         }
 
         // Llamamos al metodo del modelo para agregar el equipo
         this.modeloEquipos.agregarEquipo(nombre, ciudad, estadio);
 
-        alert("Equipo agregado con exito");
+        mostrarSuccess("Equipo agregado con exito");
     }
 }
