@@ -10,6 +10,8 @@ class JugadorModel{
         }
         
     }
+
+    // Devolver todos los jugadores
     getPlayers(){
         return this.jugadores;
     }
@@ -23,7 +25,7 @@ class JugadorModel{
           }
         let index = this.jugadores.length;
         // Iniciar el equipo a null despues con otra funcion se le asignara el id del equipo
-        let player = new Jugador(index,nombre,posicion,fechaNacimiento, null ,url);
+        let player = new Jugador(index,nombre,posicion,fechaNacimiento, "" ,url);
         this.jugadores.push(player);
         this.actualizarPlayerLocalStorage();
         return true;
