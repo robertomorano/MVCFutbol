@@ -51,10 +51,10 @@ class Controlador {
     obtenerJugadoresPorEquipo(nombreEquipo) {
         const equipo = this.modeloEquipos.obtenerEquipoPorNombre(nombreEquipo);
         if (!equipo) {
-            mostrarError("Equipo no encontrado.");
+            this.vista.mostrarError("Equipo no encontrado.");
             return;
         }
-        mostrarSuccess("Se obtuvieron los jugadores.");
+        this.vista.mostrarSuccess("Se obtuvieron los jugadores.");
         return this.modeloJugadores.getPlayersOfTeam(equipo.id);
     }
 
@@ -62,10 +62,10 @@ class Controlador {
     asignarEquipoAJugador(idJugador, nombreEquipo) {
         const equipo = this.modeloEquipos.obtenerEquipoPorNombre(nombreEquipo);
         if (!equipo) {
-            mostrarError("Equipo o Jugador no encontrado.");
+            this.vista.mostrarError("Equipo o Jugador no encontrado.");
             return;
         }
-        mostrarSuccess("Se asigno el equipo al jugador con exito.");
+        this.vista.mostrarSuccess("Se asigno el equipo al jugador con exito.");
         this.modeloJugadores.añadirEquipo(idJugador, equipo.id);
     }
 
@@ -96,14 +96,14 @@ class Controlador {
     agregarJugador(nombre, posicion, fechaNacimiento, imagen = "") {
         // Validamos que todos los campos esten completos
         if (!nombre || !posicion || !fechaNacimiento) {
-            mostrarError("Por favor, completa todos los campos del jugador.");
+            this.vista.mostrarError("Por favor, completa todos los campos del jugador.");
             return;
         }
 
         // Llamamos al metodo del modelo para agregar el jugador
         this.modeloJugadores.addPlayer(nombre, posicion, fechaNacimiento, imagen);
 
-        mostrarSuccess("Jugador agregado con exito.");
+        this.vista.mostrarSuccess("Jugador agregado con exito.");
     }
 
     // Metodo para agregar un equipo desde los datos capturados en la vista
@@ -128,13 +128,13 @@ class Controlador {
     agregarEquipo(nombre, ciudad, estadio) {
         // Validamos que todos los campos esten completos
         if (!nombre || !ciudad || !estadio) {
-            mostrarError("Por favor, completa todos los campos del equipo.");
+            this.vista.mostrarError("Por favor, completa todos los campos del equipo.");
             return;
         }
 
         // Llamamos al metodo del modelo para agregar el equipo
         this.modeloEquipos.agregarEquipo(nombre, ciudad, estadio);
 
-        mostrarSuccess("Equipo agregado con exito");
+        this.vista.mostrarSuccess("Equipo agregado con exito");
     }
 }
