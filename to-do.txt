@@ -89,6 +89,13 @@ Tener una imagen por defecto si el usuario no ha puesto ningunas.
 Estoy añadiendo Booleanos a añadir/eliminar y eso para que el controlador le pase a la vista un mensaje de exito o error
 estaria bien una funcion en la vista de mostrarMensaje o algo para esto.
 
+habo de probarlo function blobToBase64(blob) {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+}
 IMPOLTANTE:
 Hay un problema el objeto jugador no guarda el nombre del equipo, guarda la id,
  desde el controlador se puede pasar otro parametro con el nombre del equipo 

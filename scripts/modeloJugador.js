@@ -19,7 +19,7 @@ class JugadorModel{
     // Añadir jugadores a base de datos desde el formulario de añadir jugador
     addPlayer(nombre,posicion,fechaNacimiento, imagen){
         let url = "";
-        
+        console.log(imagen);
         if (imagen !== "") {
             url = URL.createObjectURL(imagen);
           }

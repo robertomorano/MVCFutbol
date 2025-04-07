@@ -19,7 +19,7 @@ class Jugador {
         return this.posicion;
     }
     getFechaNacimiento() {
-        return this.fechaNacimiento;
+        return this.fechaATexto(this.fechaNacimiento);
     }
     getIdEquipo() {
         return this.idEquipo;
