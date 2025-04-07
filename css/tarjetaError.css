@@ -31,7 +31,7 @@
     color: #0a730a;
 }
 
-.error-card button {
+.error-card span {
     background-color: transparent;
     border: none;
     font-weight: bold;
