@@ -62,7 +62,7 @@ class JugadorModel{
     
     
     removePlayer(id){
-        let e = this.getPlayerByID(id);
+        let e = this.getPlayerById(id);
         if(e !== null){
             this.jugadores.splice(this.jugadores.indexOf(e),1);
             this.actualizarPlayerLocalStorage();
@@ -83,7 +83,7 @@ class JugadorModel{
     }
     
     
-    getPlayerByID(id){
+    getPlayerById(id){
         let e = null;
         this.jugadores.forEach(element => {
             if(element.getId() === id){
