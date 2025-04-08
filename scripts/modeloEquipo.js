@@ -24,7 +24,12 @@ class EquipoModel {
     let url = "";
     console.log(imagen);
     if (imagen !== undefined) {
-      url = URL.createObjectURL(imagen);
+      
+      url = new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(imagen);
+      });
     }
     
         

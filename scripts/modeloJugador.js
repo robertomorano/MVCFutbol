@@ -20,8 +20,12 @@ class JugadorModel{
     addPlayer(nombre,posicion,fechaNacimiento, imagen){
         let url = "";
         console.log(imagen);
-        if (imagen !== "") {
-            url = URL.createObjectURL(imagen);
+        if (imagen !== undefined) {
+            url = new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.readAsDataURL(imagen);
+              });
           }
         let index = this.jugadores.length;
         // Iniciar el equipo a null despues con otra funcion se le asignara el id del equipo
