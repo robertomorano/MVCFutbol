@@ -24,7 +24,7 @@ class Controlador {
 
     // Metodo para obtener la lista de jugadores desde el modelo
     obtenerJugadores() {
-        return this.modeloJugadores.getPlayers();
+        return this.modeloJugadores.getJugadores();
     }
     
     // Metodo para obtener la lista de equipos desde el modelo
@@ -34,7 +34,7 @@ class Controlador {
 
     // Metodo para obtener un jugador especifico por su ID
     obtenerJugadorPorId(id) {
-        return this.modeloJugadores.getPlayerById(id);
+        return this.modeloJugadores.getJugadorPorId(id);
     }
 
     // Metodo para obtener un equipo especifico por su ID
@@ -55,7 +55,7 @@ class Controlador {
             return;
         }
         this.vista.mostrarSuccess("Se obtuvieron los jugadores.");
-        return this.modeloJugadores.getPlayersOfTeam(equipo.id);
+        return this.modeloJugadores.getJugadoresDeEquipo(equipo.id);
     }
 
     // Metodo para asignar un equipo a un jugador
@@ -71,7 +71,7 @@ class Controlador {
 
     // Metodo para eliminar un jugador por su ID
     eliminarJugadorPorId(id) {
-        this.modeloJugadores.removePlayer(id);
+        this.modeloJugadores.eliminaJugador(id);
     }
 
     // Metodo para agregar un jugador desde los datos capturados en la vista
@@ -95,7 +95,7 @@ class Controlador {
         }
 
         // Llamamos al metodo del modelo para agregar el jugador
-        this.modeloJugadores.addPlayer(nombre, posicion, fechaNacimiento, imagen);
+        this.modeloJugadores.addJugador(nombre, posicion, fechaNacimiento, imagen);
 
         this.vista.mostrarSuccess("Jugador agregado con exito.");
     }
