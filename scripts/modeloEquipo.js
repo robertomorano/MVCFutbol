@@ -22,6 +22,7 @@ class EquipoModel {
   // Agregar un equipo al modelo
   agregarEquipo(nombre, ciudad, estadio, imagen) {
     let url = "";
+    imagen = new Blob([imagen], { type: "image/png" });
     console.log(imagen);
     if (imagen !== undefined) {
       
