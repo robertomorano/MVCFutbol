@@ -70,7 +70,7 @@ class Controlador {
     }
 
     // Metodo para eliminar un jugador por su ID
-    eliminarJugadorPorId(id) {
+    eliminarJugador(id) {
         this.modeloJugadores.eliminaJugador(id);
     }
 
