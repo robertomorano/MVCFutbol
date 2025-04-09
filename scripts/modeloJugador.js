@@ -19,14 +19,14 @@ class JugadorModel{
     // Añadir jugadores a base de datos desde el formulario de añadir jugador
     addJugador(nombre,posicion,fechaNacimiento, imagen){
         let url = "";
+        let imagenBlob = new Blob([imagen], { type: "image/png" });
         console.log(imagen);
+        console.log(imagenBlob);
         if (imagen !== undefined) {
-            url = new Promise((resolve) => {
-                const reader = new FileReader();
-                reader.onload = () => resolve(reader.result);
-                reader.readAsDataURL(imagen);
-              });
-          }
+        
+            url = URL.createObjectURL(imagenBlob);
+            console.log(url);
+        }
         let index = this.jugadores.length;
         // Iniciar el equipo a null despues con otra funcion se le asignara el id del equipo
         let player = new Jugador(index,nombre,posicion,fechaNacimiento, "" ,url);

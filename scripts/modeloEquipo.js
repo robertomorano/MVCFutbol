@@ -22,21 +22,19 @@ class EquipoModel {
   // Agregar un equipo al modelo
   agregarEquipo(nombre, ciudad, estadio, imagen) {
     let url = "";
-    imagen = new Blob([imagen], { type: "image/png" });
+    let imagenBlob = new Blob([imagen], { type: "image/png" });
     console.log(imagen);
+    console.log(imagenBlob);
     if (imagen !== undefined) {
       
-      url = new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.readAsDataURL(imagen);
-      });
+      url = url.createObjectURL(imagenBlob);
+      console.log(url);
     }
     
         
     if (this.getEquipoPorNombre(nombre) === null) {
       
-      let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio, imagen);
+      let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio, url);
       this.equipos.push(equipo);
       this.actualizarEquipoLocalStorage();
       return true;
