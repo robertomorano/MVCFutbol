@@ -169,7 +169,7 @@ class Vista {
 
         const liEquipo = document.createElement("li");
         liEquipo.classList.add("equipo");
-        liEquipo.textContent = jugador.getEquipo() === '' ? "Sin Equipo Asignado" : jugador.getEquipo();
+        liEquipo.textContent = jugador.getEquipo() === '' ? "Agente Libre" : jugador.getEquipo();
         tarjeta.appendChild(liEquipo);
 
         if (conEventoClick) {
@@ -257,7 +257,7 @@ class Vista {
         ul.appendChild(liFecha);
 
         const liEquipo = document.createElement("li");
-        liEquipo.innerHTML = `<strong>Equipo:</strong> ${suEquipo ? suEquipo.getNombre() : "Sin Equipo Asignado"}`;
+        liEquipo.innerHTML = `<strong>Equipo:</strong> ${suEquipo ? suEquipo.getNombre() : "Agente Libre"}`;
         ul.appendChild(liEquipo);
 
         infoDiv.appendChild(ul);
@@ -364,7 +364,7 @@ class Vista {
 
         if (jugadores.length > 0) {
             jugadores.forEach(jugador => {
-                const tarjetaJugadorModal = this.crearTarjetaJugador(jugador, false); // No queremos el evento de clic aquí
+                const tarjetaJugadorModal = this.crearTarjetaJugador(jugador, false);
                 contenedorRelacionados.appendChild(tarjetaJugadorModal);
             });
         } else {
