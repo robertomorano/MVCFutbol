@@ -5,19 +5,19 @@ class JugadorModel{
             localStorage.setItem("jugadores", JSON.stringify([]));
         }else{
             JSON.parse(localStorage.getItem("jugadores")).forEach(element => {
-                this.addPlayerLocalStorage(element.nombre, element.posicion, element.fechaNacimiento, element.idEquipo, element.imagen)
+                this.addJugadorLocalStorage(element.nombre, element.posicion, element.fechaNacimiento, element.idEquipo, element.imagen)
               }); 
         }
         
     }
 
     // Devolver todos los jugadores
-    getPlayers(){
+    getJugadores(){
         return this.jugadores;
     }
     
     // Añadir jugadores a base de datos desde el formulario de añadir jugador
-    addPlayer(nombre,posicion,fechaNacimiento, imagen){
+    addJugador(nombre,posicion,fechaNacimiento, imagen){
         let url = "";
         console.log(imagen);
         if (imagen !== "") {
@@ -27,13 +27,13 @@ class JugadorModel{
         // Iniciar el equipo a null despues con otra funcion se le asignara el id del equipo
         let player = new Jugador(index,nombre,posicion,fechaNacimiento, "" ,url);
         this.jugadores.push(player);
-        this.actualizarPlayerLocalStorage();
+        this.actualizarJugadorLocalStorage();
         return true;
     }
 
     // Añadir jugadores a base de datos desde localStorage hace falta crearlos de nuevo a partir de la clase Jugador
     // para que se puedan usar los metodos de la clase Jugador 
-    addPlayerLocalStorage(nombre, posicion, fechaNacimiento, idEquipo, imagen){
+    addJugadorLocalStorage(nombre, posicion, fechaNacimiento, idEquipo, imagen){
         let player = new Jugador(this.jugadores.length,nombre,posicion,fechaNacimiento, idEquipo ,imagen);
         this.jugadores.push(player);
 
@@ -41,7 +41,7 @@ class JugadorModel{
     
     //Guardar nuevos jugadores en el localStorage
     // para que se mantengan al recargar la pagina
-    actualizarPlayerLocalStorage(){
+    actualizarJugadorLocalStorage(){
         
         localStorage.setItem("jugadores", JSON.stringify(this.jugadores));
     }
@@ -61,18 +61,18 @@ class JugadorModel{
     }
     
     
-    removePlayer(id){
-        let e = this.getPlayerById(id);
+    eliminaJugador(id){
+        let e = this.getJugadorPorId(id);
         if(e !== null){
             this.jugadores.splice(this.jugadores.indexOf(e),1);
-            this.actualizarPlayerLocalStorage();
+            this.actualizarJugadorLocalStorage();
         }
 
     }
     
     
     
-    getPlayerByName(nombre){
+    getJugadorPorNombre(nombre){
         let e = null;
         this.jugadores.forEach(element => {
             if(element.getNombre() === nombre){
@@ -83,7 +83,7 @@ class JugadorModel{
     }
     
     
-    getPlayerById(id){
+    getJugadorPorId(id){
         let e = null;
         this.jugadores.forEach(element => {
             if(element.getId() === id){
@@ -94,7 +94,7 @@ class JugadorModel{
     }
     
     
-    getPlayersOfTeam(idEquipo){
+    getJugadoresDeEquipo(idEquipo){
         let equipo = null;
         this.jugadores.forEach(element => {
             if(element.getIdEquipo() === idEquipo){
