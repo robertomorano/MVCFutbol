@@ -138,12 +138,10 @@ class Vista {
         if (this.pagina === 'jugador') {
             document.getElementById("btn_crea_jugador").addEventListener("click", () => {
                 this.modal.style.display = "none";
-                console.log("Jugador creado");
             });
         } else {
             document.getElementById("btn_crea_equipo").addEventListener("click", () => {
                 this.modal.style.display = "none";
-                console.log("Equipo creado");
             });
         }
     }
@@ -180,6 +178,7 @@ class Vista {
                 tarjeta.dataset.id = objeto.getId();
 
                 const img = document.createElement("img");
+                console.log(objeto.getImagen());
                 img.src = objeto.getImagen();
                 tarjeta.appendChild(img);
 
