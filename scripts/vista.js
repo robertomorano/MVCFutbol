@@ -36,15 +36,16 @@ class Vista {
             this.abreModalCrador();
             this.modal.style.display = "block";
 
-            if (this.pagina === 'equipo') {
-                this.btnAgregarEquipo = document.getElementById("btn_crea_equipo");
-                this.btnAgregarEquipo.addEventListener("click", () => {
-                    this.controlador.agregarEquipoDesdeVista();
-                });
-            } else {
-                this.btnAgregarJugador = document.getElementById("btn_crea_jugador");
-                this.btnAgregarJugador.addEventListener("click", () => {
-                    this.controlador.agregarJugadorDesdeVista();
+            const btnCrear = this.modal.querySelector('#btn_crea_jugador') || this.modal.querySelector('#btn_crea_equipo');
+            if (btnCrear) {
+                btnCrear.addEventListener('click', () => {
+                    const datosFormulario = this.obtenerDatosFormularioCreacion();
+                    if (this.pagina === 'jugador') {
+                        this.controlador.agregarJugadorDesdeVista(datosFormulario);
+                    } else {
+                        this.controlador.agregarEquipoDesdeVista(datosFormulario);
+                    }
+                    this.modal.style.display = "none";
                 });
             }
         });
@@ -91,7 +92,7 @@ class Vista {
             const formularioJugador = document.createElement("div");
             formularioJugador.classList.add("formulario", "modal-formulario");
             formularioJugador.innerHTML = `
-                <form>
+                <form id="formulario-crear-jugador">
                     <label for="imp_imagen_jugador">Inserta la Imágen del Jugador</label>
                     <input type="file" accept="image/*" name="impImagen" id="imp_imagen_jugador">
                     <label for="imp_nombre_jugador">Nombre del Jugador</label>
@@ -113,7 +114,7 @@ class Vista {
             const formularioEquipo = document.createElement("div");
             formularioEquipo.classList.add("formulario", "modal-formulario");
             formularioEquipo.innerHTML = `
-                <form>
+                <form id="formulario-crear-equipo">
                     <label for="imp_imagen_equipo">Inserta la Imágen del Equipo</label>
                     <input type="file" accept="image/*" name="impImagen" id="imp_imagen_equipo">
                     <label for="imp_nombre_equipo">Nombre del Equipo</label>
@@ -131,15 +132,25 @@ class Vista {
         this.modalContent.appendChild(this.span);
         this.modalContent.appendChild(formulariosContainer);
         this.modal.appendChild(this.modalContent);
+    }
 
+    obtenerDatosFormularioCreacion() {
         if (this.pagina === 'jugador') {
-            document.getElementById("btn_crea_jugador").addEventListener("click", () => {
-                this.modal.style.display = "none";
-            });
+            const formulario = this.modal.querySelector('#formulario-crear-jugador');
+            return {
+                imagen: formulario.querySelector('#imp_imagen_jugador').files[0],
+                nombre: formulario.querySelector('#imp_nombre_jugador').value,
+                posicion: formulario.querySelector('#imp_posicion_jugador').value,
+                fechaNacimiento: formulario.querySelector('#imp_fecha_nacimiento').value
+            };
         } else {
-            document.getElementById("btn_crea_equipo").addEventListener("click", () => {
-                this.modal.style.display = "none";
-            });
+            const formulario = this.modal.querySelector('#formulario-crear-equipo');
+            return {
+                imagen: formulario.querySelector('#imp_imagen_equipo').files[0],
+                nombre: formulario.querySelector('#imp_nombre_equipo').value,
+                ciudad: formulario.querySelector('#imp_ciudad_equipo').value,
+                estadio: formulario.querySelector('#imp_nombre_estadio').value
+            };
         }
     }
 
