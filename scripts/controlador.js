@@ -113,7 +113,7 @@ class Controlador {
     }
 
     // Metodo para agregar un equipo al modelo
-    agregarEquipo(nombre, ciudad, estadio) {
+    agregarEquipo(nombre, ciudad, estadio, imagen) {
         // Validamos que todos los campos esten completos
         if (!nombre || !ciudad || !estadio) {
             this.vista.mostrarError("Por favor, completa todos los campos del equipo.");
@@ -121,7 +121,7 @@ class Controlador {
         }
 
         // Llamamos al metodo del modelo para agregar el equipo
-        this.modeloEquipos.agregarEquipo(nombre, ciudad, estadio);
+        this.modeloEquipos.agregarEquipo(nombre, ciudad, estadio, imagen);
 
         this.vista.mostrarSuccess("Equipo agregado con exito");
     }
