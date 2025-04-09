@@ -87,7 +87,7 @@ class Controlador {
     }
 
     // Metodo para agregar un jugador al modelo
-    agregarJugador(nombre, posicion, fechaNacimiento, imagen = "") {
+    agregarJugador(nombre, posicion, fechaNacimiento, imagen) {
         // Validamos que todos los campos esten completos
         if (!nombre || !posicion || !fechaNacimiento) {
             this.vista.mostrarError("Por favor, completa todos los campos del jugador.");
