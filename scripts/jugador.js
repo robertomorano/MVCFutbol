@@ -27,6 +27,9 @@ class Jugador {
     getImagen() {
         return this.imagen;
     }
+    getEquipo() {
+        return this.idEquipo;
+    }
     getEdad() {
         const fechaActual = new Date();
         let year = fechaActual-this.fechaNacimiento;

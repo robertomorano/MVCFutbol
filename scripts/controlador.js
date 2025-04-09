@@ -44,12 +44,12 @@ class Controlador {
 
     // Metodo para buscar un equipo por su nombre
     obtenerEquipoPorNombre(nombre) {
-        return this.modeloEquipos.obtenerEquipoPorNombre(nombre);
+        return this.modeloEquipos.getEquipoPorNombre(nombre);
     }
 
     // Metodo para obtener los jugadores que pertenecen a un equipo especifico
     obtenerJugadoresPorEquipo(nombreEquipo) {
-        const equipo = this.modeloEquipos.obtenerEquipoPorNombre(nombreEquipo);
+        const equipo = this.modeloEquipos.getEquipoPorNombre(nombreEquipo);
         if (!equipo) {
             this.vista.mostrarError("Equipo no encontrado.");
             return;
@@ -60,7 +60,7 @@ class Controlador {
 
     // Metodo para asignar un equipo a un jugador
     asignarEquipoAJugador(idJugador, nombreEquipo) {
-        const equipo = this.modeloEquipos.obtenerEquipoPorNombre(nombreEquipo);
+        const equipo = this.modeloEquipos.getEquipoPorNombre(nombreEquipo);
         if (!equipo) {
             this.vista.mostrarError("Equipo o Jugador no encontrado.");
             return;
