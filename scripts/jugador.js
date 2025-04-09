@@ -32,7 +32,7 @@ class Jugador {
     }
     getEdad() {
         const fechaActual = new Date();
-        let year = fechaActual-this.fechaNacimiento;
+        let year = fechaActual.getFullYear-this.fechaNacimiento;
         return year;
     }
     setPosicion(posicion) {
