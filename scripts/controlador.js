@@ -21,7 +21,7 @@ class Controlador {
     setVista(vista) {
         this.vista = vista;
     }
-
+//
     // Metodo para obtener la lista de jugadores desde el modelo
     obtenerJugadores() {
         return this.modeloJugadores.getJugadores();
@@ -32,14 +32,54 @@ class Controlador {
         return this.modeloEquipos.getEquipos();
     }    
 
+    // Metodo para obtener la lista de jugadores desde el modelo
+    mostrarJugadores() {
+        return this.modeloJugadores.getJugadores();
+    }
+    
+    // Metodo para obtener la lista de equipos desde el modelo
+    mostrarEquipos() {
+        return this.modeloEquipos.getEquipos();
+    } 
+//
     // Metodo para obtener un jugador especifico por su ID
     obtenerJugadorPorId(id) {
         return this.modeloJugadores.getJugadorPorId(id);
     }
 
     // Metodo para obtener un equipo especifico por su ID
-    obtenerEquipoPorId(id) {
-        return this.modeloEquipos.getEquipoPorId(id);
+//    obtenerEquipoPorId(id) {
+//    return this.modeloEquipos.getEquipoPorId(id);
+//    }
+
+    mostrarModalEquipo(equipo, jugadores) {
+        this.vista.mostrarModalEquipo(equipo, jugadores);
+    }
+
+    obtenerParaModalEquipos(id) {
+        const equipo = this.modeloEquipos.getEquipoPorId(id);
+
+        if (equipo) {
+            const jugadores = this.modeloJugadores.getJugadoresDeEquipo(equipo.id);
+            this.mostrarModalEquipo(equipo, jugadores);
+        } else {
+            this.vista.mostrarError("Equipo no encontrado.");
+        }
+    }
+
+    mostrarModalJugador(jugadores, equipo) {
+        this.vista.mostrarModalJugador(equipo, jugadores);
+    }
+
+    obtenerParaModalJugadores(id) {
+        const jugador = this.modeloJugadores.getJugadorPorId(id);
+
+        if (jugador) {
+            const equipo = this.modeloEquipos.getEquipoPorId(jugador.idEquipo);
+            this.mostrarModalJugador(jugador, equipo);
+        } else {
+            this.vista.mostrarError("Jugador no encontrado.");
+        }
     }
 
     // Metodo para buscar un equipo por su nombre
