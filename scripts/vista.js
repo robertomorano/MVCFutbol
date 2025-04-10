@@ -13,6 +13,9 @@ class Vista {
         const visualizaJugadores = document.getElementById('visualiza-jugadores');
         const visualizaEquipos = document.getElementById('visualiza-equipos');
 
+        this.listaJugadoresContenedor = document.getElementById('lista_de_jugadores');
+        this.listaEquiposContenedor = document.getElementById('lista_de_equipos');
+
         botonesNavPrincipal.forEach(boton => {
             boton.addEventListener('click', () => {
                 botonesNavPrincipal.forEach(btn => btn.classList.remove('active'));
@@ -67,6 +70,16 @@ class Vista {
                 this.ocultarError();
             });
         }
+    }
+
+    // Método para limpiar la lista de jugadores
+    limpiarListaJugadores() {
+        this.listaJugadoresContenedor.innerHTML = '';
+    }
+
+    // Método para limpiar la lista de equipos
+    limpiarListaEquipos() {
+        this.listaEquiposContenedor.innerHTML = '';
     }
 
     abreModalCrador() {
@@ -190,23 +203,24 @@ class Vista {
         return tarjeta;
     }
 
-    renderizarVista(objeto = '') {
-        const contenedor = this.pagina === 'jugador'
-            ? document.getElementById("lista_de_jugadores")
-            : document.getElementById("lista_de_equipos");
+    // Se encarga de mostrar un mensaje si la lista de jugadores o equipos está vacía
+    mostrarMensajeVacio(tipo) {
+        const contenedor = tipo === 'jugador' ? this.listaJugadoresContenedor : this.listaEquiposContenedor;
+        const mensaje = document.createElement("p");
+        mensaje.classList.add("mensaje-vacio");
+        mensaje.textContent = tipo === 'jugador'
+            ? "No hay jugadores registrados."
+            : "No hay equipos registrados.";
+        contenedor.appendChild(mensaje);
+    }
 
-        contenedor.innerHTML = '';
+    renderizarVista(objeto) {
+
+        const contenedor = this.pagina === 'jugador' ? this.listaJugadoresContenedor : this.listaEquiposContenedor;
 
         console.log(objeto);
 
-        if (objeto === '') {
-            const mensaje = document.createElement("p");
-            mensaje.classList.add("mensaje-vacio");
-            mensaje.textContent = this.pagina === 'jugador'
-                ? "No hay jugadores registrados."
-                : "No hay equipos registrados.";
-            contenedor.appendChild(mensaje);
-        } else if (this.pagina === 'jugador') {
+        if (this.pagina === 'jugador') {
             const tarjetaJugador = this.crearTarjetaJugador(objeto);
             contenedor.appendChild(tarjetaJugador);
         } else {
