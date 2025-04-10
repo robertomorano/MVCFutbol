@@ -89,10 +89,14 @@ class EquipoModel {
 
 
   eliminarEquipo(id) {
+    let eliminado = false;
     let equipo = this.getEquipoPorId(id);
     if (equipo !== null) {
       this.equipos.splice(this.equipos.indexOf(equipo), 1);
+      this.actualizarEquipoLocalStorage();
+      eliminado = true;
     }
+    return eliminado;
   }
 
 }

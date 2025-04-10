@@ -66,12 +66,14 @@ class JugadorModel{
     
     
     eliminaJugador(id){
+        let eliminado = false;
         let e = this.getJugadorPorId(id);
         if(e !== null){
             this.jugadores.splice(this.jugadores.indexOf(e),1);
             this.actualizarJugadorLocalStorage();
+            eliminado = true;
         }
-
+        return eliminado;
     }
     
     
