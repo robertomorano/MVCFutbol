@@ -5,7 +5,7 @@ class JugadorModel{
             localStorage.setItem("jugadores", JSON.stringify([]));
         }else{
             JSON.parse(localStorage.getItem("jugadores")).forEach(element => {
-                this.addJugadorLocalStorage(element.nombre, element.posicion, element.fechaNacimiento, element.idEquipo, element.imagen)
+                this.addJugadorDesdeLocalStorage(element.nombre, element.posicion, element.fechaNacimiento, element.idEquipo, element.imagen)
               }); 
         }
         
