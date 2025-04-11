@@ -18,6 +18,7 @@ class JugadorModel{
     
     // Añadir jugadores a base de datos desde el formulario de añadir jugador
     addJugador(nombre,posicion,fechaNacimiento, imagen){
+        let agregado = false;
         let url = "";
         let imagenBlob = new Blob([imagen], { type: "image/png" });
         console.log(imagen);
@@ -26,21 +27,23 @@ class JugadorModel{
         
             url = URL.createObjectURL(imagenBlob);
             console.log(url);
+        }else{
+            url = "../recursos/imagen_pordefecto.webp";
         }
         let index = this.jugadores.length;
         // Iniciar el equipo a null despues con otra funcion se le asignara el id del equipo
         let player = new Jugador(index,nombre,posicion,fechaNacimiento, "" ,url);
         this.jugadores.push(player);
         this.actualizarJugadorLocalStorage();
-        return true;
+        agregado = true;
+        return agregado;
     }
 
     // Añadir jugadores a base de datos desde localStorage hace falta crearlos de nuevo a partir de la clase Jugador
     // para que se puedan usar los metodos de la clase Jugador 
-    addJugadorLocalStorage(nombre, posicion, fechaNacimiento, idEquipo, imagen){
+    addJugadorDesdeLocalStorage(nombre, posicion, fechaNacimiento, idEquipo, imagen){
         let player = new Jugador(this.jugadores.length,nombre,posicion,fechaNacimiento, idEquipo ,imagen);
         this.jugadores.push(player);
-
     }
     
     //Guardar nuevos jugadores en el localStorage
