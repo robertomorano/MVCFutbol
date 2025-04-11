@@ -21,6 +21,31 @@ class Controlador {
     setVista(vista) {
         this.vista = vista;
     }
+
+    // Metodo para mostrar los jugadores en la vista
+    mostrarJugadores() {
+        const jugadores = this.modeloJugadores.getJugadores();
+        if (jugadores.length !== 0) {
+        for (let i = 0; i < jugadores.length; i++) {
+            this.vista.renderizarVista(jugadores[i]);
+        }
+        } else {
+            this.vista.mostrarMensajeVacio('jugador');
+        }
+    }
+
+    // Metodo
+    mostrarEquipos() {
+        const equipo = this.modeloEquipos.getEquipos();
+        if (equipo.length !== 0) {
+        for (let i = 0; i < equipo.length; i++) {
+            this.vista.renderizarVista(equipo[i]);
+        }
+        } else {
+            this.vista.mostrarMensajeVacio('equipo');
+        }
+    }
+
 //
     // Metodo para obtener la lista de jugadores desde el modelo
     obtenerJugadores() {
@@ -32,15 +57,6 @@ class Controlador {
         return this.modeloEquipos.getEquipos();
     }    
 
-    // Metodo para obtener la lista de jugadores desde el modelo
-    mostrarJugadores() {
-        return this.modeloJugadores.getJugadores();
-    }
-    
-    // Metodo para obtener la lista de equipos desde el modelo
-    mostrarEquipos() {
-        return this.modeloEquipos.getEquipos();
-    } 
 //
     // Metodo para obtener un jugador especifico por su ID
     obtenerJugadorPorId(id) {
@@ -52,34 +68,28 @@ class Controlador {
 //    return this.modeloEquipos.getEquipoPorId(id);
 //    }
 
-    mostrarModalEquipo(equipo, jugadores) {
-        this.vista.mostrarModalEquipo(equipo, jugadores);
-    }
-
+    // Metodo para obtener un equipo especifico por su ID y mostrarlo en un modal
     obtenerParaModalEquipos(id) {
         const equipo = this.modeloEquipos.getEquipoPorId(id);
 
         if (equipo) {
             const jugadores = this.modeloJugadores.getJugadoresDeEquipo(equipo.id);
-            this.mostrarModalEquipo(equipo, jugadores);
-        } else {
-            this.vista.mostrarError("Equipo no encontrado.");
+            this.vista.mostrarModalEquipo(equipo, jugadores);
         }
     }
 
-    mostrarModalJugador(jugadores, equipo) {
-        this.vista.mostrarModalJugador(equipo, jugadores);
-    }
-
+    // Metodo para obtener un jugador especifico por su ID y mostrarlo en un modal
     obtenerParaModalJugadores(id) {
         const jugador = this.modeloJugadores.getJugadorPorId(id);
 
-        if (jugador) {
-            const equipo = this.modeloEquipos.getEquipoPorId(jugador.idEquipo);
-            this.mostrarModalJugador(jugador, equipo);
-        } else {
-            this.vista.mostrarError("Jugador no encontrado.");
-        }
+        const equipo = this.modeloEquipos.getEquipoPorId(jugador.idEquipo);
+        this.vista.mostrarModalJugador(jugador, equipo);
+    }
+
+    // Metodo para crear una tarjeta de equipo en la vista
+    crearTarjetaJugador(jugador) {
+        const equipo = this.modeloEquipos.getEquipoPorId(jugador.idEquipo);
+        this.vista.crearTarjetaJugador(jugador, equipo);
     }
 
     // Metodo para buscar un equipo por su nombre
