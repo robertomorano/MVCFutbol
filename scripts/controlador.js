@@ -26,9 +26,9 @@ class Controlador {
     mostrarJugadores() {
         const jugadores = this.modeloJugadores.getJugadores();
         if (jugadores.length !== 0) {
-        for (let i = 0; i < jugadores.length; i++) {
-            this.vista.renderizarVista(jugadores[i]);
-        }
+            jugadores.forEach((jugador) => {
+                this.vista.renderizarVista(jugador);
+            });
         } else {
             this.vista.mostrarMensajeVacio('jugador');
         }
@@ -80,9 +80,9 @@ class Controlador {
 
     // Metodo para obtener un jugador especifico por su ID y mostrarlo en un modal
     obtenerParaModalJugadores(id) {
-        const jugador = this.modeloJugadores.getJugadorPorId(id);
+        const jugador = this.modeloJugador.getJugadorPorId(id);
 
-        const equipo = this.modeloEquipos.getEquipoPorId(jugador.idEquipo);
+        const equipo = this.modeloEquipos.getEquipoPorId(jugador.getEquipo());
         this.vista.mostrarModalJugador(jugador, equipo);
     }
 

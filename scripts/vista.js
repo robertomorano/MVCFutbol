@@ -221,7 +221,7 @@ class Vista {
         console.log(objeto);
 
         if (this.pagina === 'jugador') {
-            const tarjetaJugador = this.crearTarjetaJugador(objeto);
+            const tarjetaJugador = this.crearTarjetaJugador(objeto, true);
             contenedor.appendChild(tarjetaJugador);
         } else {
             const tarjeta = document.createElement("div");
