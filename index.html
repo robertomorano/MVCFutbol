@@ -89,6 +89,7 @@
     </footer>
 
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
         const controlador = new Controlador();
 
         const equipoModelo = new EquipoModel();
@@ -98,7 +99,13 @@
         controlador.setModeloJugador(jugadorModelo);
 
         const vista = new Vista(controlador);
+
         controlador.setVista(vista);
+
+        vista.inicializar();
+
+        controlador.mostrarJugadores();
+    });
     </script>
 </body>
 </html>

@@ -9,32 +9,40 @@ class Vista {
         this.errorMessage = document.getElementById('errorMessage');
         this.cerrarErrorBtn = document.getElementById('cerrarErrorBtn');
 
-        const botonesNavPrincipal = document.querySelectorAll('.btn_nav_principal');
-        const visualizaJugadores = document.getElementById('visualiza-jugadores');
-        const visualizaEquipos = document.getElementById('visualiza-equipos');
+        this.botonesNavPrincipal = document.querySelectorAll('.btn_nav_principal');
+        this.visualizaJugadores = document.getElementById('visualiza-jugadores');
+        this.visualizaEquipos = document.getElementById('visualiza-equipos');
 
         this.listaJugadoresContenedor = document.getElementById('lista_de_jugadores');
         this.listaEquiposContenedor = document.getElementById('lista_de_equipos');
 
-        botonesNavPrincipal.forEach(boton => {
+        // Vinculamos métodos para asegurar el contexto correcto de 'this'
+        this.renderizarVista = this.renderizarVista.bind(this);
+    }
+
+    // Nuevo método para inicializar los event listeners después de que el controlador tenga la vista
+    inicializar() {
+        // Configurar los botones de navegación principal
+        this.botonesNavPrincipal.forEach(boton => {
             boton.addEventListener('click', () => {
-                botonesNavPrincipal.forEach(btn => btn.classList.remove('active'));
+                this.botonesNavPrincipal.forEach(btn => btn.classList.remove('active'));
                 boton.classList.add('active');
                 const target = boton.dataset.target;
                 if (target === 'jugadores') {
-                    visualizaJugadores.style.display = 'flex';
-                    visualizaEquipos.style.display = 'none';
+                    this.visualizaJugadores.style.display = 'flex';
+                    this.visualizaEquipos.style.display = 'none';
                     this.pagina = 'jugador';
                     this.controlador.mostrarJugadores();
                 } else {
-                    visualizaJugadores.style.display = 'none';
-                    visualizaEquipos.style.display = 'flex';
+                    this.visualizaJugadores.style.display = 'none';
+                    this.visualizaEquipos.style.display = 'flex';
                     this.pagina = 'equipo';
                     this.controlador.mostrarEquipos();
                 }
             });
         });
 
+        // Configurar el botón para abrir el modal
         this.btn.addEventListener("click", () => {
             this.abreModalCrador();
             this.modal.style.display = "block";
@@ -53,15 +61,16 @@ class Vista {
             }
         });
 
+        // Configurar el cierre del modal al hacer clic fuera
         window.addEventListener("click", (event) => {
             if (event.target == this.modal) {
                 this.modal.style.display = "none";
             }
         });
 
+        // Inicializar otros componentes
         this.cerrarModalObjeto();
         this.inicializarErrorCardListeners();
-        this.renderizarVista();
     }
 
     inicializarErrorCardListeners() {
@@ -72,12 +81,11 @@ class Vista {
         }
     }
 
-    // Método para limpiar la lista de jugadores
+    // Resto de los métodos igual que antes...
     limpiarListaJugadores() {
         this.listaJugadoresContenedor.innerHTML = '';
     }
 
-    // Método para limpiar la lista de equipos
     limpiarListaEquipos() {
         this.listaEquiposContenedor.innerHTML = '';
     }
@@ -203,7 +211,6 @@ class Vista {
         return tarjeta;
     }
 
-    // Se encarga de mostrar un mensaje si la lista de jugadores o equipos está vacía
     mostrarMensajeVacio(tipo) {
         const contenedor = tipo === 'jugador' ? this.listaJugadoresContenedor : this.listaEquiposContenedor;
         const mensaje = document.createElement("p");
@@ -215,7 +222,6 @@ class Vista {
     }
 
     renderizarVista(objeto) {
-
         const contenedor = this.pagina === 'jugador' ? this.listaJugadoresContenedor : this.listaEquiposContenedor;
 
         console.log(objeto);
