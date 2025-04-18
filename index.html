@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/modal_formularios.css">
     <link rel="stylesheet" href="css/modal_jugadores.css">
+    <link rel="stylesheet" href="css/modal_equipos.css"> <!-- Nuevo archivo CSS para modal de equipos -->
     <link rel="stylesheet" href="css/tarjetaError.css">
     <link rel="stylesheet" href="css/buscador.css">
     <script src="scripts/modeloEquipo.js"></script>
@@ -24,16 +25,27 @@
 
     <div id="myModal" class="modal"></div>
 
-    <div id="modalInformacion" class="modal-jugador">
+    <div id="modalInformacionJugador" class="modal-jugador">
         <div class="modal-content-jugador">
             <span class="close">&times;</span>
-            <div class="tarjeta-jugador"></div> </div>
+            <div class="tarjeta-jugador"></div>
+        </div>
     </div>
+
+    <!-- Nuevo modal para equipos -->
+    <div id="modalInformacionEquipo" class="modal-equipo">
+        <div class="modal-content-equipo">
+            <span class="close">&times;</span>
+            <div class="tarjeta-equipo"></div>
+        </div>
+    </div>
+
     <div id="errorCard" class="error-card" style="display: none;">
         <p id="errorMessage"></p>
         <span id="cerrarErrorBtn" aria-label="Cerrar notificación" class="close">&times;</span>
     </div>
 
+    <!-- Resto del HTML sin cambios -->
     <header>
         <h1>GESTIÓN DE JUGADORES Y EQUIPOS DE FÚTBOL</h1>
     </header>
