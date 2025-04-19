@@ -20,11 +20,14 @@ class Vista {
         this.modalJugador = document.getElementById("modalInformacionJugador");
         this.modalEquipo = document.getElementById("modalInformacionEquipo");
 
+        // Elementos del desplegable de filtro
+        this.botonFiltrar = document.querySelector('.dropdown-toggle');
+        this.menuFiltrar = document.querySelector('.dropdown-menu');
+
         // Vinculamos métodos para asegurar el contexto correcto de 'this'
         this.renderizarVista = this.renderizarVista.bind(this);
     }
 
-    // Nuevo método para inicializar los event listeners después de que el controlador tenga la vista
     inicializar() {
         // Configurar los botones de navegación principal
         this.botonesNavPrincipal.forEach(boton => {
@@ -36,11 +39,13 @@ class Vista {
                     this.visualizaJugadores.style.display = 'flex';
                     this.visualizaEquipos.style.display = 'none';
                     this.pagina = 'jugador';
+                    this.actualizarMenuFiltro(['Nombre A-Z', 'Nombre Z-A', 'Posición', 'Edad']); // Filtros para jugadores
                     this.controlador.mostrarJugadores();
                 } else {
                     this.visualizaJugadores.style.display = 'none';
                     this.visualizaEquipos.style.display = 'flex';
                     this.pagina = 'equipo';
+                    this.actualizarMenuFiltro(['Nombre A-Z', 'Nombre Z-A', 'Ciudad', 'Estadio']); // Filtros para equipos
                     this.controlador.mostrarEquipos();
                 }
             });
@@ -81,18 +86,63 @@ class Vista {
         // Inicializar otros componentes
         this.cerrarModalObjeto();
         this.inicializarErrorCardListeners();
-        
+
         // Inicializar el buscador
         const inputBuscador = document.getElementById('inpBuscador');
         if (inputBuscador) {
             inputBuscador.addEventListener('input', (e) => {
                 const termino = e.target.value.trim();
                 if (termino.length >= 2) {
-                    this.realizarBusqueda(termino);
+                    this.controlador.buscar(termino);
                 } else if (this.pagina === 'jugador') {
                     this.controlador.mostrarJugadores();
                 } else {
                     this.controlador.mostrarEquipos();
+                }
+            });
+        }
+
+        // Inicializar el desplegable de filtro
+        this.inicializarFiltro();
+
+        this.actualizarMenuFiltro(['Nombre A-Z', 'Nombre Z-A', 'Posición', 'Edad']);
+    }
+
+    actualizarMenuFiltro(filtros) {
+        if (this.menuFiltrar) {
+            this.menuFiltrar.innerHTML = ''; // Limpiar las opciones anteriores
+            filtros.forEach(filtro => {
+                const opcion = document.createElement('a');
+                opcion.classList.add('dropdown-item');
+                opcion.dataset.filtro = filtro.toLowerCase(); // Usar en minúsculas para consistencia
+                opcion.textContent = filtro;
+                opcion.href = '#'; // Evitar el comportamiento de enlace
+                opcion.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const filtroSeleccionado = e.target.dataset.filtro;
+                    if (this.pagina === 'jugador') {
+                        this.controlador.filtrarJugadores(filtroSeleccionado);
+                    } else if (this.pagina === 'equipo') {
+                        this.controlador.filtrarEquipos(filtroSeleccionado); // Nuevo método en el controlador
+                    }
+                    this.menuFiltrar.classList.remove('show');
+                });
+                this.menuFiltrar.appendChild(opcion);
+            });
+        }
+    }
+
+    inicializarFiltro() {
+        if (this.botonFiltrar && this.menuFiltrar) {
+            this.botonFiltrar.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.menuFiltrar.classList.toggle('show');
+            });
+
+            // Cerrar el desplegable si se hace clic fuera
+            window.addEventListener('click', (e) => {
+                if (!this.botonFiltrar.contains(e.target) && this.menuFiltrar.classList.contains('show')) {
+                    this.menuFiltrar.classList.remove('show');
                 }
             });
         }
@@ -103,32 +153,6 @@ class Vista {
             this.cerrarErrorBtn.addEventListener('click', () => {
                 this.ocultarError();
             });
-        }
-    }
-
-    realizarBusqueda(termino) {
-        const resultados = this.controlador.buscar(termino);
-        
-        if (this.pagina === 'jugador') {
-            this.limpiarListaJugadores();
-            if (resultados.jugadores.length === 0) {
-                this.mostrarMensajeVacio('jugador');
-            } else {
-                resultados.jugadores.forEach(jugador => {
-                    const tarjeta = this.crearTarjetaJugador(jugador, true);
-                    this.listaJugadoresContenedor.appendChild(tarjeta);
-                });
-            }
-        } else {
-            this.limpiarListaEquipos();
-            if (resultados.equipos.length === 0) {
-                this.mostrarMensajeVacio('equipo');
-            } else {
-                resultados.equipos.forEach(equipo => {
-                    const tarjeta = this.crearTarjetaEquipo(equipo);
-                    this.listaEquiposContenedor.appendChild(tarjeta);
-                });
-            }
         }
     }
 
@@ -322,22 +346,33 @@ class Vista {
         const mensaje = document.createElement("p");
         mensaje.classList.add("mensaje-vacio");
         mensaje.textContent = tipo === 'jugador'
-            ? "No hay jugadores registrados."
-            : "No hay equipos registrados.";
+            ? "No hay jugadores que coincidan con el filtro."
+            : "No hay equipos que coincidan con el filtro.";
         contenedor.appendChild(mensaje);
     }
 
-    renderizarVista(objeto) {
-        const contenedor = this.pagina === 'jugador' ? this.listaJugadoresContenedor : this.listaEquiposContenedor;
-
-        if (!objeto) return;
-
-        if (this.pagina === 'jugador') {
-            const tarjetaJugador = this.crearTarjetaJugador(objeto, true);
-            contenedor.appendChild(tarjetaJugador);
+    renderizarVista(jugadores) { // Ahora recibe la lista de jugadores directamente
+        this.limpiarListaJugadores();
+        if (jugadores && jugadores.length > 0) {
+            jugadores.forEach(jugador => {
+                const tarjeta = this.crearTarjetaJugador(jugador, true);
+                this.listaJugadoresContenedor.appendChild(tarjeta);
+            });
         } else {
-            const tarjetaEquipo = this.crearTarjetaEquipo(objeto);
-            contenedor.appendChild(tarjetaEquipo);
+            this.mostrarMensajeVacio('jugador');
+        }
+    }
+
+    // Para la renderización de equipos filtrados
+    renderizarListaEquipos(equipos) {
+        this.limpiarListaEquipos();
+        if (equipos && equipos.length > 0) {
+            equipos.forEach(equipo => {
+                const tarjeta = this.crearTarjetaEquipo(equipo);
+                this.listaEquiposContenedor.appendChild(tarjeta);
+            });
+        } else {
+            this.mostrarMensajeVacio('equipo');
         }
     }
 
@@ -465,37 +500,37 @@ class Vista {
         const infoDiv = document.createElement("div");
         infoDiv.classList.add("info-equipo");
         infoDiv.style.width = "60%";
-        
+
         const ul = document.createElement("ul");
-        
+
         const liNombre = document.createElement("li");
         liNombre.innerHTML = `<strong>Nombre:</strong> ${equipo.getNombre()}`;
         ul.appendChild(liNombre);
-        
+
         const liCiudad = document.createElement("li");
         liCiudad.innerHTML = `<strong>Ciudad:</strong> ${equipo.getCiudad()}`;
         ul.appendChild(liCiudad);
-        
+
         const liEstadio = document.createElement("li");
         liEstadio.innerHTML = `<strong>Estadio:</strong> ${equipo.getEstadio()}`;
         ul.appendChild(liEstadio);
-        
+
         infoDiv.appendChild(ul);
         seccionInfo.appendChild(infoDiv);
-        
+
         contenedorTarjeta.appendChild(seccionInfo);
-        
+
         // Sección de jugadores del equipo
         const seccionJugadores = document.createElement("div");
         seccionJugadores.classList.add("jugadores-equipo");
-        
+
         const tituloJugadores = document.createElement("h3");
         tituloJugadores.textContent = "Jugadores";
         seccionJugadores.appendChild(tituloJugadores);
-        
+
         const listaJugadores = document.createElement("div");
         listaJugadores.classList.add("lista-jugadores-equipo");
-        
+
         if (jugadores && jugadores.length > 0) {
             jugadores.forEach(jugador => {
                 const tarjetaJugador = this.crearTarjetaJugadorMini(jugador);
@@ -507,10 +542,10 @@ class Vista {
             mensajeVacio.textContent = "Este equipo no tiene jugadores asignados.";
             listaJugadores.appendChild(mensajeVacio);
         }
-        
+
         seccionJugadores.appendChild(listaJugadores);
         contenedorTarjeta.appendChild(seccionJugadores);
-        
+
         // Sección de botones
         const botones = document.createElement("div");
         botones.classList.add("botones-equipo");
@@ -519,20 +554,20 @@ class Vista {
             <button id="btnEditarEquipo">Editar equipo</button>
         `;
         contenedorTarjeta.appendChild(botones);
-        
+
         document.getElementById("btnEliminarEquipo").addEventListener("click", () => {
             if (jugadores && jugadores.length > 0) {
                 this.mostrarError("No se puede eliminar un equipo con jugadores asignados.");
                 return;
             }
-            
+
             if (confirm("¿Está seguro que desea eliminar este equipo?")) {
                 this.controlador.eliminarEquipo(equipo.getId());
                 modal.style.display = "none";
                 this.mostrarSuccess("Equipo eliminado con éxito.");
             }
         });
-        
+
         document.getElementById("btnEditarEquipo").addEventListener("click", () => {
             // Crear un formulario de edición
             const formEdicion = document.createElement("div");
@@ -552,39 +587,39 @@ class Vista {
                     </div>
                 </form>
             `;
-            
+
             // Reemplazar contenido del modal con el formulario
             modal.querySelector(".tarjeta-equipo").innerHTML = "";
             modal.querySelector(".tarjeta-equipo").appendChild(formEdicion);
-            
+
             // Manejar acciones del formulario
             document.getElementById("btn-cancelar-edicion").addEventListener("click", () => {
                 this.mostrarModalEquipo(equipo, jugadores);
             });
-            
+
             document.getElementById("btn-guardar-edicion").addEventListener("click", () => {
                 const nuevoNombre = document.getElementById("edit-nombre-equipo").value;
                 const nuevaCiudad = document.getElementById("edit-ciudad-equipo").value;
                 const nuevoEstadio = document.getElementById("edit-estadio-equipo").value;
-                
+
                 if (!nuevoNombre || !nuevaCiudad || !nuevoEstadio) {
                     this.mostrarError("Todos los campos son obligatorios.");
                     return;
                 }
-                
+
                 const datosActualizados = {
                     id: equipo.getId(),
                     nombre: nuevoNombre,
                     ciudad: nuevaCiudad,
                     estadio: nuevoEstadio
                 };
-                
+
                 this.controlador.actualizarEquipo(datosActualizados);
                 modal.style.display = "none";
                 this.mostrarSuccess("Equipo actualizado con éxito.");
             });
         });
-        
+
         modal.style.display = "block";
     }
 
@@ -631,7 +666,7 @@ class Vista {
                 this.modalJugador.style.display = "none";
             });
         }
-        
+
         // Configurar cerrar para el modal de equipo
         const cerrarModalEquipo = this.modalEquipo.querySelector(".close");
         if (cerrarModalEquipo) {

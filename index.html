@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/modal_formularios.css">
     <link rel="stylesheet" href="css/modal_jugadores.css">
-    <link rel="stylesheet" href="css/modal_equipos.css"> <!-- Nuevo archivo CSS para modal de equipos -->
+    <link rel="stylesheet" href="css/modal_equipos.css">
     <link rel="stylesheet" href="css/tarjetaError.css">
     <link rel="stylesheet" href="css/buscador.css">
+    <link rel="stylesheet" href="css/dropdown.css">
     <script src="scripts/modeloEquipo.js"></script>
     <script src="scripts/modeloJugador.js"></script>
     <script src="scripts/equipo.js"></script>
@@ -71,10 +72,14 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <img src="recursos/filtrar.png" alt="Filtrar" style="width: 20px; height: auto;">
-                                <span>Filtrar</span>
-                            </a>
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-toggle">
+                                    <img src="recursos/filtrar.png" alt="Filtrar" style="width: 20px; height: auto;">
+                                    <span>Filtrar</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    </div>
+                            </div>
                         </li>
                     </ul>
                 </nav>
