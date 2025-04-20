@@ -21,6 +21,7 @@ class JugadorModel{
         let agregado = false;
         let url = "";
         let imagenBlob = new Blob([imagen], { type: "image/png" });
+        const posicionesValidas = ["portero", "defensa", "centrocampista", "delantero"];
         console.log(imagen);
         console.log(imagenBlob);
         if (imagen !== undefined) {
@@ -29,6 +30,19 @@ class JugadorModel{
             console.log(url);
         }else{
             url = "../recursos/imagen_pordefecto.webp";
+        }
+        
+        if (!posicionesValidas.includes(posicion)) {
+            agregado = false;
+        }
+        const fecha = new Date(fechaNacimiento);
+        if (
+            fecha.getTime() || 
+            fecha.getFullYear() < 1900 || 
+            fecha.getMonth() < 0 || fecha.getMonth() > 11 || 
+            fecha.getDate() < 1 || fecha.getDate() > 31
+        ) {
+            agregado = false;
         }
         let index = this.jugadores.length;
         // Iniciar el equipo a null despues con otra funcion se le asignara el id del equipo
@@ -128,26 +142,32 @@ class JugadorModel{
     getOrdenPosicion(){
         let ordenPosicion;
         for(let i = 0; i < this.jugadores.length; i++){
-            if(this.jugadores[i].getPosicion() === "Portero"){
+            if(this.jugadores[i].getPosicion() === "portero"){
                 ordenPosicion.push(this.jugadores[i]);
             }
         }
         for(let i = 0; i < this.jugadores.length; i++){
-            if(this.jugadores[i].getPosicion() === "Defensa"){
+            if(this.jugadores[i].getPosicion() === "defensa"){
                 ordenPosicion.push(this.jugadores[i]);
             }
         }
         for(let i = 0; i < this.jugadores.length; i++){
-            if(this.jugadores[i].getPosicion() === "Centrocampista"){
+            if(this.jugadores[i].getPosicion() === "centrocampista"){
                 ordenPosicion.push(this.jugadores[i]);
             }
         }
         for(let i = 0; i < this.jugadores.length; i++){
-            if(this.jugadores[i].getPosicion() === "Delantero"){
+            if(this.jugadores[i].getPosicion() === "delantero"){
                 ordenPosicion.push(this.jugadores[i]);
             }
         }
         return ordenPosicion;
+    }
+    //funcion que devuelve los jugadores con esa cadena
+    buscaJugadorPorNombre(cadena){
+        let jugadorNombres = this.jugadores.filter(element => element.getNombre().toLowerCase().includes(cadena.toLowerCase()));
+        
+        return jugadorNombres;
     }
     
 

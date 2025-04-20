@@ -21,14 +21,17 @@ class EquipoModel {
 
   // Agregar un equipo al modelo
   agregarEquipo(nombre, ciudad, estadio, imagen) {
+    let agregado = false;
     let url = "";
     let imagenBlob = new Blob([imagen], { type: "image/png" });
     console.log(imagen);
     console.log(imagenBlob);
     if (imagen !== undefined) {
-      
-      url = url.createObjectURL(imagenBlob);
-      console.log(url);
+    
+        url = URL.createObjectURL(imagenBlob);
+        console.log(url);
+    }else{
+        url = "../recursos/imagen_pordefecto.webp";
     }
     
         
@@ -37,9 +40,9 @@ class EquipoModel {
       let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio, url);
       this.equipos.push(equipo);
       this.actualizarEquipoLocalStorage();
-      return true;
+      agregado = true;
     }
-    return false;
+    return agregado;
   }
 
   //Guardar en localStorage los equipos
@@ -115,4 +118,10 @@ class EquipoModel {
     let estadio = this.equipos.sort((a, b) => a.estadio.localeCompare(b.estadio));
     return estadio;
   }
+  //funcion que devuelve los jugadores con esa cadena
+  buscaEquipoPorNombre(cadena){
+    let jugadorNombres = this.jugadores.filter(element => element.getNombre().toLowerCase().includes(cadena.toLowerCase()));
+    
+    return jugadorNombres;
+}
 } 
