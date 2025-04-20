@@ -34,7 +34,7 @@ class Controlador {
         }
     }
 
-    // Metodo
+    // Metodo para mostrar los equipos en la vista
     mostrarEquipos() {
         const equipo = this.modeloEquipos.getEquipos();
         if (equipo.length !== 0) {
@@ -44,6 +44,11 @@ class Controlador {
         } else {
             this.vista.mostrarMensajeVacio('equipo');
         }
+    }
+
+    buscar(termino) {
+        // Llamamos al metodo de la vista para mostrar los resultados de la busqueda
+        this.vista.mostrarResultados(this.modeloJugadores.buscarJugador(termino));
     }
 
 //
