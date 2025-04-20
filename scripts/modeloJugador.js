@@ -112,5 +112,43 @@ class JugadorModel{
         });
         return equipo;
     }
+    //opciones de filtrado 
+    getOrdenAlfabetico(){
+        let alfabetico = this.jugadores.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        return alfabetico;
+    }
+    getOrdenAlfabeticoDescendente(){
+        let alfabeticoInverso = this.jugadores.sort((a, b) => b.nombre.localeCompare(a.nombre));
+        return alfabeticoInverso;
+    }
+    getOrdenFechaNacimiento(){
+        let ordenFecha = this.jugadores.sort((a, b) => a.getEdad() - b.getEdad());
+        return ordenFecha;
+    }
+    getOrdenPosicion(){
+        let ordenPosicion;
+        for(let i = 0; i < this.jugadores.length; i++){
+            if(this.jugadores[i].getPosicion() === "Portero"){
+                ordenPosicion.push(this.jugadores[i]);
+            }
+        }
+        for(let i = 0; i < this.jugadores.length; i++){
+            if(this.jugadores[i].getPosicion() === "Defensa"){
+                ordenPosicion.push(this.jugadores[i]);
+            }
+        }
+        for(let i = 0; i < this.jugadores.length; i++){
+            if(this.jugadores[i].getPosicion() === "Centrocampista"){
+                ordenPosicion.push(this.jugadores[i]);
+            }
+        }
+        for(let i = 0; i < this.jugadores.length; i++){
+            if(this.jugadores[i].getPosicion() === "Delantero"){
+                ordenPosicion.push(this.jugadores[i]);
+            }
+        }
+        return ordenPosicion;
+    }
+    
 
 }

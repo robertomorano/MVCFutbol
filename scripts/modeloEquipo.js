@@ -98,5 +98,21 @@ class EquipoModel {
     }
     return eliminado;
   }
-
-}
+  // opciones de filtrado
+  getOrdenAlfabetico() {
+    let alfabetico = this.equipos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    return alfabetico;
+  }
+  getOrdenAlfabeticoDescendente() {
+    let alfabeticoInverso = this.equipos.sort((a, b) => b.nombre.localeCompare(a.nombre));
+    return alfabeticoInverso;
+  }
+  getOrdenCiudad() {
+    let ciudad = this.equipos.sort((a, b) => a.ciudad.localeCompare(b.ciudad));
+    return ciudad;
+  }
+  getOrdenEstadio() {
+    let estadio = this.equipos.sort((a, b) => a.estadio.localeCompare(b.estadio));
+    return estadio;
+  }
+} 
