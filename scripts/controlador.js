@@ -22,6 +22,57 @@ class Controlador {
         this.vista = vista;
     }
 
+    //Metodo para filtrar los jugadores por nombre, posicion o edad
+    filtrarJugadores(filtro) {
+        let jugadoresFiltrados = this.modeloJugadores.getJugadores().slice();
+
+        switch (filtro) {
+            case 'nombre a-z':
+                jugadoresFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+                break;
+            case 'nombre z-a':
+                jugadoresFiltrados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+                break;
+            case 'posición':
+                jugadoresFiltrados.sort((a, b) => a.posicion.localeCompare(b.posicion));
+                break;
+            case 'edad':
+                jugadoresFiltrados.sort((a, b) => {
+                    const edadA = new Date().getFullYear() - new Date(a.fechaNacimiento).getFullYear();
+                    const edadB = new Date().getFullYear() - new Date(b.fechaNacimiento).getFullYear();
+                    return edadA - edadB; // Menor edad primero
+                });
+                break;
+        }
+
+        mostrarJugadores(jugadoresFiltrados);
+    }
+
+    // Metodo para filtrar los equipos por nombre, ciudad o estadio
+    filtrarEquipos(filtro) {
+        let equiposFiltrados = this.modeloEquipos.getEquipos().slice();
+    
+        switch (filtro) {
+            case 'nombre a-z':
+                equiposFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+                break;
+            case 'nombre z-a':
+                equiposFiltrados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+                break;
+            case 'ciudad':
+                equiposFiltrados.sort((a, b) => a.ciudad.localeCompare(b.ciudad));
+                break;
+            case 'estadio':
+                equiposFiltrados.sort((a, b) => a.estadio.localeCompare(b.estadio));
+                break;
+        }
+    
+        mostrarEquipos(equiposFiltrados);
+    }    
+
+    // Metodo para buscar por termino
+    
+
     // Metodo para mostrar los jugadores en la vista
     mostrarJugadores() {
         const jugadores = this.modeloJugadores.getJugadores();
@@ -44,11 +95,6 @@ class Controlador {
         } else {
             this.vista.mostrarMensajeVacio('equipo');
         }
-    }
-
-    buscar(termino) {
-        // Llamamos al metodo de la vista para mostrar los resultados de la busqueda
-        this.vista.mostrarResultados(this.modeloJugadores.buscarJugador(termino));
     }
 
 //
