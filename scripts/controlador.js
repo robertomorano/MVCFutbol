@@ -81,6 +81,7 @@ class Controlador {
     // Metodo para mostrar los jugadores en la vista
     mostrarJugadores() {
         const jugadores = this.modeloJugadores.getJugadores();
+        this.vista.limpiarListaJugadores();
         if (jugadores.length !== 0) {
             jugadores.forEach((jugador) => {
                 this.vista.renderizarVista(jugador);
@@ -93,6 +94,7 @@ class Controlador {
     // Metodo para mostrar los equipos en la vista
     mostrarEquipos() {
         const equipo = this.modeloEquipos.getEquipos();
+        this.vista.limpiarListaEquipos();
         if (equipo.length !== 0) {
         for (let i = 0; i < equipo.length; i++) {
             this.vista.renderizarVista(equipo[i]);
