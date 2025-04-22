@@ -168,7 +168,8 @@ class JugadorModel{
     }
     //funcion que devuelve los jugadores con esa cadena
     buscaJugadorPorNombre(cadena){
-        let jugadorNombres = this.jugadores.filter(element => element.getNombre().toLowerCase().includes(cadena.toLowerCase()));
+        let jugadorNombres = this.jugadores;
+        jugadorNombres = jugadorNombres.filter(element => element.getNombre().toLowerCase().includes(cadena.toLowerCase()));
         
         return jugadorNombres;
     }
