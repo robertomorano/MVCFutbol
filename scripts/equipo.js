@@ -25,5 +25,5 @@ class Equipo{
         this.estadio = estadio;
     }
    
-    
+    /*Comentario*/
 }
