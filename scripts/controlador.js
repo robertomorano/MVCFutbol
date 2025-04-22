@@ -33,7 +33,7 @@ class Controlador {
             case 'nombre z-a':
                 jugadoresFiltrados = this.modeloJugadores.getOrdenAlfabeticoDescendente();
                 break;
-            case 'posicion':
+            case 'posición':
                 jugadoresFiltrados = this.modeloJugadores.getOrdenPosicion();
                 break;
             case 'edad':
