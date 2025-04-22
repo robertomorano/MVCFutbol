@@ -18,7 +18,7 @@ class JugadorModel{
     
     // Añadir jugadores a base de datos desde el formulario de añadir jugador
     addJugador(nombre,posicion,fechaNacimiento, imagen){
-        let agregado = false;
+        let agregado = true;
         let url = "";
         let imagenBlob = new Blob([imagen], { type: "image/png" });
         const posicionesValidas = ["portero", "defensa", "centrocampista", "delantero"];
@@ -49,7 +49,7 @@ class JugadorModel{
         let player = new Jugador(index,nombre,posicion,fechaNacimiento, "" ,url);
         this.jugadores.push(player);
         this.actualizarJugadorLocalStorage();
-        agregado = true;
+        
         return agregado;
     }
 
