@@ -50,20 +50,20 @@ class Controlador {
     
         switch (filtro) {
             case 'nombre a-z':
-                equiposFiltrados = this.modeloJugadores.getOrdenAlfabetico(jugadoresFiltrados);
+                equiposFiltrados = this.modeloJugadores.getOrdenAlfabetico(equiposFiltrados);
                 break;
             case 'nombre z-a':
-                equiposFiltrados = this.modeloJugadores.getOrdenAlfabeticoDescendente(jugadoresFiltrados);                
+                equiposFiltrados = this.modeloJugadores.getOrdenAlfabeticoDescendente(equiposFiltrados);                
                 break;
             case 'ciudad':
-                equiposFiltrados = this.modeloJugadores.getOrdenCiudad(jugadoresFiltrados);                
+                equiposFiltrados = this.modeloJugadores.getOrdenCiudad(equiposFiltrados);                
                 break;
             case 'estadio':
-                equiposFiltrados = this.modeloJugadores.getOrdenEstadio(jugadoresFiltrados);                
+                equiposFiltrados = this.modeloJugadores.getOrdenEstadio(equiposFiltrados);                
                 break;
         }
     
-        mostrarEquipos(equiposFiltrados);
+        this.mostrarEquipos(equiposFiltrados);
     }    
 
     // Metodo para buscar por termino
