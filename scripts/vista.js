@@ -281,7 +281,7 @@ class Vista {
 
         const liEquipo = document.createElement("li");
         liEquipo.classList.add("equipo");
-        liEquipo.textContent = jugador.getEquipo() === '' ? "Agente Libre" : this.controlador.obtenerEquipoPorId(jugador.getEquipo());
+        liEquipo.textContent = jugador.getEquipo() === 0 ? "Agente Libre" : this.controlador.obtenerEquipoPorId(jugador.getEquipo());
         tarjeta.appendChild(liEquipo);
 
         if (conEventoClick) {
@@ -467,7 +467,7 @@ class Vista {
     mostrarModalEquipo(equipo, jugadores) {
         console.log("Ejecutando mostrarModalEquipo", equipo, jugadores);
         console.log("El modal es:", this.modalEquipo);
-        
+
         const modal = this.modalEquipo;
         const contenedorTarjeta = modal.querySelector(".tarjeta-equipo");
         contenedorTarjeta.innerHTML = "";
@@ -549,10 +549,6 @@ class Vista {
         contenedorTarjeta.appendChild(botones);
 
         document.getElementById("btnEliminarEquipo").addEventListener("click", () => {
-            if (jugadores && jugadores.length > 0) {
-                this.mostrarError("No se puede eliminar un equipo con jugadores asignados.");
-                return;
-            }
 
             if (confirm("¿Está seguro que desea eliminar este equipo?")) {
                 this.controlador.eliminarEquipo(equipo.getId());

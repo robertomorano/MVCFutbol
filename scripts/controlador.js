@@ -172,7 +172,7 @@ class Controlador {
         const equipo = this.modeloEquipos.getEquipoPorId(id);
         console.log("Equipo encontrado:", equipo);
         
-        if (equipo) {
+        if (equipo !== null) {
             console.log("ID del equipo (para buscar jugadores):", equipo.getId());
             const jugadores = this.modeloJugadores.getJugadoresDeEquipo(equipo.getId());
             console.log("Jugadores encontrados:", jugadores);
