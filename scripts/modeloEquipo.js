@@ -36,7 +36,7 @@ class EquipoModel {
     
     if (this.getEquipoPorNombre(nombre) === null) {
       
-      let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio, url);
+      let equipo = new Equipo((this.equipos.length+1), nombre, ciudad, estadio, url);
       this.equipos.push(equipo);
       this.actualizarEquipoLocalStorage();
     }else{
@@ -61,7 +61,6 @@ class EquipoModel {
   getEquipoPorId(id) { 
     let equipo = null;
     this.equipos.forEach(element => {
-      console.log(element.id, id);
       if (element.id == id) {
         equipo = element;
       }
@@ -110,8 +109,8 @@ class EquipoModel {
   // opciones de filtrado
   getOrdenAlfabetico() {
     let alfabetico = this.equipos.sort((a, b) => {
-        const nombreA = a.nombre || "";
-        const nombreB = b.nombre || "";
+        const nombreA = a.nombre;
+        const nombreB = b.nombre;
         return nombreA.localeCompare(nombreB);
     });
     return alfabetico;
