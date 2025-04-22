@@ -89,7 +89,10 @@ class EquipoModel {
     return equipo;
   }
 
-
+  editarEquipo(id, nombre, ciudad, estadio, imagen) {
+    this.eliminarEquipo(id);
+    this.agregarEquipo(nombre, ciudad, estadio, imagen);
+  }
 
   eliminarEquipo(id) {
     let eliminado = false;
@@ -99,6 +102,7 @@ class EquipoModel {
       this.actualizarEquipoLocalStorage();
       eliminado = true;
     }
+    //LLamar a setEquipos del equipo eliminado para que se elimine de la lista de jugadores
     return eliminado;
   }
   // opciones de filtrado
@@ -120,8 +124,13 @@ class EquipoModel {
   }
   //funcion que devuelve los jugadores con esa cadena
   buscaEquipoPorNombre(cadena){
-    let jugadorNombres = this.jugadores.filter(element => element.getNombre().toLowerCase().includes(cadena.toLowerCase()));
+    let equipoNombres = this.equipos
+    equipoNombres = equipoNombres.filter(element => {
+        const nombre = element.getNombre();
+        return nombre && nombre.toLowerCase().includes(cadena.toLowerCase());
+    });
+    equipoNombres = equipoNombres.filter(element => element.getNombre().toLowerCase().includes(lowerCaseCadena));
     
-    return jugadorNombres;
+    return equipoNombres;
 }
 } 

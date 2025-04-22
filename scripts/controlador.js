@@ -22,6 +22,62 @@ class Controlador {
         this.vista = vista;
     }
 
+    //Metodo para filtrar los jugadores por nombre, posicion o edad
+    filtrarJugadores(filtro) {
+        let jugadoresFiltrados = this.modeloJugadores.getJugadores().slice();
+
+        switch (filtro) {
+            case 'nombre a-z':
+                jugadoresFiltrados = this.modeloJugadores.getOrdenAlfabetico(jugadoresFiltrados);
+                break;
+            case 'nombre z-a':
+                jugadoresFiltrados = this.modeloJugadores.getOrdenAlfabeticoDescendente(jugadoresFiltrados);
+                break;
+            case 'posicion':
+                jugadoresFiltrados = this.modeloJugadores.getOrdenPosicion(jugadoresFiltrados);
+                break;
+            case 'edad':
+                jugadoresFiltrados = this.modeloJugadores.getOrdenFechaNacimiento(jugadoresFiltrados);
+                break;
+        }
+
+        this.mostrarJugadores(jugadoresFiltrados);
+    }
+
+    // Metodo para filtrar los equipos por nombre, ciudad o estadio
+    filtrarEquipos(filtro) {
+        let equiposFiltrados = this.modeloEquipos.getEquipos().slice();
+    
+        switch (filtro) {
+            case 'nombre a-z':
+                equiposFiltrados = this.modeloJugadores.getOrdenAlfabetico(jugadoresFiltrados);
+                break;
+            case 'nombre z-a':
+                equiposFiltrados = this.modeloJugadores.getOrdenAlfabeticoDescendente(jugadoresFiltrados);                
+                break;
+            case 'ciudad':
+                equiposFiltrados = this.modeloJugadores.getOrdenCiudad(jugadoresFiltrados);                
+                break;
+            case 'estadio':
+                equiposFiltrados = this.modeloJugadores.getOrdenEstadio(jugadoresFiltrados);                
+                break;
+        }
+    
+        mostrarEquipos(equiposFiltrados);
+    }    
+
+    // Metodo para buscar por termino
+    buscar(termino, pagina) {
+        console.log(termino, pagina);
+        if (pagina === 'jugadores') {
+            const jugadores = this.modeloJugadores.buscaJugadorPorNombre(termino);
+            this.vista.mostrarJugadores(jugadores);
+        } else {
+            const equipos = this.modeloEquipos.buscaEquipoPorNombre(termino);
+            this.vista.mostrarEquipos(equipos);
+        }
+    }
+
     // Metodo para mostrar los jugadores en la vista
     mostrarJugadores() {
         const jugadores = this.modeloJugadores.getJugadores();
@@ -46,12 +102,6 @@ class Controlador {
         }
     }
 
-    buscar(termino) {
-        // Llamamos al metodo de la vista para mostrar los resultados de la busqueda
-        this.vista.mostrarResultados(this.modeloJugadores.buscarJugador(termino));
-    }
-
-//
     // Metodo para obtener la lista de jugadores desde el modelo
     obtenerJugadores() {
         return this.modeloJugadores.getJugadores();
@@ -62,16 +112,10 @@ class Controlador {
         return this.modeloEquipos.getEquipos();
     }    
 
-//
     // Metodo para obtener un jugador especifico por su ID
     obtenerJugadorPorId(id) {
         return this.modeloJugadores.getJugadorPorId(id);
     }
-
-    // Metodo para obtener un equipo especifico por su ID
-//    obtenerEquipoPorId(id) {
-//    return this.modeloEquipos.getEquipoPorId(id);
-//    }
 
     // Metodo para obtener un equipo especifico por su ID y mostrarlo en un modal
     obtenerParaModalEquipos(id) {
