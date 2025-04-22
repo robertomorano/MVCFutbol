@@ -24,20 +24,20 @@ class Controlador {
 
     //Metodo para filtrar los jugadores por nombre, posicion o edad
     filtrarJugadores(filtro) {
-        let jugadoresFiltrados = this.modeloJugadores.getJugadores().slice();
+        let jugadoresFiltrados = {};
 
         switch (filtro) {
             case 'nombre a-z':
-                jugadoresFiltrados = this.modeloJugadores.getOrdenAlfabetico(jugadoresFiltrados);
+                jugadoresFiltrados = this.modeloJugadores.getOrdenAlfabetico();
                 break;
             case 'nombre z-a':
-                jugadoresFiltrados = this.modeloJugadores.getOrdenAlfabeticoDescendente(jugadoresFiltrados);
+                jugadoresFiltrados = this.modeloJugadores.getOrdenAlfabeticoDescendente();
                 break;
             case 'posicion':
-                jugadoresFiltrados = this.modeloJugadores.getOrdenPosicion(jugadoresFiltrados);
+                jugadoresFiltrados = this.modeloJugadores.getOrdenPosicion();
                 break;
             case 'edad':
-                jugadoresFiltrados = this.modeloJugadores.getOrdenFechaNacimiento(jugadoresFiltrados);
+                jugadoresFiltrados = this.modeloJugadores.getOrdenFechaNacimiento();
                 break;
         }
 
@@ -46,20 +46,20 @@ class Controlador {
 
     // Metodo para filtrar los equipos por nombre, ciudad o estadio
     filtrarEquipos(filtro) {
-        let equiposFiltrados = this.modeloEquipos.getEquipos().slice();
+        let equiposFiltrados = {};
     
         switch (filtro) {
             case 'nombre a-z':
-                equiposFiltrados = this.modeloEquipos.getOrdenAlfabetico(equiposFiltrados);
+                equiposFiltrados = this.modeloEquipos.getOrdenAlfabetico();
                 break;
             case 'nombre z-a':
-                equiposFiltrados = this.modeloEquipos.getOrdenAlfabeticoDescendente(equiposFiltrados);                
+                equiposFiltrados = this.modeloEquipos.getOrdenAlfabeticoDescendente();                
                 break;
             case 'ciudad':
-                equiposFiltrados = this.modeloEquipos.getOrdenCiudad(equiposFiltrados);                
+                equiposFiltrados = this.modeloEquipos.getOrdenCiudad();                
                 break;
             case 'estadio':
-                equiposFiltrados = this.modeloEquipos.getOrdenEstadio(equiposFiltrados);                
+                equiposFiltrados = this.modeloEquipos.getOrdenEstadio();                
                 break;
         }
     
