@@ -234,6 +234,11 @@ class Controlador {
     }
 
     eliminarEquipo(id) {
+        const jugadores = this.modeloJugadores.getJugadoresDeEquipo(id);
+        jugadores.forEach((jugador) => {
+            this.modeloJugadores.añadirEquipo(jugador.id, 0);
+        });
+
         this.modeloEquipos.eliminarEquipo(id);
         this.vista.mostrarSuccess("Equipo eliminado con exito.");
         this.mostrarEquipos();
