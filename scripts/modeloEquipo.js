@@ -1,7 +1,6 @@
 class EquipoModel {
   constructor() {
     this.equipos = [];
-    this.inicializarEquiposLocalStorage();
     if (localStorage.getItem("equipos") === null) {
       localStorage.setItem("equipos", JSON.stringify([]));
     } else {
@@ -133,6 +132,7 @@ class EquipoModel {
     return ciudad;
   }
   getOrdenEstadio() {
+    console.log(this.equipos);
     let estadio = this.equipos.sort((a, b) => {
       console.log(a.estadio, b.estadio);
         const estadioA = a.estadio;
