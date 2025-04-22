@@ -110,7 +110,7 @@ class Controlador {
     // Metodo para mostrar los jugadores en la vista
     mostrarEquiposFiltrados(equiposFiltrados) {
 
-        this.vista.limpiarListaJugadores();
+        this.vista.limpiarListaEquipos();
         if (equiposFiltrados.length !== 0) {
             equiposFiltrados.forEach((equipo) => {
                 this.vista.renderizarVista(equipo);
