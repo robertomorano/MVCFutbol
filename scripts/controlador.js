@@ -28,24 +28,20 @@ class Controlador {
 
         switch (filtro) {
             case 'nombre a-z':
-                jugadoresFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+                jugadoresFiltrados = this.modeloJugadores.getOrdenAlfabetico(jugadoresFiltrados);
                 break;
             case 'nombre z-a':
-                jugadoresFiltrados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+                jugadoresFiltrados = this.modeloJugadores.getOrdenAlfabeticoDescendente(jugadoresFiltrados);
                 break;
-            case 'posición':
-                jugadoresFiltrados.sort((a, b) => a.posicion.localeCompare(b.posicion));
+            case 'posicion':
+                jugadoresFiltrados = this.modeloJugadores.getOrdenPosicion(jugadoresFiltrados);
                 break;
             case 'edad':
-                jugadoresFiltrados.sort((a, b) => {
-                    const edadA = new Date().getFullYear() - new Date(a.fechaNacimiento).getFullYear();
-                    const edadB = new Date().getFullYear() - new Date(b.fechaNacimiento).getFullYear();
-                    return edadA - edadB; // Menor edad primero
-                });
+                jugadoresFiltrados = this.modeloJugadores.getOrdenFechaNacimiento(jugadoresFiltrados);
                 break;
         }
 
-        mostrarJugadores(jugadoresFiltrados);
+        this.mostrarJugadores(jugadoresFiltrados);
     }
 
     // Metodo para filtrar los equipos por nombre, ciudad o estadio
@@ -54,16 +50,16 @@ class Controlador {
     
         switch (filtro) {
             case 'nombre a-z':
-                equiposFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+                equiposFiltrados = this.modeloJugadores.getOrdenAlfabetico(jugadoresFiltrados);
                 break;
             case 'nombre z-a':
-                equiposFiltrados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+                equiposFiltrados = this.modeloJugadores.getOrdenAlfabeticoDescendente(jugadoresFiltrados);                
                 break;
             case 'ciudad':
-                equiposFiltrados.sort((a, b) => a.ciudad.localeCompare(b.ciudad));
+                equiposFiltrados = this.modeloJugadores.getOrdenCiudad(jugadoresFiltrados);                
                 break;
             case 'estadio':
-                equiposFiltrados.sort((a, b) => a.estadio.localeCompare(b.estadio));
+                equiposFiltrados = this.modeloJugadores.getOrdenEstadio(jugadoresFiltrados);                
                 break;
         }
     
@@ -72,14 +68,14 @@ class Controlador {
 
     // Metodo para buscar por termino
     buscar(termino, pagina) {
-        if pagina === 'jugadores') {
-            const jugadores = this.modeloJugadores.buscarJugadoresPorNombre();
+        if (pagina === 'jugadores') {
+            const jugadores = this.modeloJugadores.buscarJugadoresPorNombre(termino);
+            this.vista.mostrarJugadores(jugadores);
         } else {
-           
+            const equipos = this.modeloEquipos.buscarEquiposPorNombre(termino);
+            this.vista.mostrarEquipos(equipos);
         }
     }
-
-    
 
     // Metodo para mostrar los jugadores en la vista
     mostrarJugadores() {
