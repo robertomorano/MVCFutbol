@@ -625,27 +625,28 @@ class Vista {
     mostrarMensaje(tipo, mensaje) {
         const card = document.getElementById('errorCard');
         const msg = document.getElementById('errorMessage');
-
+        
         card.classList.remove('error', 'success');
-
         card.classList.add(tipo);
-
+        card.classList.add('show');
+        
         msg.textContent = (tipo === 'error' ? '⚠️ ' : '✅ ') + mensaje;
         card.style.display = 'block';
-
+        
         card.style.animation = 'none';
         void card.offsetWidth;
         card.style.animation = 'fadeIn 0.4s ease-out forwards';
-
+        
         clearTimeout(this.errorTimeout);
         this.errorTimeout = setTimeout(() => {
             this.ocultarError();
         }, 5000);
     }
-
+    
     ocultarError() {
         if (this.errorCard) {
             this.errorCard.classList.remove("show");
+            this.errorCard.style.display = 'none';
         }
     }
 

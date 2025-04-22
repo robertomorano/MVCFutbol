@@ -183,6 +183,7 @@ class Controlador {
         }
         this.vista.mostrarSuccess("Se asigno el equipo al jugador con exito.");
         this.modeloJugadores.añadirEquipo(idJugador, equipo.id);
+        this.mostrarJugadores();
     }
 
     // Metodo para eliminar un jugador por su ID
