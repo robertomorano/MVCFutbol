@@ -71,10 +71,18 @@ class Controlador {
         console.log(termino, pagina);
         if (pagina === 'jugadores') {
             const jugadores = this.modeloJugadores.buscaJugadorPorNombre(termino);
-            this.vista.renderizarVista(jugadores);
+
+            this.vista.limpiarListaJugadores();
+            jugadores.forEach((jugador) => {
+                this.vista.renderizarVista(jugador);
+            });
         } else {
             const equipos = this.modeloEquipos.buscaEquipoPorNombre(termino);
-            this.vista.renderizarVista(equipos);
+
+            this.vista.limpiarListaEquipos();
+            equipos.forEach((equipo) => {
+                this.vista.renderizarVista(equipo);
+            });
         }
     }
 
