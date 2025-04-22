@@ -142,11 +142,20 @@ class Controlador {
 
     // Metodo para obtener un equipo especifico por su ID y mostrarlo en un modal
     obtenerParaModalEquipos(id) {
+        console.log("Intentando abrir modal para equipo con ID:", id);
         const equipo = this.modeloEquipos.getEquipoPorId(id);
-
+        console.log("Equipo encontrado:", equipo);
+        
         if (equipo) {
-            const jugadores = this.modeloJugadores.getJugadoresDeEquipo(equipo.id);
+            console.log("ID del equipo (para buscar jugadores):", equipo.getId());
+            const jugadores = this.modeloJugadores.getJugadoresDeEquipo(equipo.getId());
+            console.log("Jugadores encontrados:", jugadores);
+            
+            console.log("Llamando a mostrarModalEquipo");
             this.vista.mostrarModalEquipo(equipo, jugadores);
+            console.log("Después de llamar a mostrarModalEquipo");
+        } else {
+            console.log("No se encontró el equipo");
         }
     }
 

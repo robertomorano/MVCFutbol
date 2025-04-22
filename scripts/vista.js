@@ -465,6 +465,9 @@ class Vista {
     }
 
     mostrarModalEquipo(equipo, jugadores) {
+        console.log("Ejecutando mostrarModalEquipo", equipo, jugadores);
+        console.log("El modal es:", this.modalEquipo);
+        
         const modal = this.modalEquipo;
         const contenedorTarjeta = modal.querySelector(".tarjeta-equipo");
         contenedorTarjeta.innerHTML = "";
