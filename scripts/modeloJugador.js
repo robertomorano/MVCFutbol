@@ -37,8 +37,7 @@ class JugadorModel{
             agregado = false;
         }
         const fecha = new Fecha(fechaNacimiento);
-        if (
-            fecha.fecha.getTime() || 
+        if ( 
             fecha.fecha.getFullYear() < 1900 || fecha.fecha.getFullYear() > 2025 || 
             fecha.fecha.getMonth() < 0 || fecha.fecha.getMonth() > 11 || 
             fecha.fecha.getDate() < 1 || fecha.fecha.getDate() > 31
@@ -171,4 +170,25 @@ class JugadorModel{
     }
     
 
+}
+class Fecha{
+    constructor(fecha){
+        this.fecha = this.textoAFecha(fecha);
+    }
+    textoAFecha(fechaNacimiento){
+        let year = "";
+        let month = "";
+        let day = "";
+        fechaNacimiento += "";
+        //console.log(fechaNacimiento);//2023-10-10
+            if(fechaNacimiento[4] === "-"){
+                year = fechaNacimiento.slice(0,4);
+                month = fechaNacimiento.slice(5,7);
+                day = fechaNacimiento.slice(8,10);
+            }  
+        return new Date(year, month-1, day);
+    }
+    getFecha(){
+        return this.fecha;
+    }
 }
