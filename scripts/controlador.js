@@ -219,7 +219,7 @@ class Controlador {
         const datosDelFormulario = this.vista.obtenerDatosFormularioCreacion();
 
         // Llamamos al metodo para agregar el jugador al modelo
-        this.agregarJugador(datosDelFormulario.nombre, datosDelFormulario.posicion, datosDelFormulario.fechaNacimiento, datosDelFormulario.archivo);
+        this.agregarJugador(datosDelFormulario.nombre, datosDelFormulario.posicion, datosDelFormulario.fechaNacimiento, datosDelFormulario.imagen);
     }
 
     // Metodo para agregar un jugador al modelo
