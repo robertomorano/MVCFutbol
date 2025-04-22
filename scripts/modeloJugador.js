@@ -75,11 +75,10 @@ class JugadorModel{
         this.jugadores.forEach(element => {
             if(element.getId() === id){
                 element.setIdEquipo(idEquipo);
-                return true;
             }
             
         });
-
+        this.actualizarJugadorLocalStorage();
     }
     
     editarJugador(id, nombre, posicion, fechaNacimiento, imagen){

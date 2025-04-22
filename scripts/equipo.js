@@ -1,10 +1,10 @@
 class Equipo{
-    constructor(id,nombre,ciudad, estadio, imagen) {
-        this.nombre = nombre;
-        this.id = id;
-        this.ciudad = ciudad;  
-        this.estadio = estadio;
-        this.imagen = imagen;
+    constructor(id, nombre, ciudad, estadio, imagen) {
+        this.id = id || 0;
+        this.nombre = nombre || "";
+        this.ciudad = ciudad || "";
+        this.estadio = estadio || "";
+        this.imagen = imagen || "";
     }
     getId() {
         return this.id;

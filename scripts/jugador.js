@@ -1,11 +1,11 @@
 class Jugador {
     constructor(id,nombre, posicion, fechaNacimiento, idEquipo, imagen) {
-        this.imagen = imagen;
-        this.id = id;
-        this.nombre = nombre;
-        this.posicion = posicion;
+        this.imagen = imagen || "";
+        this.id = id || 0;
+        this.nombre = nombre || "";
+        this.posicion = posicion || "";
         
-        this.fechaNacimiento = this.textoAFecha(fechaNacimiento);
+        this.fechaNacimiento = this.textoAFecha(fechaNacimiento) || new Date();
         
         this.idEquipo = idEquipo;
     }
