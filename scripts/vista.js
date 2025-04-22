@@ -588,29 +588,21 @@ class Vista {
             });
 
             document.getElementById("btn-guardar-edicion").addEventListener("click", () => {
-                const nuevoNombre = document.getElementById("edit-nombre-equipo").value;
-                const nuevaCiudad = document.getElementById("edit-ciudad-equipo").value;
-                const nuevoEstadio = document.getElementById("edit-estadio-equipo").value;
-
-                if (!nuevoNombre || !nuevaCiudad || !nuevoEstadio) {
-                    this.mostrarError("Todos los campos son obligatorios.");
-                    return;
-                }
-
-                const datosActualizados = {
-                    id: equipo.getId(),
-                    nombre: nuevoNombre,
-                    ciudad: nuevaCiudad,
-                    estadio: nuevoEstadio
-                };
-
-                this.controlador.actualizarEquipo(datosActualizados);
+                this.controlador.actualizarEquipo(equipo.getId());
                 modal.style.display = "none";
                 this.mostrarSuccess("Equipo actualizado con éxito.");
             });
         });
 
         modal.style.display = "block";
+    }
+
+    obtenerDatosModificaEquipo(){
+        return {
+            nombre: document.getElementById("edit-nombre-equipo").value,
+            ciudad: document.getElementById("edit-ciudad-equipo").value,
+            estadio: document.getElementById("edit-estadio-equipo").value
+        };
     }
 
     mostrarError(mensaje) {
