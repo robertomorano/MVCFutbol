@@ -19,6 +19,7 @@ class JugadorModel{
     // Añadir jugadores a base de datos desde el formulario de añadir jugador
     addJugador(nombre,posicion,fechaNacimiento, imagen){
         let agregado = true;
+        posicion = posicion.toLowerCase()
         let url = "";
         let imagenBlob = new Blob([imagen], { type: "image/png" });
         const posicionesValidas = ["portero", "defensa", "centrocampista", "delantero"];
@@ -31,25 +32,26 @@ class JugadorModel{
         }else{
             url = "../recursos/imagen_pordefecto.webp";
         }
-        
+        console.log(agregado);
         if (!posicionesValidas.includes(posicion)) {
             agregado = false;
         }
-        const fecha = new Date(fechaNacimiento);
+        const fecha = new Fecha(fechaNacimiento);
         if (
-            fecha.getTime() || 
-            fecha.getFullYear() < 1900 || fecha.getFullYear() > 2025 || 
-            fecha.getMonth() < 0 || fecha.getMonth() > 11 || 
-            fecha.getDate() < 1 || fecha.getDate() > 31
+            fecha.fecha.getTime() || 
+            fecha.fecha.getFullYear() < 1900 || fecha.fecha.getFullYear() > 2025 || 
+            fecha.fecha.getMonth() < 0 || fecha.fecha.getMonth() > 11 || 
+            fecha.fecha.getDate() < 1 || fecha.fecha.getDate() > 31
         ) {
             agregado = false;
+        }else{
+            let index = this.jugadores.length;
+            // Iniciar el equipo a null despues con otra funcion se le asignara el id del equipo
+            let player = new Jugador(index,nombre,posicion,fechaNacimiento, "" ,url);
+            this.jugadores.push(player);
+            this.actualizarJugadorLocalStorage();
         }
-        let index = this.jugadores.length;
-        // Iniciar el equipo a null despues con otra funcion se le asignara el id del equipo
-        let player = new Jugador(index,nombre,posicion,fechaNacimiento, "" ,url);
-        this.jugadores.push(player);
-        this.actualizarJugadorLocalStorage();
-        
+        console.log(agregado);
         return agregado;
     }
 
@@ -110,13 +112,7 @@ class JugadorModel{
     
     
     getJugadorPorId(id){
-        let e = null;
-        this.jugadores.forEach(element => {
-            if(element.getId() === id){
-                e = element;
-            }
-        });
-    return e;
+    return this.jugadores.find(element => element.getId() === id);
     }
     
     

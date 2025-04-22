@@ -21,7 +21,7 @@ class EquipoModel {
 
   // Agregar un equipo al modelo
   agregarEquipo(nombre, ciudad, estadio, imagen) {
-    let agregado = false;
+    let agregado = true;
     let url = "";
     let imagenBlob = new Blob([imagen], { type: "image/png" });
     console.log(imagen);
@@ -34,14 +34,16 @@ class EquipoModel {
         url = "../recursos/imagen_pordefecto.webp";
     }
     
-        
+    
     if (this.getEquipoPorNombre(nombre) === null) {
       
       let equipo = new Equipo(this.equipos.length, nombre, ciudad, estadio, url);
       this.equipos.push(equipo);
       this.actualizarEquipoLocalStorage();
-      agregado = true;
+    }else{
+      agregado = false;
     }
+
     return agregado;
   }
 
