@@ -69,7 +69,7 @@ class Controlador {
     // Metodo para buscar por termino
     buscar(termino, pagina) {
         console.log(termino, pagina);
-        if (pagina === 'jugadores') {
+        if (pagina === 'jugador') {
             const jugadores = this.modeloJugadores.buscaJugadorPorNombre(termino);
 
             this.vista.limpiarListaJugadores();
