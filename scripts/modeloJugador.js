@@ -111,7 +111,8 @@ class JugadorModel{
     
     
     getJugadorPorId(id){
-    return this.jugadores.find(element => element.getId() === id);
+        //Doble igual porque el id es un string y el id del jugador es un numero
+        return this.jugadores.find(element => element.id == id);
     }
     
     
