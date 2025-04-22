@@ -109,19 +109,36 @@ class EquipoModel {
   }
   // opciones de filtrado
   getOrdenAlfabetico() {
-    let alfabetico = this.equipos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    let alfabetico = this.equipos.sort((a, b) => {
+        const nombreA = a.nombre || "";
+        const nombreB = b.nombre || "";
+        return nombreA.localeCompare(nombreB);
+    });
     return alfabetico;
   }
   getOrdenAlfabeticoDescendente() {
-    let alfabeticoInverso = this.equipos.sort((a, b) => b.nombre.localeCompare(a.nombre));
-    return alfabeticoInverso;
+    let alfabetico = this.equipos.sort((a, b) => {
+      const nombreA = a.nombre;
+      const nombreB = b.nombre;
+      return nombreB.localeCompare(nombreA);
+  });
+  return alfabetico;
   }
   getOrdenCiudad() {
-    let ciudad = this.equipos.sort((a, b) => a.ciudad.localeCompare(b.ciudad));
+    let ciudad = this.equipos.sort((a, b) => {
+        const ciudadA = a.ciudad;
+        const ciudadB = b.ciudad;
+        return ciudadA.localeCompare(ciudadB);
+    });
     return ciudad;
   }
   getOrdenEstadio() {
-    let estadio = this.equipos.sort((a, b) => a.estadio.localeCompare(b.estadio));
+    let estadio = this.equipos.sort((a, b) => {
+      console.log(a.estadio, b.estadio);
+        const estadioA = a.estadio;
+        const estadioB = b.estadio;
+        return estadioA.localeCompare(estadioB);
+    });
     return estadio;
   }
   //funcion que devuelve los jugadores con esa cadena

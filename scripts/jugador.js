@@ -32,8 +32,17 @@ class Jugador {
     }
     getEdad() {
         const fechaActual = new Date();
-        let year = fechaActual.getFullYear-this.fechaNacimiento;
-        return year;
+        let edad = fechaActual.getFullYear() - this.fechaNacimiento.getFullYear();
+        const mesActual = fechaActual.getMonth();
+        const diaActual = fechaActual.getDate();
+    
+        if (
+            mesActual < this.fechaNacimiento.getMonth() ||
+            (mesActual === this.fechaNacimiento.getMonth() && diaActual < this.fechaNacimiento.getDate())
+        ) {
+            edad--;
+        }
+        return edad;
     }
     setPosicion(posicion) {
         this.posicion = posicion;

@@ -117,7 +117,7 @@ class JugadorModel{
     
     
     getJugadoresDeEquipo(idEquipo){
-        let equipo = null;
+        let equipo = [];
         this.jugadores.forEach(element => {
             if(element.getIdEquipo() === idEquipo){
                 equipo.push(element);
@@ -138,28 +138,18 @@ class JugadorModel{
         let ordenFecha = this.jugadores.sort((a, b) => a.getEdad() - b.getEdad());
         return ordenFecha;
     }
-    getOrdenPosicion(){
-        let ordenPosicion;
-        for(let i = 0; i < this.jugadores.length; i++){
-            if(this.jugadores[i].getPosicion() === "portero"){
-                ordenPosicion.push(this.jugadores[i]);
-            }
-        }
-        for(let i = 0; i < this.jugadores.length; i++){
-            if(this.jugadores[i].getPosicion() === "defensa"){
-                ordenPosicion.push(this.jugadores[i]);
-            }
-        }
-        for(let i = 0; i < this.jugadores.length; i++){
-            if(this.jugadores[i].getPosicion() === "centrocampista"){
-                ordenPosicion.push(this.jugadores[i]);
-            }
-        }
-        for(let i = 0; i < this.jugadores.length; i++){
-            if(this.jugadores[i].getPosicion() === "delantero"){
-                ordenPosicion.push(this.jugadores[i]);
-            }
-        }
+    getOrdenPosicion() {
+        const posicionesOrdenadas = ["delantero", "portero", "defensa", "centrocampista"];
+        let ordenPosicion = [];
+        console.log("hola");
+        posicionesOrdenadas.forEach(posicion => {
+            this.jugadores.forEach(jugador => {
+                if (jugador.getPosicion() === posicion) {
+                    ordenPosicion.push(jugador);
+                }
+            });
+        });
+    
         return ordenPosicion;
     }
     //funcion que devuelve los jugadores con esa cadena
