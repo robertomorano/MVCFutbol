@@ -141,17 +141,34 @@ class JugadorModel{
         return ordenFecha;
     }
     getOrdenPosicion() {
-        const posicionesOrdenadas = ["delantero", "portero", "defensa", "centrocampista"];
+        console.log("=");
         let ordenPosicion = [];
-        console.log("hola");
-        posicionesOrdenadas.forEach(posicion => {
-            this.jugadores.forEach(jugador => {
-                if (jugador.getPosicion() === posicion) {
-                    ordenPosicion.push(jugador);
-                }
-            });
-        });
-    
+
+        for (let i = 0; i < this.jugadores.length; i++) {
+            console.log(this.jugadores[i].getPosicion());
+            if(this.jugadores[i].getPosicion()==="delantero"){
+                ordenPosicion.push(this.jugadores[i]);
+            };
+        }
+        for (let i = 0; i < this.jugadores.length; i++) {
+            if(this.jugadores[i].getPosicion()==="centrocampista"){
+
+                ordenPosicion.push(this.jugadores[i]);
+            };
+        }
+        for (let i = 0; i < this.jugadores.length; i++) {
+            if(this.jugadores[i].getPosicion()==="defensa"){
+
+                ordenPosicion.push(this.jugadores[i]);
+            };
+        }
+        for (let i = 0; i < this.jugadores.length; i++) {
+            if(this.jugadores[i].getPosicion()==="portero"){
+
+                ordenPosicion.push(this.jugadores[i]);
+            };
+        }
+        console.log(ordenPosicion);
         return ordenPosicion;
     }
     //funcion que devuelve los jugadores con esa cadena
