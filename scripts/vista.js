@@ -93,7 +93,7 @@ class Vista {
             inputBuscador.addEventListener('input', (e) => {
                 const termino = e.target.value.trim();
                 if (termino.length >= 2) {
-                    this.controlador.buscar(termino);
+                    this.controlador.buscar(termino, this.pagina);
                 } else if (this.pagina === 'jugador') {
                     this.controlador.mostrarJugadores();
                 } else {
