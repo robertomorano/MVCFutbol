@@ -183,7 +183,7 @@ class Vista {
             titulo.textContent = "Introduce un Nuevo Jugador";
             titulo.classList.add("modal_titulo");
             formulariosContainer.appendChild(titulo);
-
+            
             const formularioJugador = document.createElement("div");
             formularioJugador.classList.add("formulario", "modal-formulario");
             formularioJugador.innerHTML = `
@@ -193,7 +193,13 @@ class Vista {
                     <label for="imp_nombre_jugador">Nombre del Jugador</label>
                     <input type="text" name="impNombre" id="imp_nombre_jugador" placeholder="Nombre">
                     <label for="imp_posicion_jugador">Posición del Jugador</label>
-                    <input type="text" name="impPosicion" id="imp_posicion_jugador" placeholder="Posición">
+                    <select name="impPosicion" id="imp_posicion_jugador">
+                        <option value="" selected>Selecciona una posición</option>
+                        <option value="portero">Portero</option>
+                        <option value="defensa">Defensa</option>
+                        <option value="centrocampista">Centrocampista</option>
+                        <option value="delantero">Delantero</option>
+                    </select>
                     <label for="imp_fecha_nacimiento">Fecha Nacimiento</label>
                     <input type="date" name="impFechaNacimiento" id="imp_fecha_nacimiento">
                     <button type="button" id="btn_crea_jugador">Crear Jugador</button>
