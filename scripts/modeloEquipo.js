@@ -89,7 +89,10 @@ class EquipoModel {
     return equipo;
   }
 
-
+  editarEquipo(id, nombre, ciudad, estadio, imagen) {
+    this.eliminarEquipo(id);
+    this.agregarEquipo(nombre, ciudad, estadio, imagen);
+  }
 
   eliminarEquipo(id) {
     let eliminado = false;
@@ -99,6 +102,7 @@ class EquipoModel {
       this.actualizarEquipoLocalStorage();
       eliminado = true;
     }
+    //LLamar a setEquipos del equipo eliminado para que se elimine de la lista de jugadores
     return eliminado;
   }
   // opciones de filtrado

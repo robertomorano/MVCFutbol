@@ -38,7 +38,7 @@ class JugadorModel{
         const fecha = new Date(fechaNacimiento);
         if (
             fecha.getTime() || 
-            fecha.getFullYear() < 1900 || 
+            fecha.getFullYear() < 1900 || fecha.getFullYear() > 2025 || 
             fecha.getMonth() < 0 || fecha.getMonth() > 11 || 
             fecha.getDate() < 1 || fecha.getDate() > 31
         ) {
@@ -81,7 +81,10 @@ class JugadorModel{
 
     }
     
-    
+    editarJugador(id, nombre, posicion, fechaNacimiento, imagen){
+        this.eliminaJugador(id);
+        this.addJugador(nombre, posicion, fechaNacimiento, imagen);
+    }
     eliminaJugador(id){
         let eliminado = false;
         let e = this.getJugadorPorId(id);
