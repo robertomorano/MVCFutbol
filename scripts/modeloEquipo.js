@@ -61,7 +61,8 @@ class EquipoModel {
   getEquipoPorId(id) { 
     let equipo = null;
     this.equipos.forEach(element => {
-      if (element.getId() === id) {
+      console.log(element.id, id);
+      if (element.id == id) {
         equipo = element;
       }
     });
