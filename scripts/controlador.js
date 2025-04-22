@@ -71,10 +71,10 @@ class Controlador {
         console.log(termino, pagina);
         if (pagina === 'jugadores') {
             const jugadores = this.modeloJugadores.buscaJugadorPorNombre(termino);
-            this.vista.mostrarJugadores(jugadores);
+            this.vista.renderizarVista(jugadores);
         } else {
             const equipos = this.modeloEquipos.buscaEquipoPorNombre(termino);
-            this.vista.mostrarEquipos(equipos);
+            this.vista.renderizarVista(equipos);
         }
     }
 
@@ -130,8 +130,7 @@ class Controlador {
     // Metodo para obtener un jugador especifico por su ID y mostrarlo en un modal
     obtenerParaModalJugadores(id) {
         const jugador = this.modeloJugadores.getJugadorPorId(id);
-
-        const equipo = this.modeloEquipos.getEquipoPorId(jugador.getEquipo());
+        const equipo = this.modeloEquipos.getEquipoPorId(jugador.getIdEquipo());
         this.vista.mostrarModalJugador(jugador, equipo);
     }
 
@@ -194,9 +193,12 @@ class Controlador {
         }
 
         // Llamamos al metodo del modelo para agregar el jugador
-        this.modeloJugadores.addJugador(nombre, posicion, fechaNacimiento, imagen);
-
-        this.vista.mostrarSuccess("Jugador agregado con exito.");
+        if (!this.modeloJugadores.addJugador(nombre, posicion, fechaNacimiento, imagen)) {
+            this.vista.mostrarError("Datos no validos.");
+            return;
+        } else {
+            this.vista.mostrarSuccess("Jugador agregado con exito.");
+        }
     }
 
     // Metodo para agregar un equipo desde los datos capturados en la vista
@@ -220,8 +222,11 @@ class Controlador {
         }
 
         // Llamamos al metodo del modelo para agregar el equipo
-        this.modeloEquipos.agregarEquipo(nombre, ciudad, estadio, imagen);
-
-        this.vista.mostrarSuccess("Equipo agregado con exito");
+        if (!this.modeloEquipos.agregarEquipo(nombre, ciudad, estadio, imagen)) {
+            this.vista.mostrarError("Datos no validos.");
+            return;
+        } else {
+            this.vista.mostrarSuccess("Equipo agregado con exito.");
+        }
     }
 }
