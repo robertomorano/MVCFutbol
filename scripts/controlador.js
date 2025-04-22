@@ -50,16 +50,16 @@ class Controlador {
     
         switch (filtro) {
             case 'nombre a-z':
-                equiposFiltrados = this.modeloJugadores.getOrdenAlfabetico(equiposFiltrados);
+                equiposFiltrados = this.modeloEquipos.getOrdenAlfabetico(equiposFiltrados);
                 break;
             case 'nombre z-a':
-                equiposFiltrados = this.modeloJugadores.getOrdenAlfabeticoDescendente(equiposFiltrados);                
+                equiposFiltrados = this.modeloEquipos.getOrdenAlfabeticoDescendente(equiposFiltrados);                
                 break;
             case 'ciudad':
-                equiposFiltrados = this.modeloJugadores.getOrdenCiudad(equiposFiltrados);                
+                equiposFiltrados = this.modeloEquipos.getOrdenCiudad(equiposFiltrados);                
                 break;
             case 'estadio':
-                equiposFiltrados = this.modeloJugadores.getOrdenEstadio(equiposFiltrados);                
+                equiposFiltrados = this.modeloEquipos.getOrdenEstadio(equiposFiltrados);                
                 break;
         }
     
