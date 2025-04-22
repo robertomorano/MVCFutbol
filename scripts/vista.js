@@ -59,11 +59,10 @@ class Vista {
             const btnCrear = this.modal.querySelector('#btn_crea_jugador') || this.modal.querySelector('#btn_crea_equipo');
             if (btnCrear) {
                 btnCrear.addEventListener('click', () => {
-                    const datosFormulario = this.obtenerDatosFormularioCreacion();
                     if (this.pagina === 'jugador') {
-                        this.controlador.agregarJugadorDesdeVista(datosFormulario);
+                        this.controlador.agregarJugadorDesdeVista();
                     } else {
-                        this.controlador.agregarEquipoDesdeVista(datosFormulario);
+                        this.controlador.agregarEquipoDesdeVista();
                     }
                     this.modal.style.display = "none";
                 });

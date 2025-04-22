@@ -175,13 +175,10 @@ class Controlador {
     // Metodo para agregar un jugador desde los datos capturados en la vista
     agregarJugadorDesdeVista() {
         // Obtenemos los datos del formulario de jugador
-        const nombre = document.getElementById("imp_nombre_jugador").value;
-        const posicion = document.getElementById("imp_posicion_jugador").value;
-        const fechaNacimiento = document.getElementById("imp_fecha_nacimiento").value;
-        const archivo = document.getElementById("imp_imagen_jugador").files[0];
+        const datosDelFormulario = this.vista.obtenerDatosFormularioCreacion();
 
         // Llamamos al metodo para agregar el jugador al modelo
-        this.agregarJugador(nombre, posicion, fechaNacimiento, archivo);
+        this.agregarJugador(datosDelFormulario.nombre, datosDelFormulario.posicion, datosDelFormulario.fechaNacimiento, datosDelFormulario.archivo);
     }
 
     // Metodo para agregar un jugador al modelo
@@ -204,13 +201,10 @@ class Controlador {
     // Metodo para agregar un equipo desde los datos capturados en la vista
     agregarEquipoDesdeVista() {
         // Obtenemos los datos del formulario de equipo
-        const nombre = document.getElementById("imp_nombre_equipo").value;
-        const ciudad = document.getElementById("imp_ciudad_equipo").value;
-        const estadio = document.getElementById("imp_nombre_estadio").value;
-        const archivo = document.getElementById("imp_imagen_equipo").files[0];
+        const datosDelFormulario = this.vista.obtenerDatosFormularioCreacion();
 
         // Llamamos al metodo para agregar el equipo al modelo
-        this.agregarEquipo(nombre, ciudad, estadio, archivo);
+        this.agregarEquipo(datosDelFormulario.nombre, datosDelFormulario.ciudad, datosDelFormulario.estadio, datosDelFormulario.archivo);
     }
 
     // Metodo para agregar un equipo al modelo
