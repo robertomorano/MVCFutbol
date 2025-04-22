@@ -45,7 +45,23 @@ class EquipoModel {
 
     return agregado;
   }
+  agregarEquipoEditado(id, nombre, ciudad, estadio) {
+    let agregado = true;
+    
+    let url = this.equipos[id-1].getImagen();
+    
+    
+    if (this.getEquipoPorNombre(nombre) === null) {
+      
+      let equipo = new Equipo(id, nombre, ciudad, estadio, url);
+      this.equipos.push(equipo);
+      this.actualizarEquipoLocalStorage();
+    }else{
+      agregado = false;
+    }
 
+    return agregado;
+  }
   //Guardar en localStorage los equipos
   actualizarEquipoLocalStorage() { 
 
@@ -90,9 +106,9 @@ class EquipoModel {
     return equipo;
   }
 
-  editarEquipo(id, nombre, ciudad, estadio, imagen) {
+  editarEquipo(id, nombre, ciudad, estadio) {
     this.eliminarEquipo(id);
-    this.agregarEquipo(nombre, ciudad, estadio, imagen);
+    this.agregarEquipoEditado(id, nombre, ciudad, estadio);
   }
 
   eliminarEquipo(id) {
