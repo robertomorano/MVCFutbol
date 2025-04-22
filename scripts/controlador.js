@@ -102,7 +102,6 @@ class Controlador {
         }
     }
 
-//
     // Metodo para obtener la lista de jugadores desde el modelo
     obtenerJugadores() {
         return this.modeloJugadores.getJugadores();
@@ -113,16 +112,10 @@ class Controlador {
         return this.modeloEquipos.getEquipos();
     }    
 
-//
     // Metodo para obtener un jugador especifico por su ID
     obtenerJugadorPorId(id) {
         return this.modeloJugadores.getJugadorPorId(id);
     }
-
-    // Metodo para obtener un equipo especifico por su ID
-//    obtenerEquipoPorId(id) {
-//    return this.modeloEquipos.getEquipoPorId(id);
-//    }
 
     // Metodo para obtener un equipo especifico por su ID y mostrarlo en un modal
     obtenerParaModalEquipos(id) {
