@@ -95,6 +95,19 @@ class Controlador {
     }
 
     // Metodo para mostrar los jugadores en la vista
+    mostrarJugadores(equiposFiltrados) {
+        
+        this.vista.limpiarListaJugadores();
+        if (jugadores.length !== 0) {
+            jugadores.forEach((jugador) => {
+                this.vista.renderizarVista(jugador);
+            });
+        } else {
+            this.vista.mostrarMensajeVacio('jugador');
+        }
+    }
+
+    // Metodo para mostrar los jugadores en la vista
     mostrarJugadores() {
         const jugadores = this.modeloJugadores.getJugadores();
         this.vista.limpiarListaJugadores();
