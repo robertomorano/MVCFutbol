@@ -131,7 +131,6 @@ class EquipoModel {
         const nombre = element.getNombre();
         return nombre && nombre.toLowerCase().includes(cadena.toLowerCase());
     });
-    equipoNombres = equipoNombres.filter(element => element.getNombre().toLowerCase().includes(lowerCaseCadena));
     
     return equipoNombres;
 }
