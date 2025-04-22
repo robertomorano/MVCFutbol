@@ -45,6 +45,25 @@ class EquipoModel {
 
     return agregado;
   }
+<<<<<<< Updated upstream
+=======
+  agregarEquipoEditado(id, nombre, ciudad, estadio) {
+    let agregado = true;
+    let imagen  = this.equipos[id]
+    console.log(id);
+    console.log(imagen);
+    let url = imagen.getImagen();
+    
+    
+    if (this.getEquipoPorNombre(nombre) === null) {
+      
+      let equipo = new Equipo(id, nombre, ciudad, estadio, url);
+      this.equipos.push(equipo);
+      this.actualizarEquipoLocalStorage();
+    }else{
+      agregado = false;
+    }
+>>>>>>> Stashed changes
 
 
 

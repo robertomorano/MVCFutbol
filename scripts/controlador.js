@@ -162,6 +162,9 @@ class Controlador {
     }
 
     obtenerEquipoPorId(id) {
+        if (id == -1) {
+            return "Agente Libre";
+        }
         const equipo = this.modeloEquipos.getEquipoPorId(id);
         return equipo.getNombre();
     }
