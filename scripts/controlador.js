@@ -130,8 +130,7 @@ class Controlador {
     // Metodo para obtener un jugador especifico por su ID y mostrarlo en un modal
     obtenerParaModalJugadores(id) {
         const jugador = this.modeloJugadores.getJugadorPorId(id);
-
-        const equipo = this.modeloEquipos.getEquipoPorId(jugador.getEquipo());
+        const equipo = this.modeloEquipos.getEquipoPorId(jugador.getIdEquipo());
         this.vista.mostrarModalJugador(jugador, equipo);
     }
 
