@@ -41,7 +41,7 @@ class Controlador {
                 break;
         }
 
-        this.mostrarJugadores(jugadoresFiltrados);
+        this.mostrarJugadoresFiltrados(jugadoresFiltrados);
     }
 
     // Metodo para filtrar los equipos por nombre, ciudad o estadio
@@ -63,7 +63,7 @@ class Controlador {
                 break;
         }
     
-        this.mostrarEquipos(equiposFiltrados);
+        this.mostrarEquiposFiltrados(equiposFiltrados);
     }    
 
     // Metodo para buscar por termino
@@ -95,15 +95,28 @@ class Controlador {
     }
 
     // Metodo para mostrar los jugadores en la vista
-    mostrarJugadores(equiposFiltrados) {
-        
+    mostrarJugadoresFiltrados(jugadoresFiltrados) {
+
         this.vista.limpiarListaJugadores();
-        if (jugadores.length !== 0) {
-            jugadores.forEach((jugador) => {
+        if (jugadoresFiltrados.length !== 0) {
+            jugadoresFiltrados.forEach((jugador) => {
                 this.vista.renderizarVista(jugador);
             });
         } else {
             this.vista.mostrarMensajeVacio('jugador');
+        }
+    }
+
+    // Metodo para mostrar los jugadores en la vista
+    mostrarEquiposFiltrados(equiposFiltrados) {
+
+        this.vista.limpiarListaJugadores();
+        if (equiposFiltrados.length !== 0) {
+            equiposFiltrados.forEach((equipo) => {
+                this.vista.renderizarVista(equipo);
+            });
+        } else {
+            this.vista.mostrarMensajeVacio('equipo');
         }
     }
 
