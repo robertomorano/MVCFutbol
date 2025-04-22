@@ -180,6 +180,14 @@ class Controlador {
     // Metodo para eliminar un jugador por su ID
     eliminarJugador(id) {
         this.modeloJugadores.eliminaJugador(id);
+        this.vista.mostrarSuccess("Jugador eliminado con exito.");
+        this.mostrarJugadores();
+    }
+
+    eliminarEquipo(id) {
+        this.modeloEquipos.eliminarEquipo(id);
+        this.vista.mostrarSuccess("Equipo eliminado con exito.");
+        this.mostrarEquipos();
     }
 
     // Metodo para agregar un jugador desde los datos capturados en la vista
