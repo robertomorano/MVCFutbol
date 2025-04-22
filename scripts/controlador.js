@@ -73,6 +73,10 @@ class Controlador {
             const jugadores = this.modeloJugadores.buscaJugadorPorNombre(termino);
 
             this.vista.limpiarListaJugadores();
+            if (jugadores.length === 0) {
+                this.vista.mostrarMensajeVacio('jugador');
+                return;
+            }
             jugadores.forEach((jugador) => {
                 this.vista.renderizarVista(jugador);
             });
@@ -80,6 +84,10 @@ class Controlador {
             const equipos = this.modeloEquipos.buscaEquipoPorNombre(termino);
 
             this.vista.limpiarListaEquipos();
+            if (equipos.length === 0) {
+                this.vista.mostrarMensajeVacio('equipo');
+                return;
+            }
             equipos.forEach((equipo) => {
                 this.vista.renderizarVista(equipo);
             });
