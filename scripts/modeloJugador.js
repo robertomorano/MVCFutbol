@@ -73,7 +73,7 @@ class JugadorModel{
     añadirEquipo(id, idEquipo){
         
         this.jugadores.forEach(element => {
-            if(element.getId() === id){
+            if(element.getId() == id){
                 element.setIdEquipo(idEquipo);
             }
             
