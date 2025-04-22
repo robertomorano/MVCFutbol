@@ -297,4 +297,17 @@ class Controlador {
             this.mostrarEquipos();
         }
     }
+
+    // Metodo para editar un equipo desde los datos capturados en la vista
+    actualizarEquipo(datosActualizados) {
+        let id = datosActualizados.id;
+        let nombre = datosActualizados.nombre;
+        let ciudad = datosActualizados.ciudad;
+        let estadio = datosActualizados.estadio;
+        let imagen = datosActualizados.imagen;
+
+        this.modeloEquipos.editarEquipo(id, nombre, ciudad, estadio, imagen);
+        this.vista.mostrarSuccess("Equipo actualizado con exito.");
+        this.mostrarEquipos();
+    }
 }
