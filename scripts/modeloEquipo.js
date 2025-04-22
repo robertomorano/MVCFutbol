@@ -14,7 +14,7 @@ class EquipoModel {
   inicializarEquiposLocalStorage(nombre, ciudad, estadio, imagen) {
     
     let index = this.equipos.length;
-    let equipo = new Equipo(index+1, nombre, ciudad, estadio, imagen);
+    let equipo = new Equipo(index+1, nombre, ciudad, estadio, "../recursos/pordefecto-equipo.png");
     this.equipos.push(equipo);
   }
 

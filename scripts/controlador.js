@@ -297,4 +297,22 @@ class Controlador {
             this.mostrarEquipos();
         }
     }
+
+    // Metodo para editar un equipo desde los datos capturados en la vista
+    actualizarEquipo(idEquipo) {
+        let id = idEquipo;
+        const datosEquipo = this.vista.obtenerDatosModificaEquipo();
+        let nombre = datosEquipo.nombre;
+        let ciudad = datosEquipo.ciudad;
+        let estadio = datosEquipo.estadio;
+
+        if (!nombre || !ciudad || !estadio) {
+            this.vista.mostrarError("Todos los campos deben estar rellenados.");
+            return;
+        } 
+
+        this.modeloEquipos.editarEquipo(id, nombre, ciudad, estadio);
+        this.vista.mostrarSuccess("Equipo actualizado con exito.");
+        this.mostrarEquipos();
+    }
 }
