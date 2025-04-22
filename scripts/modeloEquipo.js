@@ -47,8 +47,8 @@ class EquipoModel {
   }
   agregarEquipoEditado(id, nombre, ciudad, estadio) {
     let agregado = true;
-    
-    let url = this.equipos[id-1].getImagen();
+    let imagen  = this.equipos[id-1]
+    let url = imagen.getImagen();
     
     
     if (this.getEquipoPorNombre(nombre) === null) {
