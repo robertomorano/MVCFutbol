@@ -71,6 +71,14 @@ class Controlador {
     }    
 
     // Metodo para buscar por termino
+    buscar(termino, pagina) {
+        if pagina === 'jugadores') {
+            const jugadores = this.modeloJugadores.buscarJugadoresPorNombre();
+        } else {
+           
+        }
+    }
+
     
 
     // Metodo para mostrar los jugadores en la vista
