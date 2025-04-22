@@ -68,11 +68,12 @@ class Controlador {
 
     // Metodo para buscar por termino
     buscar(termino, pagina) {
+        console.log(termino, pagina);
         if (pagina === 'jugadores') {
-            const jugadores = this.modeloJugadores.buscarJugadoresPorNombre(termino);
+            const jugadores = this.modeloJugadores.buscaJugadorPorNombre(termino);
             this.vista.mostrarJugadores(jugadores);
         } else {
-            const equipos = this.modeloEquipos.buscarEquiposPorNombre(termino);
+            const equipos = this.modeloEquipos.buscaEquipoPorNombre(termino);
             this.vista.mostrarEquipos(equipos);
         }
     }
