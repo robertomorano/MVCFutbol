@@ -197,6 +197,7 @@ class Controlador {
             return;
         } else {
             this.vista.mostrarSuccess("Jugador agregado con exito.");
+            this.mostrarJugadores();
         }
     }
 
@@ -223,6 +224,7 @@ class Controlador {
             return;
         } else {
             this.vista.mostrarSuccess("Equipo agregado con exito.");
+            this.mostrarEquipos();
         }
     }
 }
