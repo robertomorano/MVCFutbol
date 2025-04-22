@@ -281,7 +281,7 @@ class Vista {
 
         const liEquipo = document.createElement("li");
         liEquipo.classList.add("equipo");
-        liEquipo.textContent = jugador.getEquipo() === '' ? "Agente Libre" : jugador.getEquipo();
+        liEquipo.textContent = jugador.getEquipo() === '' ? "Agente Libre" : this.controlador.obtenerEquipoPorId(jugador.getEquipo());
         tarjeta.appendChild(liEquipo);
 
         if (conEventoClick) {

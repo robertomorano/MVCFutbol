@@ -135,6 +135,11 @@ class Controlador {
         return this.modeloJugadores.getJugadorPorId(id);
     }
 
+    obtenerEquipoPorId(id) {
+        const equipo = this.modeloEquipos.getEquipoPorId(id);
+        return equipo.getNombre();
+    }
+
     // Metodo para obtener un equipo especifico por su ID y mostrarlo en un modal
     obtenerParaModalEquipos(id) {
         const equipo = this.modeloEquipos.getEquipoPorId(id);
