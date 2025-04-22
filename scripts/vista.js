@@ -590,7 +590,6 @@ class Vista {
             document.getElementById("btn-guardar-edicion").addEventListener("click", () => {
                 this.controlador.actualizarEquipo(equipo.getId());
                 modal.style.display = "none";
-                this.mostrarSuccess("Equipo actualizado con éxito.");
             });
         });
 
