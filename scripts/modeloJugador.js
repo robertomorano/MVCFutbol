@@ -134,7 +134,10 @@ class JugadorModel{
         return alfabeticoInverso;
     }
     getOrdenFechaNacimiento(){
-        let ordenFecha = this.jugadores.sort((a, b) => a.getEdad() - b.getEdad());
+        console.log(this.jugadores);
+        let ordenFecha = this.jugadores.sort((a, b) =>{ 
+            return a.getEdad() - b.getEdad()
+        });
         return ordenFecha;
     }
     getOrdenPosicion() {

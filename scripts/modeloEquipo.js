@@ -30,7 +30,7 @@ class EquipoModel {
         url = URL.createObjectURL(imagenBlob);
         console.log(url);
     }else{
-        url = "../recursos/imagen_pordefecto.webp";
+        url = "../recursos/pordefecto-equipo.png";
     }
     
     
