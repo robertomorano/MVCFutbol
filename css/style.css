@@ -37,7 +37,7 @@ label {
     font-weight: bold;
 }
 
-input {
+input, #imp_posicion_jugador {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
