@@ -110,20 +110,20 @@ class Vista {
 
     actualizarMenuFiltro(filtros) {
         if (this.menuFiltrar) {
-            this.menuFiltrar.innerHTML = ''; // Limpiar las opciones anteriores
+            this.menuFiltrar.innerHTML = '';
             filtros.forEach(filtro => {
                 const opcion = document.createElement('a');
                 opcion.classList.add('dropdown-item');
-                opcion.dataset.filtro = filtro.toLowerCase(); // Usar en minúsculas para consistencia
+                opcion.dataset.filtro = filtro.toLowerCase();
                 opcion.textContent = filtro;
-                opcion.href = '#'; // Evitar el comportamiento de enlace
+                opcion.href = '#'; // Evita el comportamiento de enlace
                 opcion.addEventListener('click', (e) => {
                     e.preventDefault();
                     const filtroSeleccionado = e.target.dataset.filtro;
                     if (this.pagina === 'jugador') {
                         this.controlador.filtrarJugadores(filtroSeleccionado);
                     } else if (this.pagina === 'equipo') {
-                        this.controlador.filtrarEquipos(filtroSeleccionado); // Nuevo método en el controlador
+                        this.controlador.filtrarEquipos(filtroSeleccionado);
                     }
                     this.menuFiltrar.classList.remove('show');
                 });
@@ -334,7 +334,7 @@ class Vista {
         posicionJugador.classList.add("posicion-jugador");
         posicionJugador.textContent = jugador.getPosicion();
         tarjeta.appendChild(posicionJugador);
-        
+
         return tarjeta;
     }
 
@@ -445,7 +445,7 @@ class Vista {
             }
 
             const nombresEquipos = equipos.map(e => e.getNombre());
-            const nombreSeleccionado = prompt("Escribe el nombre del equipo:\n" + nombresEquipos.join("\n"));
+            const nombreSeleccionado = prompt("Escribe el nombre del equipo (Copia y pega para evitar confusiones):\n" + nombresEquipos.join("\n"));
 
             if (nombreSeleccionado && nombresEquipos.includes(nombreSeleccionado)) {
                 this.controlador.asignarEquipoAJugador(jugador.getId(), nombreSeleccionado);
@@ -553,8 +553,9 @@ class Vista {
             }
         });
 
+        // Cuando se le haga click al botón de editar, se abrirá un formulario para editar el equipo
+        // y se reemplazará el contenido del modal con el formulario de edición
         document.getElementById("btnEditarEquipo").addEventListener("click", () => {
-            // Crear un formulario de edición
             const formEdicion = document.createElement("div");
             formEdicion.classList.add("formulario-edicion");
             formEdicion.innerHTML = `
