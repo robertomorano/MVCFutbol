@@ -57,7 +57,7 @@ class JugadorModel{
     // Añadir jugadores a base de datos desde localStorage hace falta crearlos de nuevo a partir de la clase Jugador
     // para que se puedan usar los metodos de la clase Jugador 
     addJugadorDesdeLocalStorage(nombre, posicion, fechaNacimiento, idEquipo, imagen){
-        let player = new Jugador(this.jugadores.length,nombre,posicion,fechaNacimiento, idEquipo ,"../recursos/imagen_pordefecto.webp");
+        let player = new Jugador(this.jugadores.length,nombre,posicion,fechaNacimiento, idEquipo , imagen);
         this.jugadores.push(player);
     }
     
