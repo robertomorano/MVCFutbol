@@ -461,7 +461,7 @@ class Vista {
             }
         });
 
-        modal.style.display = "block";
+        modal.style.display = "flex";
     }
 
     mostrarModalEquipo(equipo, jugadores) {
@@ -593,7 +593,7 @@ class Vista {
             });
         });
 
-        modal.style.display = "block";
+        modal.style.display = "flex";
     }
 
     obtenerDatosModificaEquipo(){
