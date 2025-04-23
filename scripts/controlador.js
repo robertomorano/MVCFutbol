@@ -161,6 +161,7 @@ class Controlador {
         return this.modeloJugadores.getJugadorPorId(id);
     }
 
+    // Metodo para obtener un equipo por su ID
     obtenerEquipoPorId(id) {
         if (id == -1) {
             return "Asigna Jugador";
@@ -238,6 +239,7 @@ class Controlador {
         this.mostrarJugadores();
     }
 
+    // Metodo para eliminar un equipo por su ID
     eliminarEquipo(id) {
         const jugadores = this.modeloJugadores.getJugadoresDeEquipo(id);
         jugadores.forEach((jugador) => {
@@ -321,4 +323,3 @@ class Controlador {
         this.mostrarEquipos();
     }
 }
-/*Comentario*/
