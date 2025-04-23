@@ -282,7 +282,7 @@ class Controlador {
         const datosDelFormulario = this.vista.obtenerDatosFormularioCreacion();
 
         // Llamamos al metodo para agregar el equipo al modelo
-        this.agregarEquipo(datosDelFormulario.nombre, datosDelFormulario.ciudad, datosDelFormulario.estadio, datosDelFormulario.archivo);
+        this.agregarEquipo(datosDelFormulario.nombre, datosDelFormulario.ciudad, datosDelFormulario.estadio, datosDelFormulario.imagen);
     }
 
     // Metodo para agregar un equipo al modelo
