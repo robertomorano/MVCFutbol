@@ -107,6 +107,7 @@ class Vista {
         this.actualizarMenuFiltro(['Nombre A-Z', 'Nombre Z-A', 'Posición', 'Edad']);
     }
 
+    // Método para actualizar el menú de filtro según la página actual
     actualizarMenuFiltro(filtros) {
         if (this.menuFiltrar) {
             this.menuFiltrar.innerHTML = '';
@@ -131,6 +132,7 @@ class Vista {
         }
     }
 
+    // Método para inicializar el desplegable de filtro
     inicializarFiltro() {
         if (this.botonFiltrar && this.menuFiltrar) {
             this.botonFiltrar.addEventListener('click', (e) => {
@@ -147,6 +149,7 @@ class Vista {
         }
     }
 
+    // Método para inicializar los listeners del card de error
     inicializarErrorCardListeners() {
         if (this.cerrarErrorBtn) {
             this.cerrarErrorBtn.addEventListener('click', () => {
@@ -155,14 +158,17 @@ class Vista {
         }
     }
 
+    // Método para limpiar la lista de jugadores
     limpiarListaJugadores() {
         this.listaJugadoresContenedor.innerHTML = '';
     }
 
+    // Método para limpiar la lista de equipos
     limpiarListaEquipos() {
         this.listaEquiposContenedor.innerHTML = '';
     }
 
+    // Método para abrir el modal de creación de jugadores o equipos
     abreModalCrador() {
         this.modal.innerHTML = '';
         this.modalContent = document.createElement("div");
@@ -234,6 +240,7 @@ class Vista {
         this.modal.appendChild(this.modalContent);
     }
 
+    // Método para obtener los datos del formulario de creación de jugadores o equipos
     obtenerDatosFormularioCreacion() {
         if (this.pagina === 'jugador') {
             const formulario = this.modal.querySelector('#formulario-crear-jugador');
@@ -254,6 +261,7 @@ class Vista {
         }
     }
 
+    // Método para crear una tarjeta de jugador
     crearTarjetaJugador(jugador, conEventoClick = true) {
         const tarjeta = document.createElement("div");
         tarjeta.classList.add("tarjeta");
@@ -291,6 +299,7 @@ class Vista {
         return tarjeta;
     }
 
+    // Método para crear una tarjeta de equipo
     crearTarjetaEquipo(equipo) {
         const tarjeta = document.createElement("div");
         tarjeta.classList.add("tarjeta");
@@ -320,6 +329,7 @@ class Vista {
         return tarjeta;
     }
 
+    // Método para crear una tarjeta de jugador mini (para el modal de equipo)
     crearTarjetaJugadorMini(jugador) {
         const tarjeta = document.createElement("div");
         tarjeta.classList.add("tarjeta-jugador-mini");
@@ -343,6 +353,7 @@ class Vista {
         return tarjeta;
     }
 
+    // Método para mostrar un mensaje vacío en la lista de jugadores o equipos
     mostrarMensajeVacio(tipo) {
         const contenedor = tipo === 'jugador' ? this.listaJugadoresContenedor : this.listaEquiposContenedor;
         const mensaje = document.createElement("p");
@@ -353,6 +364,7 @@ class Vista {
         contenedor.appendChild(mensaje);
     }
 
+    // Metodo para renderizar la vista donde se le pasa el objeto a renderizar
     renderizarVista(objeto) {
         const contenedor = this.pagina === 'jugador' ? this.listaJugadoresContenedor : this.listaEquiposContenedor;
         if (!objeto) return;
@@ -366,6 +378,7 @@ class Vista {
         }
     }
 
+    // Método para mostrar el modal de información del jugador
     mostrarModalJugador(jugador, suEquipo) {
         const modal = this.modalJugador;
         const contenedorTarjeta = modal.querySelector(".tarjeta-jugador");
@@ -464,6 +477,7 @@ class Vista {
         modal.style.display = "flex";
     }
 
+    // Método para mostrar el modal de información del equipo
     mostrarModalEquipo(equipo, jugadores) {
         console.log("Ejecutando mostrarModalEquipo", equipo, jugadores);
         console.log("El modal es:", this.modalEquipo);
@@ -596,6 +610,7 @@ class Vista {
         modal.style.display = "flex";
     }
 
+    // Método para obtener los datos del formulario de edición de equipo
     obtenerDatosModificaEquipo(){
         return {
             nombre: document.getElementById("edit-nombre-equipo").value,
@@ -604,14 +619,17 @@ class Vista {
         };
     }
 
+    // Método para mostrar un mensaje de error
     mostrarError(mensaje) {
         this.mostrarMensaje('error', mensaje);
     }
 
+    // Método para mostrar un mensaje de éxito
     mostrarSuccess(mensaje) {
         this.mostrarMensaje('success', mensaje);
     }
 
+    // Metodo para mostrar el mensaje en pantalla con una tarjeta temporanea
     mostrarMensaje(tipo, mensaje) {
         const card = document.getElementById('errorCard');
         const msg = document.getElementById('errorMessage');
@@ -633,6 +651,7 @@ class Vista {
         }, 5000);
     }
     
+    // Método para ocultar el mensaje de error
     ocultarError() {
         if (this.errorCard) {
             this.errorCard.classList.remove("show");
@@ -640,6 +659,7 @@ class Vista {
         }
     }
 
+    // Método para cerrar los modales de jugador y equipo
     cerrarModalObjeto() {
         // Configurar cerrar para el modal de jugador
         const cerrarModalJugador = this.modalJugador.querySelector(".close");
@@ -667,5 +687,3 @@ class Vista {
         }
     }
 }
-
-/*Comentario*/
