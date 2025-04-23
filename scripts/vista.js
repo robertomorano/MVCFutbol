@@ -359,8 +359,8 @@ class Vista {
         const mensaje = document.createElement("p");
         mensaje.classList.add("mensaje-vacio");
         mensaje.textContent = tipo === 'jugador'
-            ? "No hay jugadores que coincidan con el filtro."
-            : "No hay equipos que coincidan con el filtro.";
+            ? "No hay jugadores a mostrar."
+            : "No hay equipos a mostrar.";
         contenedor.appendChild(mensaje);
     }
 
